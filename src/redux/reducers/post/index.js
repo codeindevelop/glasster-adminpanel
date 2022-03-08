@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import post from './PostReducer';
-import postCategory from './postCategoryReducer';
-import publish from './publishStatusReducer';
+import { postReducer } from './PostReducer';
+import { postCategoryReducer } from './postCategoryReducer';
+import { publishStatusReducer } from './publishStatusReducer';
 
 const postReducers = combineReducers({
-  post,
-  postCategory,
-  publish,
+  post: postReducer,
+  postCategory: postCategoryReducer,
+  publish: publishStatusReducer,
 });
 
 export default postReducers;

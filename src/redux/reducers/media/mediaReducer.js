@@ -9,7 +9,7 @@ const initialState = {
   postMediaModal: false,
 };
 
-export default (state = initialState, action) => {
+export const mediaReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'MEDIA_LOADSUCCESS':
       return {

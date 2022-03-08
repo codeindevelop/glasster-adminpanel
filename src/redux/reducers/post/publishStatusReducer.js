@@ -16,7 +16,7 @@ const initialState = {
   createCategoryErrMSG: null,
 };
 
-export default (state = initialState, action) => {
+export const publishStatusReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOAD_POSTSTATUS_SUCCESS':
       return {

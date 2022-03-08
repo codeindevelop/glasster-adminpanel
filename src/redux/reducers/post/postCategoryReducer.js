@@ -14,7 +14,7 @@ const initialState = {
   createCategoryErrMSG: null,
 };
 
-export default (state = initialState, action) => {
+export const postCategoryReducer =(state = initialState, action) => {
   switch (action.type) {
     case 'POSTCATEGORY_EDIT_MODAL_SHOW':
       return {

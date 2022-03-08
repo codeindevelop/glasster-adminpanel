@@ -7,13 +7,13 @@ import { roleReducer } from './role/rolesReducer';
 import layout from './layout';
 import postReducers from './post';
 import settings from './settings';
-import media from './media/mediaReducer';
+import { mediaReducer } from './media/mediaReducer';
 
 const rootReducer = combineReducers({
   auth,
   role: roleReducer,
   post: postReducers,
-  media,
+  media: mediaReducer,
   settings,
   layout,
 });
