@@ -14,7 +14,7 @@ const initialState = {
   addModalHide: false,
   createCategorySucMSG: null,
   createCategoryErrMSG: null,
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -22,9 +22,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         PostpublishStatus: action.payload.modes,
-      }
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};

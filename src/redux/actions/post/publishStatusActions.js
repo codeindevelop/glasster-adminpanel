@@ -1,15 +1,15 @@
-import axios from 'axios'
-import Crud from '../../cruds'
+import axios from 'axios';
+import Crud from '../../cruds';
 /* ------------------------- Get all Post Statuses ------------------------ */
 export const fetchPublishStatus = () => (dispatch) => {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
   // Headers
   const config = {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-  }
+  };
 
   axios
     .get(Crud.getAllPostStatus, config)
@@ -17,12 +17,12 @@ export const fetchPublishStatus = () => (dispatch) => {
       dispatch({
         type: 'LOAD_POSTSTATUS_SUCCESS',
         payload: res.data,
-      })
+      });
     })
     .catch((err) => {
       dispatch({
         type: 'LOAD_POSTSTATUS_FAIL',
         payload: err.data,
-      })
-    })
-}
+      });
+    });
+};

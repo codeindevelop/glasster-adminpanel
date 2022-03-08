@@ -1,18 +1,18 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import Crud from '../../cruds'
+import Crud from '../../cruds';
 
 /* ------------------------------- Register User ------------------------------- */
 
 export const registerAction =
-  ({first_name, last_name, mobile_number, email, password, password_confirmation}) =>
+  ({ first_name, last_name, mobile_number, email, password, password_confirmation }) =>
   (dispatch) => {
     // Headers
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
-    }
+    };
 
     // Request body
     const body = {
@@ -23,9 +23,9 @@ export const registerAction =
       password,
       password_confirmation,
       portal_id: 1,
-    }
+    };
 
-    console.log(body)
+    console.log(body);
 
     axios
       .post(Crud.registerUrl, body, config)
@@ -33,27 +33,27 @@ export const registerAction =
         dispatch({
           type: 'REGISTER_SUCCESS',
           payload: res.data,
-        })
+        });
       })
       .catch((err) => {
         dispatch({
           type: 'REGISTER_ERR',
           payload: body,
-        })
-      })
-  }
+        });
+      });
+  };
 
 /* ------------------------------- Active User ------------------------------- */
 
 export const activeUserAction =
-  ({token}) =>
+  ({ token }) =>
   (dispatch) => {
     // Headers
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
-    }
+    };
 
     // // Request body
     // const body = {
@@ -66,16 +66,16 @@ export const activeUserAction =
         dispatch({
           type: 'USER_ACCOUNT_ACTIVE_SUC',
           payload: res.data,
-        })
+        });
       })
       .catch((err) => {
         if (err.response.data.message === 'This activation token is invalid.') {
           dispatch({
             type: 'USER_ACCOUNT_ACTIVE_ERR',
             payload: err.data,
-          })
+          });
         }
 
-        console.log(err.response.data)
-      })
-  }
+        console.log(err.response.data);
+      });
+  };

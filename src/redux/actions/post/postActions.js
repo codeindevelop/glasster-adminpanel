@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import Crud from '../../cruds'
+import Crud from '../../cruds';
 
 /* ------------------------- Get all posts ------------------------ */
 export const fetchAllPosts = () => (dispatch) => {
@@ -10,22 +10,22 @@ export const fetchAllPosts = () => (dispatch) => {
       dispatch({
         type: 'POSTS_LOADED',
         payload: res.data,
-      })
+      });
     })
     .catch((err) => {
       dispatch({
         type: 'POSTS_LOAD_ERR',
         payload: err.data,
-      })
-    })
-}
+      });
+    });
+};
 
 /* ------------------------- Get Post By Id ------------------------ */
 export const getPostByIdAction =
-  ({id}) =>
+  ({ id }) =>
   (dispatch) => {
     // Get token from localstorage
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
 
     // Headers
     const config = {
@@ -33,26 +33,26 @@ export const getPostByIdAction =
         'Content-type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     const body = {
       id,
-    }
+    };
     axios
       .post(Crud.getPostByIdURL, body, config)
       .then((res) => {
         dispatch({
           type: 'POST_BYID_LOADED',
           payload: res.data,
-        })
+        });
       })
       .catch((err) => {
         dispatch({
           type: 'POST_BYID_ERR',
           payload: err.data,
-        })
-      })
-  }
+        });
+      });
+  };
 
 /* ------------------------------- Create Post ------------------------------ */
 
@@ -82,7 +82,7 @@ export const createPost =
   }) =>
   (dispatch) => {
     // Get token from localstorage
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
 
     // Headers
     const config = {
@@ -90,7 +90,7 @@ export const createPost =
         'Content-type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     const body = {
       category_id,
@@ -114,7 +114,7 @@ export const createPost =
       og_url,
       og_site_name,
       og_image,
-    }
+    };
 
     axios
       .post(Crud.createPostURL, body, config)
@@ -122,18 +122,18 @@ export const createPost =
         dispatch({
           type: 'CREATE_POST_SECCESS',
           payload: res.data,
-        })
+        });
         setTimeout(() => {
-          dispatch(undoSuccMsg())
-        }, 7000)
+          dispatch(undoSuccMsg());
+        }, 7000);
       })
       .catch((err) => {
         dispatch({
           type: 'CREATE_POST_FAIL',
           payload: err.data,
-        })
-      })
-  }
+        });
+      });
+  };
 
 /* ------------------------------- Update Post ------------------------------ */
 
@@ -164,7 +164,7 @@ export const editPostAction =
   }) =>
   (dispatch) => {
     // Get token from localstorage
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
 
     // Headers
     const config = {
@@ -172,7 +172,7 @@ export const editPostAction =
         'Content-type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     const body = {
       id,
@@ -197,7 +197,7 @@ export const editPostAction =
       og_url,
       og_site_name,
       og_image,
-    }
+    };
 
     axios
       .put(`${Crud.updatePostURL}/${id}`, body, config)
@@ -205,27 +205,27 @@ export const editPostAction =
         dispatch({
           type: 'UPDATE_POST_SECCESS',
           payload: res.data,
-        })
-        console.log('ok')
+        });
+        console.log('ok');
         setTimeout(() => {
-          dispatch(undoUpdateSuccMsg())
-        }, 7000)
+          dispatch(undoUpdateSuccMsg());
+        }, 7000);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         dispatch({
           type: 'UPDATE_POST_FAIL',
           payload: err.data,
-        })
-      })
-  }
+        });
+      });
+  };
 
 /* --------------------------- Delete Post Action --------------------------- */
 export const deletePostAction =
-  ({id}) =>
+  ({ id }) =>
   (dispatch) => {
     // Get token from localstorage
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
 
     // Headers
     const config = {
@@ -233,11 +233,11 @@ export const deletePostAction =
         'Content-type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     const body = {
       id,
-    }
+    };
 
     axios
       .delete(`${Crud.deletePostURL}/${id}`, config)
@@ -245,44 +245,44 @@ export const deletePostAction =
         dispatch({
           type: 'DELETE_POST_SECCESS',
           payload: res.data,
-        })
+        });
 
         setTimeout(() => {
-          dispatch(undoDeleteSuccMsg())
-        }, 7000)
+          dispatch(undoDeleteSuccMsg());
+        }, 7000);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         dispatch({
           type: 'DELETE_POST_FAIL',
           payload: err.data,
-        })
-      })
-  }
+        });
+      });
+  };
 
 /* ----------------------- undo post Create succ msg ---------------------- */
 
 export const undoSuccMsg = () => (dispatch) => {
   dispatch({
     type: 'POST_CREATE_SUCCESS_UNDO',
-  })
-}
+  });
+};
 
 /* ----------------------- undo post Update succ msg ---------------------- */
 
 export const undoUpdateSuccMsg = () => (dispatch) => {
   dispatch({
     type: 'UPDATE_POST_SUCCESS_UNDO',
-  })
-}
+  });
+};
 
 /* ----------------------- undo post Delete succ msg ---------------------- */
 
 export const undoDeleteSuccMsg = () => (dispatch) => {
   dispatch({
     type: 'DELETE_POST_SUCCESS_UNDO',
-  })
-}
+  });
+};
 
 /* ------------------------- Post Info Handle Change ------------------------ */
 
@@ -290,51 +290,51 @@ export const storePostInfoData = (data) => (dispatch) => {
   dispatch({
     type: 'STORE_POST_INFO',
     payload: data,
-  })
-}
+  });
+};
 
 export const updatePostInfoData = (data) => (dispatch) => {
   dispatch({
     type: 'UPDATE_POST_INFO',
     payload: data,
-  })
-}
+  });
+};
 
 /* ------------------------- Post Image Handle Change ------------------------ */
 export const storePostImgData = (data) => (dispatch) => {
   dispatch({
     type: 'STORE_POST_IMAGE',
     payload: data,
-  })
-}
+  });
+};
 
 /* ------------------------- Post Content Seo Handle Change ------------------------ */
 export const storePostContentSeoData = (data) => (dispatch) => {
   dispatch({
     type: 'STORE_POST_CONTENT_SEO',
     payload: data,
-  })
-}
+  });
+};
 
 /* ------------------------- Post Social Seo Handle Change ------------------------ */
 export const storePostSocialSeoData = (data) => (dispatch) => {
   dispatch({
     type: 'STORE_POST_SOCIAL_SEO',
     payload: data,
-  })
-}
+  });
+};
 /* ------------------------- Post Social OG Seo Handle Change ------------------------ */
 export const storePostSocialOgSeoData = (data) => (dispatch) => {
   dispatch({
     type: 'STORE_POST_SOCIAL_OG_SEO',
     payload: data,
-  })
-}
+  });
+};
 
 /* ------------------------- Post Advance Seo Handle Change ------------------------ */
 export const storePostAdvanceSeoData = (data) => (dispatch) => {
   dispatch({
     type: 'STORE_POST_ADVANCE_SEO',
     payload: data,
-  })
-}
+  });
+};

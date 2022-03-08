@@ -8,39 +8,39 @@ const initialState = {
 
 export const forgotPassword = (state = initialState, action) => {
   switch (action.type) {
-    case "CHANGE_PASS_STEP_ONE_SUCCESS":
+    case 'CHANGE_PASS_STEP_ONE_SUCCESS':
       return {
         ...state,
         changePassReqMsg: true,
       };
 
-    case "RESET_PASSWOR_STEP_ONE_SUCCESS":
+    case 'RESET_PASSWOR_STEP_ONE_SUCCESS':
       return {
         ...state,
         fpStepOne: true,
         userDontExist: null,
       };
 
-    case "RESET_PASSWOR_STEP_ONE_ERR":
+    case 'RESET_PASSWOR_STEP_ONE_ERR':
       return {
         ...state,
         fpStepOne: false,
         userDontExist: null,
       };
 
-    case "USER_DONT_EXIST":
+    case 'USER_DONT_EXIST':
       return {
         ...state,
         userDontExist: true,
       };
 
-    case "RESET_PASSWOR_SUCCESS":
+    case 'RESET_PASSWOR_SUCCESS':
       return {
         ...state,
         resetPassSuc: true,
       };
 
-    case "RESET_PASSWOR_FAIL":
+    case 'RESET_PASSWOR_FAIL':
       return {
         ...state,
         resetPassErr: true,

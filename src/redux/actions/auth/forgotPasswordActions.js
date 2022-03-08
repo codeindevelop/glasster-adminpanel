@@ -1,5 +1,5 @@
-import axios from "axios";
-import crud from "../../cruds";
+import axios from 'axios';
+import crud from '../../cruds';
 
 export const forgotPassStepOne =
   ({ email }) =>
@@ -7,7 +7,7 @@ export const forgotPassStepOne =
     // Headers
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
@@ -20,17 +20,14 @@ export const forgotPassStepOne =
       .post(crud.requestPasswordUrl, body, config)
       .then((res) => {
         dispatch({
-          type: "RESET_PASSWOR_STEP_ONE_SUCCESS",
+          type: 'RESET_PASSWOR_STEP_ONE_SUCCESS',
           payload: res.data,
         });
       })
       .catch((err) => {
-        if (
-          err.response.message ===
-          "We cant find a user with that e-mail address."
-        ) {
+        if (err.response.message === 'We cant find a user with that e-mail address.') {
           dispatch({
-            type: "USER_DONT_EXIST",
+            type: 'USER_DONT_EXIST',
           });
         }
         console.log(err);
@@ -43,7 +40,7 @@ export const forgotPassStepTwo =
     // Headers
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
@@ -59,58 +56,53 @@ export const forgotPassStepTwo =
       .post(crud.changePasswordUrl, body, config)
       .then((res) => {
         dispatch({
-          type: "RESET_PASSWOR_SUCCESS",
+          type: 'RESET_PASSWOR_SUCCESS',
           payload: res.data,
         });
         setTimeout(() => {
           dispatch({
-            type: "RESET_PASSWOR_SUCCESS_UNDO",
+            type: 'RESET_PASSWOR_SUCCESS_UNDO',
           });
         }, 3000);
       })
       .catch((err) => {
         dispatch({
-          type: "RESET_PASSWOR_FAIL",
+          type: 'RESET_PASSWOR_FAIL',
         });
 
         console.log(err.response.data.message);
       });
   };
 
-
-
 export const changePassStepOne =
   ({ email }) =>
-    (dispatch) => {
-      // Headers
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      // Request body
-      const body = {
-        email,
-      };
-
-      axios
-        .post(crud.requestPasswordUrl, body, config)
-        .then((res) => {
-          dispatch({
-            type: "CHANGE_PASS_STEP_ONE_SUCCESS",
-            payload: res.data,
-          });
-        })
-        .catch((err) => {
-          if (
-            err.response.message ===
-            "We cant find a user with that e-mail address."
-          ) {
-            dispatch({
-              type: "USER_DONT_EXIST",
-            });
-          }
-          console.log(err);
-        });
+  (dispatch) => {
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     };
+
+    // Request body
+    const body = {
+      email,
+    };
+
+    axios
+      .post(crud.requestPasswordUrl, body, config)
+      .then((res) => {
+        dispatch({
+          type: 'CHANGE_PASS_STEP_ONE_SUCCESS',
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        if (err.response.message === 'We cant find a user with that e-mail address.') {
+          dispatch({
+            type: 'USER_DONT_EXIST',
+          });
+        }
+        console.log(err);
+      });
+  };

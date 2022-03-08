@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const API_URL = 'http://localhost:8000'
+const API_URL = 'http://localhost:8000';
 
 /* ------------------------ Authentication CRUD URLs ------------------------ */
 export default {
@@ -100,4 +100,4 @@ export default {
   revokeUserRoleURL: `${API_URL}/api/v1/role-remove-user`,
   roleGivePermissionURL: `${API_URL}/api/v1/role-giv-permission`,
   revokePermissionFromRoleURL: `${API_URL}/api/v1/role-revoke-permission`,
-}
+};

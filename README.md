@@ -5,12 +5,11 @@ Glasster is a framework based on laravel for create ACL (Access Control Level) f
 - Authentication system Login , Register , ForgotPassword
 - OTP login and register system with Email , SMS and Google authenticator
 - Blog manage system with advance SEO configs
-- Email Template manage system 
+- Email Template manage system
 - General SEO configuration <br>
-and etc ...
+  and etc ...
 
-
-##  Use Glasster Administrator Panel
+## Use Glasster Administrator Panel
 
 glasster for backend API server used `https://github.com/luxiloom/glasster` <br>
 you most be download api server package and served on local or server , after start administrator panel .

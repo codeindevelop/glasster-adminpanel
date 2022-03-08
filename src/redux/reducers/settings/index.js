@@ -1,8 +1,8 @@
-import {combineReducers} from 'redux'
-import {authSettingsReducer} from './authSettingsReducer'
+import { combineReducers } from 'redux';
+import { authSettingsReducer } from './authSettingsReducer';
 
 const settingsReducers = combineReducers({
   auth: authSettingsReducer,
-})
+});
 
-export default settingsReducers
+export default settingsReducers;
