@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Import Styles
-import 'tailwindcss/tailwind.css' // Import Tailwind CSS
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 import './@core/assets/scss/_persian-fonts.scss';
 
 // Redux Config Files
