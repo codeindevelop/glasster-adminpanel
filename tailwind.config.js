@@ -5,10 +5,14 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
+      // Persian Fonts
       sans: ['iransans'],
       pelak: ['pelak'],
       yekan: ['yekanbakh'],
       dana: ['dana'],
+      // English Fonts
+      pop: ['Poppins Regular'],
+      sf: ['sf-ui'],
     },
     colors: {
       ...defaultcolors,
