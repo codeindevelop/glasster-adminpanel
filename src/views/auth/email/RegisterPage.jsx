@@ -5,9 +5,8 @@ import Button from '../../../@core/components/Button/Button';
 export default function RegisterPage() {
   return (
     <>
-      <div className='flex flex-col justify-center items-center p-5 '>
-        {/* Begin Content Wrapper */}
-        <div className='shadow-sm border p-5 rounded-lg h-full '>
+      <div className='flex justify-center p-1 w-full'>
+        <div className='w-full md:w-1/3 md:shadow-sm mb-3 md:border p-5 rounded-lg h-auto flex flex-col justify-center items-center '>
           <h2 className='text-center font-bold text-lg text-slate-700 my-5'>ثبت نام در سامانه</h2>
 
           <h5 className='text-center text-xl leading-10 text-slate-600 font-yekan'>
@@ -88,7 +87,6 @@ export default function RegisterPage() {
           </div>
           {/* End Footer Links */}
         </div>
-        {/* End Content Wrapper */}
       </div>
     </>
   );

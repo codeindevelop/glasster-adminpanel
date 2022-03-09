@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
-import CircularProgress from '@mui/material/CircularProgress';
+import InfoIcon from '@mui/icons-material/Info';
 import { TextField, Button } from '@mui/material';
 import { loginAction } from 'actions/auth/loginActions';
 
@@ -28,6 +28,7 @@ const initialValues = {
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const router = useHistory();
 
   const { isAuthenticated, isLoginErr } = useSelector(
     ({ auth }) => ({
@@ -53,9 +54,8 @@ export default function LoginPage() {
   });
   return (
     <>
-      <div className='flex flex-col justify-center items-center p-5 '>
-        {/* Begin Content Wrapper */}
-        <div className='shadow-sm border p-5 rounded-lg h-full '>
+      <div className='flex justify-center p-1 w-full'>
+        <div className='w-full md:w-1/3 md:shadow-sm md:border p-5 rounded-lg flex flex-col justify-center items-center '>
           <h2 className='text-center font-bold text-lg text-slate-700 my-5'>ورود به حساب کاربری</h2>
 
           <h5 className='text-center text-xl leading-10 text-slate-600 font-yekan'>
@@ -63,79 +63,55 @@ export default function LoginPage() {
           </h5>
 
           {/* Begin Form */}
-          <form onSubmit={formik.handleSubmit} className='mt-5 lg:p-5 p-2'>
+          <form onSubmit={formik.handleSubmit} className='mt-5 lg:p-5 p-2 w-full'>
             <div className='my-5 w-full'>
               <TextField
                 id='email'
                 label='ایمیل'
                 variant='outlined'
-                className={clsx(
-                  'w-full',
-                  { 'is-invalid': formik.touched.email && formik.errors.email },
-                  {
-                    'is-valid': formik.touched.email && !formik.errors.email,
-                  }
-                )}
+                error={formik.errors.email}
+                className='w-full'
                 {...formik.getFieldProps('email')}
               />
-              {formik.touched.email && formik.errors.email && (
-                <div className='text-center text-danger'>
-                  <span>{formik.errors.email}</span>
+              {formik.errors.email && (
+                <div className='text-right text-danger font-normal text-sm my-3 '>
+                  <span className='mx-2 font-bold'>{formik.errors.email}</span>
+                  <InfoIcon fontSize='small' />
                 </div>
               )}
             </div>
-            <div className='my-5 w-full'>
-              <TextField
-                id='password'
-                label='رمز عبور'
-                variant='outlined'
-                type='password'
-                className={clsx(
-                  'w-full',
-                  { 'is-invalid': formik.touched.password && formik.errors.password },
-                  {
-                    'is-valid': formik.touched.password && !formik.errors.password,
-                  }
-                )}
-                {...formik.getFieldProps('password')}
-              />
-              {formik.touched.password && formik.errors.password && (
-                <div className='text-center text-danger'>
-                  <span>{formik.errors.password}</span>
-                </div>
-              )}
-            </div>
-            <div className='flex items-center justify-center'>
-              {!loading && (
-                <Button
-                  type='submit'
-                  variant='contained'
-                  className='w-full h-[50px] rounded-lg font-bold mb-3'
-                >
-                  <span className='text-light'>ورود به سیستم</span>
-                </Button>
-              )}
-              {loading && <CircularProgress />}
+
+            {/* Begin Forgot Password Lins */}
+            {/* <Link>
+
+            </Link> */}
+            {/* End Forgot Password Lins */}
+
+            <div className='flex items-center justify-start'>
+              <Link to='/forgot-email'>
+                <span className='text-blue-400 font-bold text-md '>
+                  ایمیل خود را فراموش کرده اید ؟
+                </span>
+              </Link>
             </div>
           </form>
           {/* End Form */}
 
           {/* Begin Footer Links */}
-          <div className='p-5'>
-            <Link className='my-3' to='/auth/register'>
-              <Button variant='outlined' className='w-full h-[50px] rounded-lg font-bold mb-3'>
-                ثبت نام در سامانه
-              </Button>
-            </Link>
-            <Link className='my-3' to='/auth/forgot-password'>
-              <Button variant='text' className='w-full h-[50px] font-bold my-3'>
-                فراموشی رمز عبور
-              </Button>
-            </Link>
+          <div className=' flex justify-between p-5 mt-5 w-full'>
+            <Button
+              onClick={(e) => router.push('/auth/register')}
+              variant='text'
+              className=' font-bold '
+            >
+              ثبت نام
+            </Button>
+            <Button type='submit' variant='contained' className='font-bold '>
+              <span className='text-light'>مرحله بعد</span>
+            </Button>
           </div>
           {/* End Footer Links */}
         </div>
-        {/* End Content Wrapper */}
       </div>
     </>
   );

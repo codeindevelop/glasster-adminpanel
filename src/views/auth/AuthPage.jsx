@@ -1,6 +1,7 @@
 import React, { lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
+import SwipeableRoutes from 'react-swipeable-routes';
 
 import Logo from 'img/logo/logo.svg';
 import headerPic from 'img/auth-header.png';
@@ -36,8 +37,10 @@ export default function AuthPage() {
             </div>
           </div>
           <Switch>
-            <Route path='/auth/login' exact component={LoginPage} />
-            <Route path='/auth/register' exact component={RegisterPage} />
+            <SwipeableRoutes>
+              <Route path='/auth/login' exact component={LoginPage} />
+              <Route path='/auth/register' exact component={RegisterPage} />
+            </SwipeableRoutes>
             <Route path='/auth/forgot-password' exact component={ForgotPasswordPage} />
 
             <Redirect from='/auth' to='/auth/login' />
