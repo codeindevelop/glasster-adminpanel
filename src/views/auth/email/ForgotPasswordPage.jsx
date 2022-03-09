@@ -36,9 +36,9 @@ export default function ForgotPasswordPage() {
                 ثبت نام در سامانه
               </Button>
             </Link>
-            <Link className='my-3' to='/auth/forgot-password'>
+            <Link className='my-3' to='/auth/login'>
               <Button variant='text' className='w-full h-[50px] font-bold my-3'>
-                فراموشی رمز عبور
+                ورود به سامانه
               </Button>
             </Link>
           </div>
