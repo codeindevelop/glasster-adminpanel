@@ -10,7 +10,7 @@ import headerPic from '../../@core/assets/img/auth-header.png';
 export default function AuthPage() {
   return (
     <>
-      <div className='relative h-full'>
+      <div className='relative'>
         {/* Begin Top Light Pic */}
         <div className='absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none'>
           <div className='w-[108rem] flex-none flex justify-end'>
