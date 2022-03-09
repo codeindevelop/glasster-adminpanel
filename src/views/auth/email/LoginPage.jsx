@@ -48,7 +48,7 @@ export default function LoginPage() {
     validationSchema: loginSchema,
     onSubmit: (values) => {
       setLoading(true);
-      dispatch(loginAction(values));
+      dispatch(loginAction(values))
     },
   });
   return (
@@ -107,11 +107,7 @@ export default function LoginPage() {
             </div>
             <div className='flex items-center justify-center'>
               {!loading && (
-                <Button
-                  type='submit'
-                  variant='contained'
-                  className='w-full h-[50px] rounded-lg font-bold mb-3'
-                >
+                <Button type='submit' variant='contained' className='w-full h-[50px] rounded-lg font-bold mb-3'>
                   <span className='text-light'>ورود به سیستم</span>
                 </Button>
               )}
