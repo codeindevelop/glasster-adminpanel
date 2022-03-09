@@ -8,7 +8,8 @@ import reportWebVitals from './reportWebVitals';
 
 // Import Styles
 import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
-import './@core/assets/scss/_persian-fonts.scss';
+import './@core/assets/scss/_persian-fonts.scss'; // import persian fonts
+import './@core/assets/scss/_english-fonts.scss'; // import english fonts
 
 // Redux Config Files
 import store, { persistor } from './redux/store';

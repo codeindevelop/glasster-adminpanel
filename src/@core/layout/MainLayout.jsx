@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 export default function MainLayout({ children }) {
   const { dir } = useSelector((state) => ({
     dir: state.layout.config.direction,
-    dir: state.layout.config.direction,
   }));
 
   useEffect(() => {

@@ -9,6 +9,7 @@ module.exports = {
       sans: ['iransans'],
       pelak: ['pelak'],
       yekan: ['yekanbakh'],
+      iryekan: ['iranyekan'],
       dana: ['dana'],
       // English Fonts
       pop: ['Poppins Regular'],
