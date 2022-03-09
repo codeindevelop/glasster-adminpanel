@@ -27,6 +27,9 @@ export const loginAction =
         dispatch(loadUser());
       })
       .catch((err) => {
+        dispatch({
+          type: 'LOGIN_ERR',
+        });
         console.log(err.data);
       });
   };

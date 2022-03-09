@@ -1,9 +1,56 @@
-import React from 'react';
-import { TextField, Button } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import CircularProgress from '@mui/material/CircularProgress';
+import { TextField, Button } from '@mui/material';
+import { loginAction } from '../../../redux/actions/auth/loginActions';
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('فرمت ایمیل اشتباه می باشد')
+    .min(3, 'حداقل 2 کلمه باید وارد شود')
+    .max(50, 'طول کلمات بیش از 50 کاراکتر میسر نیست')
+    .required('وارد کردن ایمیل الزامی می باشد'),
+  password: Yup.string()
+    .min(3, 'حداقل 2 کلمه باید وارد شود')
+    .max(50, 'طول کلمات بیش از 50 کاراکتر میسر نیست')
+    .required('وارد کردن رمز عبور الزامی می باشد'),
+});
+
+const initialValues = {
+  email: '',
+  password: '',
+};
 
 export default function LoginPage() {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const { isAuthenticated, isLoginErr } = useSelector(
+    ({ auth }) => ({
+      isAuthenticated: auth.login.isAuthenticated,
+      isLoginErr: auth.login.isLoginErr,
+    }),
+    shallowEqual
+  );
+
+  useEffect(() => {
+    if (isLoginErr === true) {
+      setLoading(false);
+    }
+  }, [isLoginErr, isAuthenticated]);
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      setLoading(true);
+      dispatch(loginAction(values));
+    },
+  });
   return (
     <>
       <div className='flex flex-col justify-center items-center p-5 '>
@@ -16,23 +63,59 @@ export default function LoginPage() {
           </h5>
 
           {/* Begin Form */}
-          <form className='mt-5 lg:p-5 p-2'>
-            <div className='my-5 w-full'>
-              <TextField id='email' label='ایمیل' variant='outlined' className='w-full' />
-            </div>
+          <form onSubmit={formik.handleSubmit} className='mt-5 lg:p-5 p-2'>
             <div className='my-5 w-full'>
               <TextField
                 id='email'
+                label='ایمیل'
+                variant='outlined'
+                className={clsx(
+                  'w-full',
+                  { 'is-invalid': formik.touched.email && formik.errors.email },
+                  {
+                    'is-valid': formik.touched.email && !formik.errors.email,
+                  }
+                )}
+                {...formik.getFieldProps('email')}
+              />
+              {formik.touched.email && formik.errors.email && (
+                <div className='text-center text-danger'>
+                  <span>{formik.errors.email}</span>
+                </div>
+              )}
+            </div>
+            <div className='my-5 w-full'>
+              <TextField
+                id='password'
                 label='رمز عبور'
                 variant='outlined'
                 type='password'
-                className='w-full'
+                className={clsx(
+                  'w-full',
+                  { 'is-invalid': formik.touched.password && formik.errors.password },
+                  {
+                    'is-valid': formik.touched.password && !formik.errors.password,
+                  }
+                )}
+                {...formik.getFieldProps('password')}
               />
+              {formik.touched.password && formik.errors.password && (
+                <div className='text-center text-danger'>
+                  <span>{formik.errors.password}</span>
+                </div>
+              )}
             </div>
-            <div className='my-5 w-full'>
-              <Button variant='contained' className='w-full h-[50px] rounded-lg font-bold mb-3'>
-                ورود به سامانه
-              </Button>
+            <div className='flex items-center justify-center'>
+              {!loading && (
+                <Button
+                  type='submit'
+                  variant='contained'
+                  className='w-full h-[50px] rounded-lg font-bold mb-3'
+                >
+                  <span className='text-light'>ورود به سیستم</span>
+                </Button>
+              )}
+              {loading && <CircularProgress />}
             </div>
           </form>
           {/* End Form */}
