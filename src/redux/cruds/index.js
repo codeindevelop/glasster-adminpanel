@@ -21,6 +21,7 @@ export default {
 
   /* ------------------------------ Register Urls ----------------------------- */
 
+  accountLoockupURL: `${API_URL}/api/v1/account-loockup`, // check user exist
   registerUrl: `${API_URL}/api/v1/register`,
   registerActivationUrl: `${API_URL}/api/v1/register/activation`,
 

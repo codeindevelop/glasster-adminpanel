@@ -74,7 +74,7 @@ export default function RegisterPage() {
 
           {/* Begin Footer Links */}
           <div className='p-5'>
-            <Link className='my-3' to='/auth/login'>
+            <Link className='my-3' to='/auth/signin'>
               <MUButton variant='outlined' className='w-full h-[50px] rounded-lg font-bold mb-3'>
                 ورود به سامانه
               </MUButton>

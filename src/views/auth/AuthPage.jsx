@@ -7,7 +7,8 @@ import Logo from 'img/logo/logo.svg';
 import headerPic from 'img/auth-header.png';
 
 export default function AuthPage() {
-  const LoginPage = lazy(() => import('./email/LoginPage'));
+  const AccountLoockupPage = lazy(() => import('./email/login/AccountLoockupPage'));
+  const EnterPasswordPage = lazy(() => import('./email/login/EnterPasswordPage'));
   const RegisterPage = lazy(() => import('./email/RegisterPage'));
   const ForgotPasswordPage = lazy(() => import('./email/ForgotPasswordPage'));
   return (
@@ -38,13 +39,14 @@ export default function AuthPage() {
           </div>
           <Switch>
             <SwipeableRoutes>
-              <Route path='/auth/login' exact component={LoginPage} />
+              <Route path='/auth/signin' exact component={AccountLoockupPage} />
+              <Route path='/auth/enter-password' exact component={EnterPasswordPage} />
               <Route path='/auth/register' exact component={RegisterPage} />
             </SwipeableRoutes>
             <Route path='/auth/forgot-password' exact component={ForgotPasswordPage} />
 
-            <Redirect from='/auth' to='/auth/login' />
-            <Redirect to='/auth/login' />
+            <Redirect from='/auth' to='/auth/signin' />
+            <Redirect to='/auth/signin' />
           </Switch>
         </div>
       </div>

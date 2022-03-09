@@ -56,7 +56,7 @@ export const Routes = () => {
 
           {!isAuthorized && !isAuthenticated ? (
             /*Redirect to `/auth` when user is not authorized*/
-            <Redirect to='/auth/login' />
+            <Redirect to='/auth/signin' />
           ) : (
             <>
               <PrivateRoutes />

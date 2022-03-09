@@ -296,13 +296,14 @@ module.exports = function (webpackEnv) {
       alias: {
         // Alias Names for Glasster folders
         actions: path.resolve(__dirname, '../src/redux/actions'),
+        predux: path.resolve(__dirname, '../src/redux'),
+        cruds: path.resolve(__dirname, '../src/redux/cruds'),
         img: path.resolve(__dirname, '../src/@core/assets/img'),
         assets: path.resolve(__dirname, '../src/@core/assets'),
         scss: path.resolve(__dirname, '../src/@core/assets/scss'),
         components: path.resolve(__dirname, '../src/@core/components'),
         layout: path.resolve(__dirname, '../src/@core/layout'),
         partials: path.resolve(__dirname, '../src/@core/partials'),
-        predux: path.resolve(__dirname, '../src/redux'),
         views: path.resolve(__dirname, '../src/views'),
 
         // Support React Native Web
