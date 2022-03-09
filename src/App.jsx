@@ -5,13 +5,11 @@ import { MaterialThemeProvider } from './@core/layout/MaterialThemeProvider';
 export default function App() {
   return (
     <>
-      <div>
-        {/* Material Theme Provider */}
-        <MaterialThemeProvider>
-          {/* Main Route File  */}
-          <Routes />
-        </MaterialThemeProvider>
-      </div>
+      {/* Material Theme Provider */}
+      <MaterialThemeProvider>
+        {/* Main Route File  */}
+        <Routes />
+      </MaterialThemeProvider>
     </>
   );
 }
