@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
-import ForgotPasswordPage from './email/ForgotPasswordPage';
-import LoginPage from './email/LoginPage';
-import RegisterPage from './email/RegisterPage';
+
 import Logo from '../../@core/assets/img/logo/logo.svg';
 import headerPic from '../../@core/assets/img/auth-header.png';
 
 export default function AuthPage() {
+  const LoginPage = lazy(() => import('./email/LoginPage'));
+  const RegisterPage = lazy(() => import('./email/RegisterPage'));
+  const ForgotPasswordPage = lazy(() => import('./email/ForgotPasswordPage'));
   return (
     <>
       <div className='relative'>
