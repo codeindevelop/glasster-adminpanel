@@ -302,7 +302,7 @@ module.exports = function (webpackEnv) {
         components: path.resolve(__dirname, '../src/@core/components'),
         layout: path.resolve(__dirname, '../src/@core/layout'),
         partials: path.resolve(__dirname, '../src/@core/partials'),
-        redux: path.resolve(__dirname, '../src/redux'),
+        predux: path.resolve(__dirname, '../src/redux'),
         views: path.resolve(__dirname, '../src/views'),
 
         // Support React Native Web
@@ -329,6 +329,8 @@ module.exports = function (webpackEnv) {
           babelRuntimeEntryHelpers,
           babelRuntimeRegenerator,
         ]),
+
+       
       ],
     },
     module: {
@@ -719,6 +721,8 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
+
+        
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
