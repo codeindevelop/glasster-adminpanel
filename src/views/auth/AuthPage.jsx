@@ -2,8 +2,8 @@ import React, { lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
 
-import Logo from '../../@core/assets/img/logo/logo.svg';
-import headerPic from '../../@core/assets/img/auth-header.png';
+import Logo from 'img/logo/logo.svg';
+import headerPic from 'img/auth-header.png';
 
 export default function AuthPage() {
   const LoginPage = lazy(() => import('./email/LoginPage'));
