@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 export default function MainLayout({ children }) {
   const { dir } = useSelector((state) => ({
@@ -17,7 +18,7 @@ export default function MainLayout({ children }) {
 
   return (
     <>
-      <div>{children}</div>
+      <PerfectScrollbar>{children}</PerfectScrollbar>
     </>
   );
 }

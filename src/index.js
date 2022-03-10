@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 // Import Styles
 import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
+import 'react-perfect-scrollbar/dist/css/styles.css'; // Perfect Scroll Bar Style
 import './@core/assets/scss/_persian-fonts.scss'; // import persian fonts
 import './@core/assets/scss/_english-fonts.scss'; // import english fonts
 
