@@ -51,3 +51,35 @@ export const undoCheckResponse = () => (dispatch) => {
     type: 'USER_CHECK_EXIST_UNDO',
   });
 };
+
+
+/* ------------------------------- User Login ------------------------------- */
+export const loginAction =
+  ({ email, password }) =>
+  (dispatch) => {
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    // Request body
+    const body = { email, password };
+
+    axios
+      .post(crud.loginUrl, body, config)
+      .then((res) => {
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: res.data,
+        });
+        // After success login user most be loaded
+        // dispatch(loadUser());
+      })
+      .catch((err) => {
+        dispatch({
+          type: 'LOGIN_ERR',
+        });
+      });
+  };

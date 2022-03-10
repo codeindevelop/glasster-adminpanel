@@ -1,39 +1,6 @@
 import axios from 'axios';
 import Crud from '../../cruds';
 
-/* ------------------------------- Login User ------------------------------- */
-
-export const loginAction =
-  ({ email, password }) =>
-  (dispatch) => {
-    // Headers
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    // Request body
-    const body = { email, password };
-
-    axios
-      .post(Crud.loginUrl, body, config)
-      .then((res) => {
-        dispatch({
-          type: 'LOGIN_SUCCESS',
-          payload: res.data,
-        });
-        // After success login user most be loaded
-        dispatch(loadUser());
-      })
-      .catch((err) => {
-        dispatch({
-          type: 'LOGIN_ERR',
-        });
-        console.log(err.data);
-      });
-  };
-
 /* ------------------------- Check Token & load user ------------------------ */
 export const loadUser = () => (dispatch) => {
   // Get token from localstorage
