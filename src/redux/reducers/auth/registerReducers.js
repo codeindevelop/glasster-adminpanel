@@ -4,6 +4,7 @@ const initialState = {
   tempRegisterFirstName: '',
   tempRegisterLastName: '',
   tempRegisterEmail: '',
+  tempRegisterMobile: '',
   emailExistERR: null,
   emailCanRegister: null,
   resiterLoading: null,
@@ -15,7 +16,8 @@ const initialState = {
   registerMobileExisMSG: null,
   mobileConfirmSucMSG: null,
   mobileConfirmErrMSG: null,
-  registerComplite : false ,
+  registerComplite: false,
+  getOtpCodeAgain: false,
 
   registerSucMSG: null,
   registerErrMSG: null,
@@ -25,6 +27,16 @@ const initialState = {
 
 export const register = (state = initialState, action) => {
   switch (action.type) {
+    case 'GET_REGISTER_OTP_CODE_SUC':
+      return {
+        ...state,
+        getOtpCodeAgain: true,
+      };
+    case 'GET_REGISTER_OTP_CODE_SUC_UNDO':
+      return {
+        ...state,
+        getOtpCodeAgain: null,
+      };
     case 'MOBILE_CONFIRMED_SUC':
       return {
         ...state,
@@ -51,6 +63,7 @@ export const register = (state = initialState, action) => {
       return {
         ...state,
         registerMobileSucMSG: true,
+        tempRegisterMobile: action.payload,
       };
     case 'REGISTER_MOBILE_EXIST':
       return {

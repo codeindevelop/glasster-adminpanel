@@ -45,6 +45,7 @@ export default function EnterPhoneNumberPage() {
     },
   });
 
+
   useEffect(() => {
     if (registerMobileSucMSG === true) {
       // If user register Mobile success , system has enable mobile number step

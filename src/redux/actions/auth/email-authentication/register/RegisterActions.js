@@ -156,7 +156,7 @@ export const registerMobileAction =
         if (res.data.message === 'code has ben send to user') {
           dispatch({
             type: 'REGISTER_MOBILE_SUC',
-            payload: res.data,
+            payload: mobile_number,
           });
 
           // Disable Loading Bar in Signup Page
@@ -239,5 +239,53 @@ export const undoMobileConfirmedMSG = () => (dispatch) => {
 export const undoMobileConfirmedERRUndo = () => (dispatch) => {
   dispatch({
     type: 'MOBILE_CONFIRMED_ERR_UNDO',
+  });
+};
+
+/* ---------------------- Get Another OTP Code if code is not recived to user --------------------- */
+
+export const getMobileCodeAction =
+  ({ tempRegisterMobile, accessToken }) =>
+  (dispatch) => {
+    // Headers
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    // Start Loading Bar in signup page
+    dispatch({ type: 'SIGNUP_LOADING', payload: true });
+
+    // Request body
+    const body = {
+      mobile_number: tempRegisterMobile,
+    };
+
+    axios
+      .post(crud.getMobileCodeURL, body, config)
+      .then((res) => {
+        dispatch({
+          type: 'GET_REGISTER_OTP_CODE_SUC',
+          payload: res.data,
+        });
+        dispatch({ type: 'SIGNUP_LOADING', payload: false });
+        setTimeout(() => {
+          dispatch(undoGetOTPCodeSucc());
+        }, 3000);
+      })
+      .catch((err) => {
+        dispatch({ type: 'SIGNUP_LOADING', payload: false });
+
+        dispatch({
+          type: 'GET_REGISTER_OTP_CODE_ERR',
+        });
+      });
+  };
+
+export const undoGetOTPCodeSucc = () => (dispatch) => {
+  dispatch({
+    type: 'GET_REGISTER_OTP_CODE_SUC_UNDO',
   });
 };

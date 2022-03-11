@@ -8,7 +8,10 @@ import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from 'react-circular-progressbar';
-import { confirmMobileCodeAction } from 'actions/auth/email-authentication/register/RegisterActions';
+import {
+  confirmMobileCodeAction,
+  getMobileCodeAction,
+} from 'actions/auth/email-authentication/register/RegisterActions';
 
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -50,18 +53,26 @@ export default function ConfirmMobilePage() {
   const [counter, setCounter] = useState(0);
   const [confirmCode, setConfirmCode] = useState(0);
 
-  const { registerMobileSucMSG, accessTokenData, mobileConfirmErrMSG } = useSelector(
+  const {
+    registerMobileSucMSG,
+    accessTokenData,
+    getOtpCodeAgain,
+    tempRegisterMobile,
+    mobileConfirmErrMSG,
+  } = useSelector(
     ({ auth }) => ({
       registerMobileSucMSG: auth.register.registerMobileSucMSG,
       accessTokenData: auth.register.registerToken,
       mobileConfirmErrMSG: auth.register.mobileConfirmErrMSG,
+      tempRegisterMobile: auth.register.tempRegisterMobile,
+      getOtpCodeAgain: auth.register.getOtpCodeAgain,
     }),
     shallowEqual
   );
 
   useEffect(() => {
     if (counter > 0) {
-      counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+      setTimeout(() => setCounter(counter - 1), 1000);
     }
     if (registerMobileSucMSG === true) {
       setCounter(60);
@@ -69,8 +80,10 @@ export default function ConfirmMobilePage() {
     if (mobileConfirmErrMSG === true) {
       setLoading(false);
     }
-    console.log(confirmCode);
-  }, [counter, registerMobileSucMSG, confirmCode]);
+    if (getOtpCodeAgain === true) {
+      setLoading(false);
+    }
+  }, [counter, registerMobileSucMSG, confirmCode, getOtpCodeAgain]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,11 +96,22 @@ export default function ConfirmMobilePage() {
     dispatch(confirmMobileCodeAction(body));
   };
 
+  // Request to Get New OTP Code From Server
+  const getNewCode = (e) => {
+    setLoading(true);
+    setCounter(60);
+    const body = {
+      tempRegisterMobile,
+      accessToken: accessTokenData,
+    };
+    dispatch(getMobileCodeAction(body));
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className='my-3'>
-          <h2 className='font-bold text-center text-slate-600 mb-5 leading-[30px]'>
+          <h2 className='font-bold text-center text-sm text-slate-600 mb-5 leading-[30px]'>
             لطفا کد ارسال شده به تلفن همراه خود را در کادر زیر وارد نمایید
           </h2>
           <div className='flex justify-center items-center my-7' style={{ direction: 'ltr' }}>
@@ -104,10 +128,19 @@ export default function ConfirmMobilePage() {
           </div>
           {mobileConfirmErrMSG === true && (
             <>
-              <div className='flex text-danger items-center my-5 gap-1'>
+              <div className='flex text-danger items-center justify-center my-5'>
                 <InfoIcon fontSize='small' />
-                <span className=' font-bold text-danger text-lg'>
+                <span className=' font-bold text-danger text-sm text-center'>
                   کد وارد شده اشتباه می باشد ، لطفا مجدد بررسی نمایید
+                </span>
+              </div>
+            </>
+          )}
+          {getOtpCodeAgain === true && (
+            <>
+              <div className='flex items-center my-5 gap-1'>
+                <span className=' font-bold text-success text-lg'>
+                  کد فعالسازی مجدد برای شما ارسال گردید
                 </span>
               </div>
             </>
@@ -145,7 +178,7 @@ export default function ConfirmMobilePage() {
           ) : null}
           <Button
             //   onClick={(e) => dispatch({ type: 'HANDLE_SEND_MOBILE_CODE' })}
-            onClick={(e) => setCounter(60)}
+            onClick={(e) => getNewCode()}
             variant='contained'
             color='secondary'
             className='font-bold my-2'
