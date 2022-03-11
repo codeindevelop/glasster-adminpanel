@@ -24,6 +24,8 @@ export default {
 
   emailLoockupURL: `${API_URL}/api/v1/email-loockup`,
   registerUrl: `${API_URL}/api/v1/user-signup`,
+  registerMobileURL: `${API_URL}/api/v1/register-mobile`,
+  confirmMobileCodeURL: `${API_URL}/api/v1/confirm-mobile-code`,
   registerActivationUrl: `${API_URL}/api/v1/register/activation`,
 
   /* --------------------------- ForgotPassword URLS -------------------------- */

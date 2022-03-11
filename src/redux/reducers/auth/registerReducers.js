@@ -1,3 +1,5 @@
+import { SignalWifiStatusbarNull } from '@mui/icons-material';
+
 const initialState = {
   tempRegisterFirstName: '',
   tempRegisterLastName: '',
@@ -9,6 +11,11 @@ const initialState = {
   registerToken: '',
   helpRegisterMobileModal: false,
   termsModal: false,
+  registerMobileSucMSG: null,
+  registerMobileExisMSG: null,
+  mobileConfirmSucMSG: null,
+  mobileConfirmErrMSG: null,
+  registerComplite : false ,
 
   registerSucMSG: null,
   registerErrMSG: null,
@@ -18,6 +25,48 @@ const initialState = {
 
 export const register = (state = initialState, action) => {
   switch (action.type) {
+    case 'MOBILE_CONFIRMED_SUC':
+      return {
+        ...state,
+        mobileConfirmSucMSG: true,
+        registerComplite: true,
+        emailCanRegister: null,
+      };
+    case 'MOBILE_CONFIRMED_ERR':
+      return {
+        ...state,
+        mobileConfirmErrMSG: true,
+      };
+    case 'MOBILE_CONFIRMED_ERR_UNDO':
+      return {
+        ...state,
+        mobileConfirmErrMSG: null,
+      };
+    case 'MOBILE_CONFIRMED_SUC_UNDO':
+      return {
+        ...state,
+        mobileConfirmSucMSG: null,
+      };
+    case 'REGISTER_MOBILE_SUC':
+      return {
+        ...state,
+        registerMobileSucMSG: true,
+      };
+    case 'REGISTER_MOBILE_EXIST':
+      return {
+        ...state,
+        registerMobileExisMSG: true,
+      };
+    case 'REGISTER_MOBILE_EXIST_UNDO':
+      return {
+        ...state,
+        registerMobileExisMSG: null,
+      };
+    case 'REGISTER_MOBILE_SUC_UNDO':
+      return {
+        ...state,
+        registerMobileSucMSG: null,
+      };
     case 'SIGNUP_LOADING':
       return {
         ...state,

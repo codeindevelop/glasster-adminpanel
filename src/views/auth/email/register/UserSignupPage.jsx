@@ -11,6 +11,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import LinearProgress from '@mui/material/LinearProgress';
 import accIMG from 'img/account.svg';
+import personalIMG from 'img/personal.svg';
 import EmailLoockupPage from './EmailLoockupPage';
 import EnterEmailPasswordPage from './EnterEmailPasswordPage';
 import EnterPhoneNumberPage from './EnterPhoneNumberPage';
@@ -63,23 +64,30 @@ export default function UserSignupPage() {
   const dispatch = useDispatch();
   const router = useHistory();
 
-  const { loading, emailCanRegister, registerStep } = useSelector(
-    ({ auth }) => ({
-      registerSucMSGData: auth.register.registerSucMSG,
-      registerErrMSGData: auth.register.registerErrMSG,
-      loading: auth.register.resiterLoading,
-      emailCanRegister: auth.register.emailCanRegister,
-      registerStep: auth.register.registerStep,
-    }),
-    shallowEqual
-  );
+  const { loading, emailCanRegister, registerStep, registerComplite, mobileConfirmSucMSG } =
+    useSelector(
+      ({ auth }) => ({
+        registerSucMSGData: auth.register.registerSucMSG,
+        registerErrMSGData: auth.register.registerErrMSG,
+        loading: auth.register.resiterLoading,
+        emailCanRegister: auth.register.emailCanRegister,
+        registerStep: auth.register.registerStep,
+        mobileConfirmSucMSG: auth.register.mobileConfirmSucMSG,
+        registerComplite: auth.register.registerComplite,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     // If Email Can Register Enable Next Step
     if (emailCanRegister === true) {
       dispatch({ type: 'HANDEL_REGISTER_STEP', payload: 1 });
     }
-  }, [emailCanRegister]);
+    // If Register Complite
+    if (mobileConfirmSucMSG === true) {
+      dispatch({ type: 'HANDEL_REGISTER_STEP', payload: 4 });
+    }
+  }, [emailCanRegister, mobileConfirmSucMSG]);
 
   return (
     <>
@@ -88,13 +96,18 @@ export default function UserSignupPage() {
           {loading && <LinearProgress className='w-full rounded-lg ' />}
           <div className='flex  justify-around items-center p-5 '>
             <div>
-              <h2 className='text-center md:text-right font-bold text-lg text-slate-700 my-5'>
-                ثبت نام در سامانه
-              </h2>
+              {registerComplite === false && (
+                <>
+                  <h2 className='text-center md:text-right font-bold text-lg text-slate-700 my-5'>
+                    ثبت نام در سامانه
+                  </h2>
 
-              <h5 className='text-center text-xl leading-10 text-slate-600 font-yekan'>
-                جهت ثبت نام در سامانه لطفا اطلاعات کاربری خود را وارد نمایید
-              </h5>
+                  <h5 className='text-center text-xl leading-10 text-slate-600 font-yekan'>
+                    جهت ثبت نام در سامانه لطفا اطلاعات کاربری خود را وارد نمایید
+                  </h5>
+                </>
+              )}
+              {/* Begin Stepper */}
               <Stepper activeStep={registerStep} orientation='vertical'>
                 {/* Begin Email Step */}
                 <Step key={0}>
@@ -137,12 +150,30 @@ export default function UserSignupPage() {
                   </StepContent>
                 </Step>
                 {/* End Step Confirm Mobile Number Code */}
+                {/* Begin Step Register Complite */}
+                <Step key={4}>
+                  <StepLabel>
+                    <h2>پایان عملیات</h2>
+                  </StepLabel>
+                  <StepContent>
+                    <h2 className='text-success text-lg font-iranyekan font-bold my-5 text-center'>
+                      موبایل شما با موفقیت تایید گردید و پس از چند ثانیه به پنل کاربری منتقل می
+                      گردید
+                    </h2>
+                  </StepContent>
+                </Step>
+                {/* End Step Register Complite */}
               </Stepper>
+              {/* End Stepper */}
             </div>
 
             {/* Begin Aside image */}
             <div className='hidden md:flex flex-col justif-center items-center p-10'>
-              <SVG className='w-2/3' src={accIMG} />
+              {registerStep > 3 ? (
+                <SVG className='w-2/3' src={personalIMG} />
+              ) : (
+                <SVG className='w-2/3' src={accIMG} />
+              )}
               <h6 className='text-md font-pop  text-slate-500 text-center leading-[30px] my-5'>
                 Bring your idea to life and get set up for success!
               </h6>

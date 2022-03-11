@@ -114,3 +114,130 @@ export const undoRegisterSuccessMSG = () => (dispatch) => {
     type: 'REGISTER_SUCCESS_UNDO',
   });
 };
+
+/* ---------------------- Register Mobile After Register Action --------------------- */
+
+export const registerMobileAction =
+  ({ mobile_number, accessToken }) =>
+  (dispatch) => {
+    // Headers
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    // Start Loading Bar in signup page
+    dispatch({ type: 'SIGNUP_LOADING', payload: true });
+
+    // Request body
+    const body = {
+      mobile_number,
+    };
+
+    axios
+      .post(crud.registerMobileURL, body, config)
+      .then((res) => {
+        // If Mobile Number has Exist Dispatch Err
+        if (res.data.message === 'The mobile number has already been taken.') {
+          dispatch({
+            type: 'REGISTER_MOBILE_EXIST',
+          });
+          // Undo Exist Err MSG
+          setTimeout(() => {
+            dispatch(undoRegisterMobileExisMSG());
+          }, 3000);
+
+          // Disable Loading Bar in Signup Page
+          dispatch({ type: 'SIGNUP_LOADING', payload: false });
+        }
+        // If Mobile Not Exist Code Has Ben Send To User
+        if (res.data.message === 'code has ben send to user') {
+          dispatch({
+            type: 'REGISTER_MOBILE_SUC',
+            payload: res.data,
+          });
+
+          // Disable Loading Bar in Signup Page
+          dispatch({ type: 'SIGNUP_LOADING', payload: false });
+          // Undo Register Sucess MSG
+          setTimeout(() => {
+            dispatch(undoRegisterMobileSuccessMSG());
+          }, 3000);
+        }
+      })
+      .catch((err) => {
+        dispatch({ type: 'SIGNUP_LOADING', payload: false });
+      });
+  };
+
+export const undoRegisterMobileSuccessMSG = () => (dispatch) => {
+  dispatch({
+    type: 'REGISTER_MOBILE_SUC_UNDO',
+  });
+};
+
+export const undoRegisterMobileExisMSG = () => (dispatch) => {
+  dispatch({
+    type: 'REGISTER_MOBILE_EXIST_UNDO',
+  });
+};
+
+/* ---------------------- Confirm OTP code after Regitser Action --------------------- */
+
+export const confirmMobileCodeAction =
+  ({ confirm_code, accessToken }) =>
+  (dispatch) => {
+    // Headers
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    // Start Loading Bar in signup page
+    dispatch({ type: 'SIGNUP_LOADING', payload: true });
+
+    // Request body
+    const body = {
+      confirm_code,
+    };
+
+    axios
+      .post(crud.confirmMobileCodeURL, body, config)
+      .then((res) => {
+        dispatch({
+          type: 'MOBILE_CONFIRMED_SUC',
+          payload: res.data,
+        });
+        dispatch({ type: 'SIGNUP_LOADING', payload: false });
+        // Undo Sucess MSG
+        setTimeout(() => {
+          dispatch(undoMobileConfirmedMSG());
+        }, 3000);
+      })
+      .catch((err) => {
+        dispatch({ type: 'SIGNUP_LOADING', payload: false });
+
+        dispatch({
+          type: 'MOBILE_CONFIRMED_ERR',
+        });
+        // Undo Sucess MSG
+        setTimeout(() => {
+          dispatch(undoMobileConfirmedERRUndo());
+        }, 5000);
+      });
+  };
+
+export const undoMobileConfirmedMSG = () => (dispatch) => {
+  dispatch({
+    type: 'MOBILE_CONFIRMED_SUC_UNDO',
+  });
+};
+export const undoMobileConfirmedERRUndo = () => (dispatch) => {
+  dispatch({
+    type: 'MOBILE_CONFIRMED_ERR_UNDO',
+  });
+};
