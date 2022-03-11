@@ -52,7 +52,6 @@ export const undoCheckResponse = () => (dispatch) => {
   });
 };
 
-
 /* ------------------------------- User Login ------------------------------- */
 export const loginAction =
   ({ email, password }) =>
@@ -81,5 +80,14 @@ export const loginAction =
         dispatch({
           type: 'LOGIN_ERR',
         });
+        setTimeout(() => {
+          dispatch(undoLoginErr());
+        }, 3000);
       });
   };
+
+export const undoLoginErr = () => (dispatch) => {
+  dispatch({
+    type: 'LOGIN_ERR_MSG_UNDO',
+  });
+};

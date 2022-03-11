@@ -41,7 +41,7 @@ export const login = (state = initialState, action) => {
         isLoginSucc: true,
         isLoginErr: null,
       };
-    case 'LOGIN_FAIL':
+    case 'LOGIN_ERR':
       return {
         ...state,
         isLoginErr: true,

@@ -81,15 +81,15 @@ export default function EnterPasswordPage() {
             />
             {formik.errors.password && (
               <div className='text-right text-danger font-normal text-sm my-3 '>
-                <span className='mx-2 font-bold'>{formik.errors.password}</span>
                 <InfoIcon fontSize='small' />
+                <span className='mx-2 font-bold'>{formik.errors.password}</span>
               </div>
             )}
             {/* If user dosnt exist */}
             {isLoginErr === true && (
               <div className='text-right text-danger font-normal text-sm my-3 '>
-                <span className='mx-2 font-bold'>رمز عبور وارد شده اشتباه می باشد</span>
                 <InfoIcon fontSize='small' />
+                <span className='mx-2 font-bold'>رمز عبور وارد شده اشتباه می باشد</span>
               </div>
             )}
 

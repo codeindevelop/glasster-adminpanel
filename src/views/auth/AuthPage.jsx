@@ -44,9 +44,9 @@ export default function AuthPage() {
           </div>
           <Switch>
             <Route path='/auth/signin' exact component={AccountLoockupPage} />
+            <Route path='/auth/enter-password' exact component={EnterPasswordPage} />
             <Route path='/auth/signup' exact component={UserSignupPage} />
 
-            <Route path='/auth/enter-password' exact component={EnterPasswordPage} />
 
             <Route path='/auth/forgot-password' exact component={ForgotPasswordPage} />
 
