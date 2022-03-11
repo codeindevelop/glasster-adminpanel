@@ -28,7 +28,7 @@ const initialState = {
 export const register = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_TOKEN_TO_STORAGE':
-      localStorage.setItem('token', action.payload.registerToken);
+      localStorage.setItem('token', action.payload);
       window.location.reload(true);
       return {
         ...state,
