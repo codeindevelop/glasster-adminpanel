@@ -64,19 +64,26 @@ export default function UserSignupPage() {
   const dispatch = useDispatch();
   const router = useHistory();
 
-  const { loading, emailCanRegister, registerStep, registerComplite, mobileConfirmSucMSG } =
-    useSelector(
-      ({ auth }) => ({
-        registerSucMSGData: auth.register.registerSucMSG,
-        registerErrMSGData: auth.register.registerErrMSG,
-        loading: auth.register.resiterLoading,
-        emailCanRegister: auth.register.emailCanRegister,
-        registerStep: auth.register.registerStep,
-        mobileConfirmSucMSG: auth.register.mobileConfirmSucMSG,
-        registerComplite: auth.register.registerComplite,
-      }),
-      shallowEqual
-    );
+  const {
+    loading,
+    emailCanRegister,
+    registerStep,
+    registerComplite,
+    registerToken,
+    mobileConfirmSucMSG,
+  } = useSelector(
+    ({ auth }) => ({
+      registerSucMSGData: auth.register.registerSucMSG,
+      registerErrMSGData: auth.register.registerErrMSG,
+      loading: auth.register.resiterLoading,
+      emailCanRegister: auth.register.emailCanRegister,
+      registerStep: auth.register.registerStep,
+      mobileConfirmSucMSG: auth.register.mobileConfirmSucMSG,
+      registerComplite: auth.register.registerComplite,
+      registerToken: auth.register.registerToken,
+    }),
+    shallowEqual
+  );
 
   useEffect(() => {
     // If Email Can Register Enable Next Step
@@ -86,6 +93,12 @@ export default function UserSignupPage() {
     // If Register Complite
     if (mobileConfirmSucMSG === true) {
       dispatch({ type: 'HANDEL_REGISTER_STEP', payload: 4 });
+
+      // Dispatch after 3 second
+      setTimeout(() => {
+        // After Complite Register User Redirect to Dashboard
+        dispatch({ type: 'SET_TOKEN_TO_STORAGE', payload: registerToken });
+      }, 3000);
     }
   }, [emailCanRegister, mobileConfirmSucMSG]);
 

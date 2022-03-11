@@ -27,6 +27,12 @@ const initialState = {
 
 export const register = (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_TOKEN_TO_STORAGE':
+      localStorage.setItem('token', action.payload.registerToken);
+      window.location.reload(true);
+      return {
+        ...state,
+      };
     case 'GET_REGISTER_OTP_CODE_SUC':
       return {
         ...state,
