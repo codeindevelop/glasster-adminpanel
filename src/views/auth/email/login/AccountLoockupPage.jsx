@@ -96,7 +96,7 @@ export default function AccountLoockupPage() {
             </Link> */}
             {/* End Forgot Password Lins */}
 
-            <div className='flex items-center justify-start'>
+            {/* <div className='flex items-center justify-start'>
               <Button
                 onClick={(e) => router.push('/auth/register')}
                 variant='text'
@@ -105,7 +105,7 @@ export default function AccountLoockupPage() {
               >
                 ایمیل خود را فراموش کرده اید ؟
               </Button>
-            </div>
+            </div> */}
 
             {/* Begin Footer Links */}
             <div className=' flex justify-between p-5 my-5 w-full'>

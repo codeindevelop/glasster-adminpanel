@@ -187,8 +187,8 @@ export default function UserSignupPage() {
               ) : (
                 <SVG className='w-2/3' src={accIMG} />
               )}
-              <h6 className='text-md font-pop  text-slate-500 text-center leading-[30px] my-5'>
-                Bring your idea to life and get set up for success!
+              <h6 className='text-md font-yekan  text-slate-500 text-center leading-[30px] my-5'>
+                با چند کلیک ساده ، حساب کاربری خود را ایجاد کنید
               </h6>
             </div>
             {/* End Aside image */}
