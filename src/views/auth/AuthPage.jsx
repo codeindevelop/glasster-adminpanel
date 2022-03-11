@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
 import SwipeableRoutes from 'react-swipeable-routes';
+import TermsModal from './email/terms-modal/TermsModal';
 
 import Logo from 'img/logo/logo.svg';
 import headerPic from 'img/auth-header.png';
@@ -9,10 +10,14 @@ import headerPic from 'img/auth-header.png';
 export default function AuthPage() {
   const AccountLoockupPage = lazy(() => import('./email/login/AccountLoockupPage'));
   const EnterPasswordPage = lazy(() => import('./email/login/EnterPasswordPage'));
-  const RegisterPage = lazy(() => import('./email/RegisterPage'));
+  const UserSignupPage = lazy(() => import('./email/register/UserSignupPage'));
   const ForgotPasswordPage = lazy(() => import('./email/ForgotPasswordPage'));
+
   return (
     <>
+    {/* Begin Terms Modal */}
+    <TermsModal/>
+    {/* End Terms Modal */}
       <div className='relative'>
         {/* Begin Top Light Pic */}
         <div className='absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none'>
@@ -38,14 +43,14 @@ export default function AuthPage() {
             </div>
           </div>
           <Switch>
-            <SwipeableRoutes>
-              <Route path='/auth/signin' exact component={AccountLoockupPage} />
-              <Route path='/auth/enter-password' exact component={EnterPasswordPage} />
-              <Route path='/auth/register' exact component={RegisterPage} />
-            </SwipeableRoutes>
+            <Route path='/auth/signin' exact component={AccountLoockupPage} />
+            <Route path='/auth/signup' exact component={UserSignupPage} />
+
+            <Route path='/auth/enter-password' exact component={EnterPasswordPage} />
+
             <Route path='/auth/forgot-password' exact component={ForgotPasswordPage} />
 
-            <Redirect from='/auth' to='/auth/signin' />
+            {/* <Redirect from='/auth' to='/auth/signin' /> */}
             <Redirect to='/auth/signin' />
           </Switch>
         </div>

@@ -14,6 +14,7 @@ export default {
   updateProfileUrl: `${API_URL}/api/v1/update-profile`,
 
   /* ------------------------------- Login Urls ------------------------------- */
+  accountLoockupURL: `${API_URL}/api/v1/account-loockup`, // check user exist
   loginUrl: `${API_URL}/api/v1/login`,
   profileUrl: `${API_URL}/api/v1/profile`,
   logoutUrl: `${API_URL}/api/v1/logout`,
@@ -21,8 +22,8 @@ export default {
 
   /* ------------------------------ Register Urls ----------------------------- */
 
-  accountLoockupURL: `${API_URL}/api/v1/account-loockup`, // check user exist
-  registerUrl: `${API_URL}/api/v1/register`,
+  emailLoockupURL: `${API_URL}/api/v1/email-loockup`,
+  registerUrl: `${API_URL}/api/v1/user-signup`,
   registerActivationUrl: `${API_URL}/api/v1/register/activation`,
 
   /* --------------------------- ForgotPassword URLS -------------------------- */

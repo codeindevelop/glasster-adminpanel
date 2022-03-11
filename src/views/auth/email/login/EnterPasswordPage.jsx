@@ -58,7 +58,7 @@ export default function EnterPasswordPage() {
   });
   return (
     <>
-      <div className='flex justify-center w-full'>
+      <div style={{ direction: 'rtl' }} className='flex justify-center w-full'>
         <div className='w-full md:w-1/3 md:shadow-sm md:border rounded-lg flex flex-col justify-center items-center '>
           {loading && <LinearProgress className='w-full rounded-lg' />}
           <h2 className='text-center font-bold text-lg text-slate-700 mt-10'>رمز عبور کاربری</h2>
@@ -95,16 +95,16 @@ export default function EnterPasswordPage() {
 
             {/* Begin Footer Links */}
             <div className=' flex justify-between p-5 my-5 w-full'>
+              <Button disabled={loading} type='submit' variant='contained' className='font-bold '>
+                <span className='text-light'>مرحله بعد</span>
+              </Button>
               <Button
-                onClick={(e) => router.push('/auth/register')}
+                onClick={(e) => router.push('/auth/forgot-password')}
                 variant='text'
                 className=' font-bold '
                 disabled={loading}
               >
                 فراموشی رمز عبور
-              </Button>
-              <Button disabled={loading} type='submit' variant='contained' className='font-bold '>
-                <span className='text-light'>مرحله بعد</span>
               </Button>
             </div>
             {/* End Footer Links */}

@@ -1,9 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@mui/material';
 import SVG from 'react-inlinesvg';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import InfoIcon from '@mui/icons-material/Info';
 import accIMG from 'img/account.svg';
+
+const initialValues = {
+  first_name: '',
+  last_name: '',
+  mobile_number: '',
+  email: '',
+  password: '',
+  password_confirmation: '',
+  acceptTerms: false,
+};
+
+const registrationSchema = Yup.object().shape({
+  first_name: Yup.string()
+    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
+    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
+    .required('وارد کردن نام الزامی می باشد'),
+  last_name: Yup.string()
+    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
+    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
+    .required('وارد کردن نام خانوادگی الزامی می باشد'),
+  mobile_number: Yup.string()
+    .min(11, 'شماره موبایل حداقل باید 11 رقم باشد')
+    .max(11, 'شماره موبایل بیش از 11 رقم نمی تواند باشد')
+    .required('وارد کردن شماره تلفن همراه الزامی می باشد'),
+  email: Yup.string()
+    .email('فرمت ایمیل وارد شده اشتباه می باشد')
+    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
+    .max(50, 'طول ایمیل بیش از 50 کاراکتر می باشد')
+    .required('وارد کردن ایمیل الزامی می باشد'),
+  password: Yup.string()
+    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
+    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
+    .required('وارد کردن رمز عبور الزامی می باشد'),
+  password_confirmation: Yup.string()
+    .required('وارد کردن تایید رمز عبور الزامی می باشد')
+    .when('password', {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: Yup.string().oneOf([Yup.ref('password')], 'رمز عبور وارد شده با هم یکسان نمی باشد'),
+    }),
+  acceptTerms: Yup.bool().required('جهت ثبت نام حتما باید با شرایط و قوانین موافقت نمایید'),
+});
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
@@ -11,12 +55,34 @@ export default function RegisterPage() {
   const dispatch = useDispatch();
   const router = useHistory();
 
-  const { userExistCheck } = useSelector(
+  const { registerSucMSGData, registerErrMSGData } = useSelector(
     ({ auth }) => ({
-      userExistCheck: auth.login.userExistCheck,
+      registerSucMSGData: auth.register.registerSucMSG,
+      registerErrMSGData: auth.register.registerErrMSG,
     }),
     shallowEqual
   );
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: registrationSchema,
+    onSubmit: (values) => {
+      setLoading(true);
+      setTimeout(() => {
+        // dispatch(registerAction(values));
+      }, 1000);
+    },
+  });
+
+  useEffect(() => {
+    if (registerSucMSGData === true) {
+      setLoading(false);
+    }
+    if (registerErrMSGData === true) {
+      setLoading(false);
+    }
+  }, [registerSucMSGData, registerErrMSGData]);
+
   return (
     <>
       <div className='flex justify-center p-1 w-full'>
@@ -29,25 +95,48 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <h2 className='text-right font-bold text-lg text-slate-700 my-5'>ثبت نام در سامانه</h2>
+            <h2 className='text-center md:text-right font-bold text-lg text-slate-700 my-5'>ثبت نام در سامانه</h2>
 
             <h5 className='text-center text-xl leading-10 text-slate-600 font-yekan'>
               جهت ثبت نام در سامانه لطفا اطلاعات کاربری خود را وارد نمایید
             </h5>
 
             {/* Begin Form */}
-            <form className='mt-5 lg:p-5 p-2'>
+            <form onSubmit={formik.handleSubmit} className='mt-5 lg:p-5 p-2'>
               <div className='w-full flex flex-col lg:flex-row  justify-between lg:gap-2 gap-4'>
                 <div className=' w-full'>
-                  <TextField id='first_name' label='نام' variant='outlined' className='w-full' />
+                  <TextField
+                    id='first_name'
+                    label='نام'
+                    variant='outlined'
+                    disabled={loading}
+                    error={formik.errors.first_name}
+                    className='w-full'
+                    {...formik.getFieldProps('first_name')}
+                  />
+                  {formik.errors.first_name && (
+                    <div className='text-right text-danger font-normal text-sm my-3 '>
+                      <span className='mx-2 font-bold'>{formik.errors.first_name}</span>
+                      <InfoIcon fontSize='small' />
+                    </div>
+                  )}
                 </div>
                 <div className=' w-full'>
                   <TextField
                     id='last_name'
                     label='نام خانوادگی'
                     variant='outlined'
+                    disabled={loading}
+                    error={formik.errors.last_name}
                     className='w-full'
+                    {...formik.getFieldProps('last_name')}
                   />
+                   {formik.errors.last_name && (
+                    <div className='text-right text-danger font-normal text-sm my-3 '>
+                      <span className='mx-2 font-bold'>{formik.errors.last_name}</span>
+                      <InfoIcon fontSize='small' />
+                    </div>
+                  )}
                 </div>
               </div>
               <div className='my-5 w-full'>
