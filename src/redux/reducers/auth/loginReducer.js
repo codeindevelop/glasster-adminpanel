@@ -3,6 +3,8 @@ const ISSERVER = typeof window === 'undefined';
 const initialState = {
   token: !ISSERVER ? localStorage.getItem('token') : null,
   authErrModal: false,
+  userExistCheck: null,
+  tempLoginEmail: '', // email after check user loockup
   isAuthenticated: false,
   isLoginErr: null,
   isLoginSucc: null,
@@ -13,6 +15,22 @@ const initialState = {
 
 export const login = (state = initialState, action) => {
   switch (action.type) {
+    case 'USER_HAS_EXIST': // if user has ben exist
+      return {
+        ...state,
+        userExistCheck: true,
+        tempLoginEmail: action.payload.email,
+      };
+    case 'USER_DONT_EXIST': // if user has not exist
+      return {
+        ...state,
+        userExistCheck: false,
+      };
+    case 'USER_CHECK_EXIST_UNDO':
+      return {
+        ...state,
+        userExistCheck: null,
+      };
     case 'LOGIN_SUCCESS':
       if (!ISSERVER) {
         localStorage.setItem('token', action.payload.access_token);

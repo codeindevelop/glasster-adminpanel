@@ -8,7 +8,7 @@ import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 
 import { loadUser } from '../redux/actions/auth/loginActions';
 import MainLayout from '../@core/layout/MainLayout';
-import PrivateRoutes from './PrivateRoutes';
+import {PrivateRoutes} from './PrivateRoutes';
 import AuthPage from '../views/auth/AuthPage';
 
 export const Routes = () => {
@@ -56,7 +56,7 @@ export const Routes = () => {
 
           {!isAuthorized && !isAuthenticated ? (
             /*Redirect to `/auth` when user is not authorized*/
-            <Redirect to='/auth/login' />
+            <Redirect to='/auth/signin' />
           ) : (
             <>
               <PrivateRoutes />

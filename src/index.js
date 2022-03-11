@@ -1,27 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter } from 'react-router-dom';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Import Styles
 import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
-import './@core/assets/scss/_persian-fonts.scss';
+// import 'react-perfect-scrollbar/dist/css/styles.css'; // Perfect Scroll Bar Style
+import './@core/assets/scss/style.scss'; // import Core Style
+import './@core/assets/scss/_persian-fonts.scss'; // import persian fonts
+import './@core/assets/scss/_english-fonts.scss'; // import english fonts
 
 // Redux Config Files
-import store, { persistor } from './redux/store';
+import store from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
