@@ -11,7 +11,7 @@ Glasster is a framework based on laravel for create ACL (Access Control Level) f
 
 ## Use Glasster Administrator Panel
 
-glasster for backend API server used `https://github.com/luxiloom/glasster` <br>
+glasster for backend API server used `https://github.com/glasster/admin-panel` <br>
 you most be download api server package and served on local or server , after start administrator panel .
 
 <br>
