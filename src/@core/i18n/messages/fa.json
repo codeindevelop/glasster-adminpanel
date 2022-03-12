@@ -45,5 +45,13 @@
   "AUTH_SIGNUP_STEP_4": "پایان عملیات",
   "AUTH_SIGNUP_COMPLITE": "موبایل شما با موفقیت تایید گردید و پس از چند ثانیه به پنل کاربری منتقل می گردید",
   "AUTH_SIGNUP_ASIDE_TEXT": "با چند کلیک ساده ، حساب کاربری خود را ایجاد کنید",
+  "AUTH_SIGNUP_CONFIRM_MOB": "وارد کردن شماره تلفن همراه الزامی می باشد",
+  "AUTH_SIGNUP_CONFIRM_ENTER_CODE": " لطفا کد ارسال شده به تلفن همراه خود را در کادر زیر وارد نمایید",
+  "AUTH_SIGNUP_CONFIRM_CODE": "کد دریافتی",
+  "AUTH_SIGNUP_WRONG_CODE": "کد وارد شده اشتباه می باشد ، لطفا مجدد بررسی نمایید",
+  "AUTH_SIGNUP_SEND_AGAIN_CODE": "کد فعالسازی مجدد برای شما ارسال گردید",
+  "AUTH_SIGNUP_SEND_AGAIN": "ارسال مجدد کد",
+  "AUTH_SIGNUP_SEND_CONFIRM": "تایید کد",
+  "AUTH_SIGNUP_CHANGE_MOBILE": " تغییر شماره موبایل",
   "MENU.DASHBOARD": "داشبورد"
 }
