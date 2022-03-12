@@ -16,6 +16,8 @@ import EmailLoockupPage from './EmailLoockupPage';
 import EnterEmailPasswordPage from './EnterEmailPasswordPage';
 import EnterPhoneNumberPage from './EnterPhoneNumberPage';
 import ConfirmMobilePage from './ConfirmMobilePage';
+import SelectAuthLang from '../select-lang/SelectAuthLang';
+import FooterLinks from '../FooterLinks';
 
 const initialValues = {
   first_name: '',
@@ -104,8 +106,8 @@ export default function UserSignupPage() {
 
   return (
     <>
-      <div style={{ direction: 'rtl' }} className='flex justify-center p-1 w-full'>
-        <div className='w-full md:w-2/3 md:shadow-sm mb-3 md:border rounded-lg h-auto  '>
+      <div style={{ direction: 'rtl' }} className='flex flex-col justify-center p-2 mx-auto w-full md:w-2/3'>
+        <div className='w-full  md:shadow-sm mb-3 md:border rounded-lg h-auto  '>
           {loading && <LinearProgress className='w-full rounded-lg ' />}
           <div className='flex  justify-around items-center p-5 '>
             <div>
@@ -194,6 +196,19 @@ export default function UserSignupPage() {
             {/* End Aside image */}
           </div>
         </div>
+
+         {/* Begin Footer Box Items */}
+         <footer className='w-full m-auto  flex  items-center justify-center md:px-0 sm:px-5'>
+            <div className='flex w-full items-center justify-between my-3  '>
+             {/* Begin Change Language Component */}
+            <SelectAuthLang />
+            {/* End Change Language Component */}
+            {/* Begin Footer Links */}
+            <FooterLinks />
+            {/* End Footer Links */}
+            </div>
+          </footer>
+          {/* End Footer Box Items */}
       </div>
     </>
   );

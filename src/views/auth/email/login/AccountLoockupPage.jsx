@@ -8,6 +8,8 @@ import { TextField, Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import { accountLoockupAction } from 'actions/auth/email-authentication/login/LoginActions';
+import SelectAuthLang from '../select-lang/SelectAuthLang';
+import FooterLinks from '../FooterLinks';
 
 const emailSchema = Yup.object().shape({
   email: Yup.string()
@@ -54,8 +56,11 @@ export default function AccountLoockupPage() {
   });
   return (
     <>
-      <div style={{ direction: 'rtl' }} className='flex justify-center w-full'>
-        <div className='w-full md:w-1/3 md:shadow-sm md:border rounded-lg flex flex-col justify-center items-center '>
+      <div
+        style={{ direction: 'rtl' }}
+        className='flex flex-col justify-center p-2 w-full mx-auto md:w-1/3'
+      >
+        <div className='w-full md:shadow-sm md:border rounded-lg flex flex-col justify-center items-center '>
           {loading && <LinearProgress className='w-full rounded-lg' />}
           <h2 className='text-center font-bold text-lg text-slate-700 mt-10'>
             ورود به حساب کاربری
@@ -125,6 +130,18 @@ export default function AccountLoockupPage() {
           </form>
           {/* End Form */}
         </div>
+        {/* Begin Footer Box Items */}
+        <footer className='w-full m-auto  flex  items-center justify-center md:px-0 sm:px-5'>
+          <div className='flex w-full items-center justify-between my-3  '>
+            {/* Begin Change Language Component */}
+            <SelectAuthLang />
+            {/* End Change Language Component */}
+            {/* Begin Footer Links */}
+            <FooterLinks />
+            {/* End Footer Links */}
+          </div>
+        </footer>
+        {/* End Footer Box Items */}
       </div>
     </>
   );

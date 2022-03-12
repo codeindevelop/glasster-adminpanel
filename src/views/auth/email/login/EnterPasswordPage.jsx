@@ -8,6 +8,8 @@ import { TextField, Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import { loginAction } from 'actions/auth/email-authentication/login/LoginActions';
+import SelectAuthLang from '../select-lang/SelectAuthLang';
+import FooterLinks from '../FooterLinks';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string().required('وارد کردن رمز عبور الزامی می باشد'),
@@ -58,8 +60,8 @@ export default function EnterPasswordPage() {
   });
   return (
     <>
-      <div style={{ direction: 'rtl' }} className='flex justify-center w-full'>
-        <div className='w-full md:w-1/3 md:shadow-sm md:border rounded-lg flex flex-col justify-center items-center '>
+      <div style={{ direction: 'rtl' }} className='flex flex-col mx-auto p-2 justify-center w-full md:w-1/3'>
+        <div className='w-full  md:shadow-sm md:border rounded-lg flex flex-col justify-center items-center '>
           {loading && <LinearProgress className='w-full rounded-lg' />}
           <h2 className='text-center font-bold text-lg text-slate-700 mt-10'>رمز عبور کاربری</h2>
 
@@ -111,6 +113,19 @@ export default function EnterPasswordPage() {
           </form>
           {/* End Form */}
         </div>
+
+         {/* Begin Footer Box Items */}
+         <footer className='w-full m-auto  flex  items-center justify-center md:px-0 sm:px-5'>
+          <div className='flex w-full items-center justify-between my-3  '>
+           {/* Begin Change Language Component */}
+           <SelectAuthLang />
+            {/* End Change Language Component */}
+            {/* Begin Footer Links */}
+            <FooterLinks />
+            {/* End Footer Links */}
+          </div>
+        </footer>
+        {/* End Footer Box Items */}
       </div>
     </>
   );
