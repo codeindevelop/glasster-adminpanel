@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 export default function FooterLinks() {
   const dispatch = useDispatch();
@@ -8,10 +9,12 @@ export default function FooterLinks() {
     <>
       <div className='flex items-center justify-between'>
         <Button onClick={(e) => dispatch({ type: 'TERMS_MODAL', payload: true })} variant='text'>
-          شرایط و قوانین
+          <FormattedMessage id='AUTH_FOOTER_TERMS_LINK' />
         </Button>
 
-        <Button variant='text'>درباره ما</Button>
+        <Button variant='text'>
+          <FormattedMessage id='AUTH_FOOTER_ABOUT_LINK' />
+        </Button>
       </div>
     </>
   );

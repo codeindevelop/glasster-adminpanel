@@ -1,6 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -8,6 +6,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Select from '@mui/material/Select';
 import { languages } from './Languages';
 import { useLang, setLanguage } from '../../../../@core/i18n/SiteLangProvider';
+import { FormattedMessage } from 'react-intl';
 
 export default function SelectAuthLang() {
   const lang = useLang();
@@ -15,7 +14,7 @@ export default function SelectAuthLang() {
   return (
     <>
       <div className='w-48 '>
-        <FormControl  fullWidth>
+        <FormControl fullWidth>
           <InputLabel id='language-selector-label'>
             <span>{currentLanguage?.name} </span>
           </InputLabel>
@@ -42,7 +41,9 @@ export default function SelectAuthLang() {
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText>انتخاب زبان سایت</FormHelperText>
+          <FormHelperText>
+            <FormattedMessage id='AUTH_SELECT_LANG' />
+          </FormHelperText>
         </FormControl>
       </div>
     </>
