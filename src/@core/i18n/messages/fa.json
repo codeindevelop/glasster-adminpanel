@@ -1,5 +1,15 @@
 {
   "TRANSLATOR.SELECT": "انتخاب زبان سیستم",
   "AUTH_WELCOME": "سامانه مدیریت یکپارچه وب سایت",
+  "AUTH_LOGIN_TITLE": "ورود به حساب کاربری",
+  "AUTH_LOGIN_DESCRIPTION": "لطفا اطلاعات کاربری خود را جهت ورود به سامانه وارد کنید",
+  "AUTH_LOGIN_EMAIL": "ایمیل",
+  "AUTH_LOGIN_EMAIL_ERR": "حساب کاربری با ایمیل وارد شده پیدا نشد",
+  "AUTH_LOGIN_NEXT": "مرحله بعد",
+  "AUTH_LOGIN_REGISTER": "ثبت نام",
+  "AUTH_LOGIN_EMAIL_FORMAT": "فرمت ایمیل اشتباه می باشد",
+  "AUTH_LOGIN_EMAIL_MIN": "حداقل 2 کلمه باید وارد شود",
+  "AUTH_LOGIN_EMAIL_MAX": "طول کلمات بیش از 50 کاراکتر میسر نیست",
+  "AUTH_LOGIN_EMAIL_REQUIRE": "وارد کردن ایمیل الزامی می باشد",
   "MENU.DASHBOARD": "داشبورد"
 }

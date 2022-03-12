@@ -7,6 +7,7 @@ import TermsModal from './email/terms-modal/TermsModal';
 import Logo from 'img/logo/logo.svg';
 import headerPic from 'img/auth-header.png';
 import SelectAuthLang from './email/select-lang/SelectAuthLang';
+import { FormattedMessage } from 'react-intl';
 
 export default function AuthPage() {
   const AccountLoockupPage = lazy(() => import('./email/login/AccountLoockupPage'));
@@ -38,7 +39,7 @@ export default function AuthPage() {
               <SVG src={Logo} className='text-center flex items-center lg:w-[80px] lg:h-[80px]' />
               <div className='p-5 flex flex-col gap-3 align-items-center justify-center '>
                 <h2 className='font-bold text-slate-600 text-lg text-center'>
-                  سامانه مدیریت وب سایت
+                 <FormattedMessage id="AUTH_WELCOME" />
                 </h2>
                 <h5 className='font-pop text-slate-500 text-lg text-center '>
                   Glasster Website Manager
