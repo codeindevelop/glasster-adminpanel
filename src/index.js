@@ -15,10 +15,16 @@ import './@core/assets/scss/_english-fonts.scss'; // import english fonts
 // Redux Config Files
 import store from './redux/store';
 
+// Custom Provider for get Language data from localstorage or context
+import { SiteLangProvider } from './@core/i18n/SiteLangProvider';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {/* Language Provider */}
+      <SiteLangProvider>
+        <App />
+      </SiteLangProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
