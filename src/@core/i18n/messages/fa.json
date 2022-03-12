@@ -11,5 +11,11 @@
   "AUTH_LOGIN_EMAIL_MIN": "حداقل 2 کلمه باید وارد شود",
   "AUTH_LOGIN_EMAIL_MAX": "طول کلمات بیش از 50 کاراکتر میسر نیست",
   "AUTH_LOGIN_EMAIL_REQUIRE": "وارد کردن ایمیل الزامی می باشد",
+  "AUTH_LOGIN_PASSWORD_REQUIRE": "وارد کردن رمز عبور الزامی می باشد",
+  "AUTH_LOGIN_PASSWORD_HEAD": "لطفا رمز عبور حساب کاربری خود را وارد نمایید",
+  "AUTH_LOGIN_PASSWORD_PASS": "رمز عبور",
+  "AUTH_LOGIN_PASSWORD_FAILD": "رمز عبور وارد شده اشتباه می باشد",
+  "AUTH_LOGIN_PASSWORD_NEXT": "بعدی",
+  "AUTH_LOGIN_PASSWORD_FORGOT": "فراموشی رمز عبور",
   "MENU.DASHBOARD": "داشبورد"
 }

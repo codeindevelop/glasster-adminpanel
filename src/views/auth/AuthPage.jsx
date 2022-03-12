@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
 import SwipeableRoutes from 'react-swipeable-routes';
 import TermsModal from './email/terms-modal/TermsModal';
@@ -36,10 +36,12 @@ export default function AuthPage() {
         <div className='relative  mx-auto'>
           <div className='flex flex-col '>
             <div className=' mt-5 flex flex-col items-center justify-center '>
-              <SVG src={Logo} className='text-center flex items-center lg:w-[80px] lg:h-[80px]' />
+              <Link to='/auth'>
+                <SVG src={Logo} className='text-center flex items-center lg:w-[80px] lg:h-[80px]' />
+              </Link>
               <div className='p-5 flex flex-col gap-3 align-items-center justify-center '>
                 <h2 className='font-bold text-slate-600 text-lg text-center'>
-                 <FormattedMessage id="AUTH_WELCOME" />
+                  <FormattedMessage id='AUTH_WELCOME' />
                 </h2>
                 <h5 className='font-pop text-slate-500 text-lg text-center '>
                   Glasster Website Manager
@@ -57,7 +59,6 @@ export default function AuthPage() {
               <Redirect to='/auth/signin' />
             </Switch>
           </div>
-         
         </div>
         {/* End Route Wrapper */}
       </div>
