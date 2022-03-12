@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 
 import { emailLoockupAction } from 'actions/auth/email-authentication/register/RegisterActions';
+import { FormattedMessage } from 'react-intl';
 
 const initialValues = {
   first_name: '',
@@ -17,18 +18,18 @@ const initialValues = {
 
 const emailSchema = Yup.object().shape({
   first_name: Yup.string()
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن نام الزامی می باشد'),
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_LOOCK_NAME_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_LOOCK_NAME_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_LOOCK_NAME_REQUIRED' />),
   last_name: Yup.string()
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن نام خانوادگی الزامی می باشد'),
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_LOOCK_LNAME_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_LOOCK_LNAME_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_LOOCK_LNAME_REQUIRED' />),
   email: Yup.string()
-    .email('فرمت ایمیل وارد شده اشتباه می باشد')
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول ایمیل بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن ایمیل الزامی می باشد'),
+    .email(<FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_FORMAT' />)
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_REQUIRED' />),
 });
 
 export default function EmailLoockupPage() {
@@ -73,7 +74,7 @@ export default function EmailLoockupPage() {
           <div className=' w-full'>
             <TextField
               id='first_name'
-              label='نام'
+              label={<FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_FIRSTNAME' />}
               variant='outlined'
               disabled={loading}
               error={formik.errors.first_name && formik.touched.first_name}
@@ -90,7 +91,7 @@ export default function EmailLoockupPage() {
           <div className=' w-full'>
             <TextField
               id='last_name'
-              label='نام خانوادگی'
+              label={<FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_LASTNAME' />}
               variant='outlined'
               disabled={loading}
               error={formik.errors.last_name && formik.touched.last_name}
@@ -109,7 +110,7 @@ export default function EmailLoockupPage() {
         <div className='my-5 w-full'>
           <TextField
             id='email'
-            label='ایمیل'
+            label={<FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_EMAIL' />}
             variant='outlined'
             type='text'
             disabled={loading}
@@ -128,7 +129,9 @@ export default function EmailLoockupPage() {
           {emailExistERR === true && (
             <div className='text-right text-danger font-normal text-sm my-3 '>
               <InfoIcon fontSize='small' />
-              <span className='mx-2 font-bold'>ایمیل وارد شده قبلا ثبت شده است</span>
+              <span className='mx-2 font-bold'>
+                <FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_EXIST' />
+              </span>
             </div>
           )}
         </div>
@@ -136,7 +139,9 @@ export default function EmailLoockupPage() {
         {/* Begin Footer Links */}
         <div className=' flex justify-between p-5 my-5 w-full'>
           <Button disabled={loading} type='submit' variant='contained' className='font-bold '>
-            <span className='text-light'>مرحله بعد</span>
+            <span className='text-light'>
+              <FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_NEXT' />
+            </span>
           </Button>
           <Button
             onClick={(e) => router.push('/auth/signin')}
@@ -144,7 +149,7 @@ export default function EmailLoockupPage() {
             className=' font-bold '
             disabled={loading}
           >
-            رفتن به صفحه ورود
+            <FormattedMessage id='AUTH_SIGNUP_LOOCK_EMAIL_GOLOGIN' />
           </Button>
         </div>
         {/* End Footer Links */}
