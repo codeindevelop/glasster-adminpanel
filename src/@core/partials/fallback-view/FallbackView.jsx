@@ -1,6 +1,6 @@
 import SVG from 'react-inlinesvg';
 import { FormattedMessage } from 'react-intl';
-import Logo from '../../assets/img/logo/logo.svg';
+import Logo from 'img/logo/logo.svg';
 export function FallbackView() {
   return (
     <>
