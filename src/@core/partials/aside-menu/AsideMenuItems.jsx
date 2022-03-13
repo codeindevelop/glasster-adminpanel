@@ -9,21 +9,23 @@ import { useSelector } from 'react-redux';
 export default function AsideMenuItem({ children, to, title, icon, fontIcon, hasBullet = false }) {
   const { pathname } = useLocation();
   const isActive = checkIsActive(pathname, to);
-  const { asideMinimize } = useSelector((state) => ({
-    asideMinimize: state.layout.aside.asideMinimize,
+
+  console.log(isActive);
+  const { asideOpen } = useSelector((state) => ({
+    asideOpen: state.layout.aside.open,
   }));
 
   return (
-    <div className='flex items-center my-3 px-2 '>
-      <Link className={clsx('flex items-center gap-2 group', { active: isActive })} to={to}>
+    <div className={clsx(`${isActive === true ? 'bg-[#1b1b28]' : ' hover:bg-[#1b1b28] '} group hover:cursor-pointer  flex items-center px-4  py-3 transition-all duration-300 `)}>
+      <Link className='flex items-center gap-4 menulink' to={to}>
         {hasBullet && <span className='w-1 h-1 rounded-full bg-slate-400 flex'></span>}
         {icon && (
-          <span className='svg-icon svg-icon-2 svg-icon-gray-700  transition-all duration-300'>
-            <SVG src={pubFolder(`/icons${icon}`)} />
+          <span className='svg-icon svg-icon-2 svg-menu-icon transition-all duration-300'>
+            <SVG  src={pubFolder(`/icons${icon}`)} />
           </span>
         )}
-        {asideMinimize === false && (
-          <span className='text-slate-600  text-md font-pelak group-hover:mx-1 transition-all duration-300 group-hover:text-sky-500'>
+        {asideOpen === true && (
+          <span className='text-[#9899ac]  text-sm font-pelak group-hover:mx-1 transition-all duration-300 group-hover:text-white'>
             {title}
           </span>
         )}

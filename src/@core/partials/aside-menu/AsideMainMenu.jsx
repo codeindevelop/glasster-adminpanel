@@ -10,7 +10,7 @@ export default function AsideMainMenu() {
         title='پیشخوانِ مدیریت'
       />
       <AsideMenuItem
-        to='/dashboard'
+        to='/settings'
         icon='/general/gen011.svg'
         title='مدیریت کاربران'
       />

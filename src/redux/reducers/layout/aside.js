@@ -1,18 +1,18 @@
 const initialState = {
-  asideMinimize: false,
+  open: false,
 };
 
 export const asideReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ASIDE_MINIMIZE':
+    case 'ASIDE_OPEN':
       return {
         ...state,
-        asideMinimize: true,
+        open: true,
       };
-    case 'ASIDE_MAXIMIZE':
+    case 'ASIDE_CLOSE':
       return {
         ...state,
-        asideMinimize: false,
+        open: false,
       };
 
     default:

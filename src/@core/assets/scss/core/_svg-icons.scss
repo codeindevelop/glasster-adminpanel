@@ -5,12 +5,27 @@
   height: 1.15rem;
   width: 1.15rem;
 }
+
 .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
   fill: #a1a5b7;
 }
 .svg-icon svg:hover [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
+}
+
+.menulink:hover svg [fill]:not(.permanent):not(g) {
+  transition: fill 0.3s ease !important;
+  fill: #009ef7 !important;
+}
+.toggle-icon:hover svg [fill]:not(.permanent):not(g) {
+  transition: fill 0.3s ease !important;
+  fill: #009ef7 !important;
+}
+
+.svg-menu-icon svg:hover [fill]:not(.permanent):not(g) {
+  transition: fill 0.3s ease !important;
+  fill: #009ef7 !important;
 }
 .svg-icon.svg-icon-white svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
