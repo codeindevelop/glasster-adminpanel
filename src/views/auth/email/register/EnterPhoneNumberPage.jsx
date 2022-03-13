@@ -3,11 +3,11 @@ import { TextField, Button } from '@mui/material';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import * as Yup from 'yup';
+import { FormattedMessage } from 'react-intl';
 import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 import HelpMobileRegisterModal from './HelpMobileRegisterModal';
 import { registerMobileAction } from 'actions/auth/email-authentication/register/RegisterActions';
-import { FormattedMessage } from 'react-intl';
 
 const mobileSchema = Yup.object().shape({
   mobile_number: Yup.string()

@@ -5,9 +5,9 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 import Checkbox from '@mui/material/Checkbox';
+import { FormattedMessage } from 'react-intl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { registerPasswordAction } from 'actions/auth/email-authentication/register/RegisterActions';
-import { FormattedMessage } from 'react-intl';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string()

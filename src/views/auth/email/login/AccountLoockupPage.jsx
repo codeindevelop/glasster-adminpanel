@@ -6,11 +6,11 @@ import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 import { TextField, Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
+import { FormattedMessage } from 'react-intl';
 
 import { accountLoockupAction } from 'actions/auth/email-authentication/login/LoginActions';
 import SelectAuthLang from '../select-lang/SelectAuthLang';
 import FooterLinks from '../FooterLinks';
-import { FormattedMessage } from 'react-intl';
 
 const emailSchema = Yup.object().shape({
   email: Yup.string()

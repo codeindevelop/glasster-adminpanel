@@ -17,13 +17,17 @@ import store from './redux/store';
 
 // Custom Provider for get Language data from localstorage or context
 import { SiteLangProvider } from './@core/i18n/SiteLangProvider';
+import { I18nProvider } from './@core/i18n/I18nProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* Language Provider */}
       <SiteLangProvider>
-        <App />
+        {/* I18n Provider for translate Language */}
+        <I18nProvider>
+          <App />
+        </I18nProvider>
       </SiteLangProvider>
     </Provider>
   </React.StrictMode>,

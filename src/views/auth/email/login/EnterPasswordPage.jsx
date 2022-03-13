@@ -6,11 +6,11 @@ import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 import { TextField, Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
+import { FormattedMessage } from 'react-intl';
 
 import { loginAction } from 'actions/auth/email-authentication/login/LoginActions';
 import SelectAuthLang from '../select-lang/SelectAuthLang';
 import FooterLinks from '../FooterLinks';
-import { FormattedMessage } from 'react-intl';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string().required(<FormattedMessage id='AUTH_LOGIN_PASSWORD_REQUIRE' />),

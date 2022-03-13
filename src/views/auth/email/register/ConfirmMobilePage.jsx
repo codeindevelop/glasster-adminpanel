@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import InfoIcon from '@mui/icons-material/Info';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import {
   CircularProgressbar,
   CircularProgressbarWithChildren,
@@ -14,7 +15,6 @@ import {
 } from 'actions/auth/email-authentication/register/RegisterActions';
 
 import 'react-circular-progressbar/dist/styles.css';
-import { FormattedMessage } from 'react-intl';
 
 const codeInputprops = {
   inputStyle: {

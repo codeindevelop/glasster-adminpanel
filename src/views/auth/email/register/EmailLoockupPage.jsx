@@ -5,10 +5,10 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import { FormattedMessage } from 'react-intl';
 import InfoIcon from '@mui/icons-material/Info';
 
 import { emailLoockupAction } from 'actions/auth/email-authentication/register/RegisterActions';
-import { FormattedMessage } from 'react-intl';
 
 const initialValues = {
   first_name: '',
