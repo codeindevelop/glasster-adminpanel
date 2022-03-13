@@ -7,12 +7,13 @@ import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 import HelpMobileRegisterModal from './HelpMobileRegisterModal';
 import { registerMobileAction } from 'actions/auth/email-authentication/register/RegisterActions';
+import { FormattedMessage } from 'react-intl';
 
 const mobileSchema = Yup.object().shape({
   mobile_number: Yup.string()
-    .min(11, 'شماره موبایل حداقل باید 11 رقم باشد')
-    .max(11, 'شماره موبایل بیش از 11 رقم نمی تواند باشد')
-    .required('وارد کردن شماره تلفن همراه الزامی می باشد'),
+    .min(11, <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_MIN' />)
+    .max(11, <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_REQUIRED' />),
 });
 
 export default function EnterPhoneNumberPage() {
@@ -45,7 +46,6 @@ export default function EnterPhoneNumberPage() {
     },
   });
 
-
   useEffect(() => {
     if (registerMobileSucMSG === true) {
       // If user register Mobile success , system has enable mobile number step
@@ -69,19 +69,18 @@ export default function EnterPhoneNumberPage() {
             <CheckCircleIcon className='text-success' />
           </span>
           <span className='text-success font-bold font-iranyekan text-center text-lg'>
-            حساب کاربری شما با موفقیت ایجاد گردید
+            <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_COMPILEMSG' />
           </span>
           <h2 className='text-center font-bold text-sm text-slate-600 mb-5 leading-[30px]'>
             {' '}
-            جهت دسترسی به حساب کاربری خود ، باید شماره موبایل خود را تایید نمایید ، لطفا شماره
-            موبایل خود را جهت تایید وارد نمایید
+            <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_CONFIRM' />
           </h2>
 
           {/* Begin Password Input */}
           <div className=' w-full'>
             <TextField
               id='mobile_number'
-              label='شماره موبایل'
+              label={<FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_NUMBER' />}
               variant='outlined'
               disabled={loading}
               error={mobileFormik.errors.mobile_number && mobileFormik.touched.mobile_number}
@@ -99,7 +98,7 @@ export default function EnterPhoneNumberPage() {
                 <InfoIcon fontSize='small' />
                 <span className='mx-2 font-bold leading-[30px]'>
                   {' '}
-                  شماره همراه وارد شده قبلا استفاده شده است ، لطفا از شماره دیگری استفاده نمایید
+                  <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_EXIST' />
                 </span>
               </div>
             )}
@@ -109,7 +108,9 @@ export default function EnterPhoneNumberPage() {
         {/* Begin Footer Links */}
         <div className=' flex justify-between p-5 my-5 w-full'>
           <Button disabled={loading} type='submit' variant='contained' className='font-bold '>
-            <span className='text-light'>مرحله بعد</span>
+            <span className='text-light'>
+              <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_NEXT' />
+            </span>
           </Button>
 
           <Button
@@ -118,7 +119,7 @@ export default function EnterPhoneNumberPage() {
             className=' font-bold '
             disabled={loading}
           >
-            راهنمای ثبت شماره همراه
+            <FormattedMessage id='AUTH_SIGNUP_MOBILEPAGE_HELP' />
           </Button>
         </div>
         {/* End Footer Links */}
