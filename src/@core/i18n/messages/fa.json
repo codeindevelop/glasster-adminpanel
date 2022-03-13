@@ -1,5 +1,7 @@
 {
   "TRANSLATOR.SELECT": "انتخاب زبان سیستم",
+  "GLASSTER_LOADING_TEXT": "Glasster Website Manager",
+  "LOADING_TEXT": "درحال بارگذاری ...",
   "AUTH_WELCOME": "سامانه مدیریت یکپارچه وب سایت",
   "AUTH_LOGIN_TITLE": "ورود به حساب کاربری",
   "AUTH_LOGIN_DESCRIPTION": "لطفا اطلاعات کاربری خود را جهت ورود به سامانه وارد کنید",
