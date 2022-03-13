@@ -8,8 +8,9 @@ import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 
 import { loadUser } from '../redux/actions/auth/loginActions';
 import MainLayout from '../@core/layout/MainLayout';
-import {PrivateRoutes} from './PrivateRoutes';
+import { PrivateRoutes } from './PrivateRoutes';
 import AuthPage from '../views/auth/AuthPage';
+import MasterLayout from '../@core/layout/MasterLayout';
 
 export const Routes = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,10 @@ export const Routes = () => {
             <Redirect to='/auth/signin' />
           ) : (
             <>
-              <PrivateRoutes />
+              {/* Load Private routes with Master Layout */}
+              <MasterLayout>
+                <PrivateRoutes />
+              </MasterLayout>
             </>
           )}
         </Switch>

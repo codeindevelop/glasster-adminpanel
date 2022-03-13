@@ -96,5 +96,7 @@
   "AUTH_SELECT_LANG": "انتخاب زبان سایت",
   "AUTH_FOOTER_TERMS_LINK": "شرایط و قوانین",
   "AUTH_FOOTER_ABOUT_LINK": "درباره ما",
-  "MENU.DASHBOARD": "داشبورد"
+  "MENU.DASHBOARD": "داشبورد",
+  "DASHBOARD_BRAND_GLASSTER_NAME": "Glasster Automation",
+  "DASHBOARD_BRAND_GLASSTER_DESC": "سیستم مدیریت وب سایت"
 }
