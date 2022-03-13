@@ -1,2 +1,8 @@
+//  **** Please Dont modify load scss files order ****
+// لطفا به هیچ عنوان به ترتیب لود فایلهای اس سی اس اس دست نزنید
+
+//Initial Core Styles
+@import './core/core.scss';
+
 // Custom Styles
 @import './custom_styles';
