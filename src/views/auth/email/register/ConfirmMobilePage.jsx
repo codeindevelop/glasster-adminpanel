@@ -14,6 +14,7 @@ import {
 } from 'actions/auth/email-authentication/register/RegisterActions';
 
 import 'react-circular-progressbar/dist/styles.css';
+import { FormattedMessage } from 'react-intl';
 
 const codeInputprops = {
   inputStyle: {
@@ -44,7 +45,7 @@ const codeInputprops = {
 };
 
 const codeSchema = Yup.object().shape({
-  mobile_number: Yup.string().required('وارد کردن شماره تلفن همراه الزامی می باشد'),
+  mobile_number: Yup.string().required(<FormattedMessage id='AUTH_SIGNUP_CONFIRM_MOB' />),
 });
 
 export default function ConfirmMobilePage() {
@@ -112,12 +113,12 @@ export default function ConfirmMobilePage() {
       <form onSubmit={handleSubmit}>
         <div className='my-3'>
           <h2 className='font-bold text-center text-sm text-slate-600 mb-5 leading-[30px]'>
-            لطفا کد ارسال شده به تلفن همراه خود را در کادر زیر وارد نمایید
+            <FormattedMessage id='AUTH_SIGNUP_CONFIRM_ENTER_CODE' />
           </h2>
           <div className='flex justify-center items-center my-7' style={{ direction: 'ltr' }}>
             <TextField
               id='confirm_code'
-              label='کد دریافتی'
+              label={<FormattedMessage id='AUTH_SIGNUP_CONFIRM_CODE' />}
               variant='outlined'
               type='number'
               disabled={loading}
@@ -131,7 +132,7 @@ export default function ConfirmMobilePage() {
               <div className='flex text-danger items-center justify-center my-5'>
                 <InfoIcon fontSize='small' />
                 <span className=' font-bold text-danger text-sm text-center'>
-                  کد وارد شده اشتباه می باشد ، لطفا مجدد بررسی نمایید
+                  <FormattedMessage id='AUTH_SIGNUP_WRONG_CODE' />
                 </span>
               </div>
             </>
@@ -140,7 +141,7 @@ export default function ConfirmMobilePage() {
             <>
               <div className='flex items-center my-5 gap-1'>
                 <span className=' font-bold text-success text-lg'>
-                  کد فعالسازی مجدد برای شما ارسال گردید
+                  <FormattedMessage id='AUTH_SIGNUP_SEND_AGAIN_CODE' />
                 </span>
               </div>
             </>
@@ -171,9 +172,7 @@ export default function ConfirmMobilePage() {
                   })}
                 />
               </div>
-              <p className='font-bold text-sky-400 text-md my-5 font-pelak'>
-                ارسال مجدد پس از {counter} ثانیه
-              </p>
+              <p className='font-bold text-sky-400 text-md my-5 font-pelak'>{counter}</p>
             </>
           ) : null}
           <Button
@@ -184,12 +183,12 @@ export default function ConfirmMobilePage() {
             className='font-bold my-2'
             disabled={loading || counter > 0}
           >
-            ارسال مجدد کد
+            <FormattedMessage id='AUTH_SIGNUP_SEND_AGAIN' />
           </Button>
         </div>
         <div className='flex items-center justify-between mt-10'>
           <Button type='submit' variant='contained' className='font-bold' disabled={loading}>
-            تایید کد
+            <FormattedMessage id='AUTH_SIGNUP_SEND_CONFIRM' />
           </Button>
 
           <Button
@@ -201,7 +200,7 @@ export default function ConfirmMobilePage() {
             className='font-bold'
             disabled={loading}
           >
-            تغییر شماره موبایل
+            <FormattedMessage id='AUTH_SIGNUP_CHANGE_MOBILE' />
           </Button>
         </div>
       </form>

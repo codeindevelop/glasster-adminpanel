@@ -16,6 +16,9 @@ import EmailLoockupPage from './EmailLoockupPage';
 import EnterEmailPasswordPage from './EnterEmailPasswordPage';
 import EnterPhoneNumberPage from './EnterPhoneNumberPage';
 import ConfirmMobilePage from './ConfirmMobilePage';
+import SelectAuthLang from '../select-lang/SelectAuthLang';
+import FooterLinks from '../FooterLinks';
+import { FormattedMessage } from 'react-intl';
 
 const initialValues = {
   first_name: '',
@@ -29,33 +32,36 @@ const initialValues = {
 
 const registrationSchema = Yup.object().shape({
   first_name: Yup.string()
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن نام الزامی می باشد'),
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_NAME_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_NAME_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_NAME_REQUIRED' />),
   last_name: Yup.string()
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن نام خانوادگی الزامی می باشد'),
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_LNAME_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_LNAME_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_LNAME_REQUIRED' />),
   mobile_number: Yup.string()
-    .min(11, 'شماره موبایل حداقل باید 11 رقم باشد')
-    .max(11, 'شماره موبایل بیش از 11 رقم نمی تواند باشد')
-    .required('وارد کردن شماره تلفن همراه الزامی می باشد'),
+    .min(11, <FormattedMessage id='AUTH_SIGNUP_MOBILE_MIN' />)
+    .max(11, <FormattedMessage id='AUTH_SIGNUP_MOBILE_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_MOBILE_REQUIRED' />),
   email: Yup.string()
-    .email('فرمت ایمیل وارد شده اشتباه می باشد')
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول ایمیل بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن ایمیل الزامی می باشد'),
+    .email(<FormattedMessage id='AUTH_SIGNUP_EMAIL_FORMAT' />)
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_EMAIL_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_EMAIL_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_EMAIL_REQUIRED' />),
   password: Yup.string()
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن رمز عبور الزامی می باشد'),
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_PASSWORD_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_PASSWORD_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_PASSWORD_REQUIRED' />),
   password_confirmation: Yup.string()
-    .required('وارد کردن تایید رمز عبور الزامی می باشد')
+    .required(<FormattedMessage id='AUTH_SIGNUP_PASSWORD_CONFIRM' />)
     .when('password', {
       is: (val) => (val && val.length > 0 ? true : false),
-      then: Yup.string().oneOf([Yup.ref('password')], 'رمز عبور وارد شده با هم یکسان نمی باشد'),
+      then: Yup.string().oneOf(
+        [Yup.ref('password')],
+        <FormattedMessage id='AUTH_SIGNUP_PASSWORD_MATCH' />
+      ),
     }),
-  acceptTerms: Yup.bool().required('جهت ثبت نام حتما باید با شرایط و قوانین موافقت نمایید'),
+  acceptTerms: Yup.bool().required(<FormattedMessage id='AUTH_SIGNUP_TERMS_ACCEPT' />),
 });
 
 export default function UserSignupPage() {
@@ -104,19 +110,22 @@ export default function UserSignupPage() {
 
   return (
     <>
-      <div style={{ direction: 'rtl' }} className='flex justify-center p-1 w-full'>
-        <div className='w-full md:w-2/3 md:shadow-sm mb-3 md:border rounded-lg h-auto  '>
+      <div
+        style={{ direction: 'rtl' }}
+        className='flex flex-col justify-center p-2 mx-auto w-full md:w-2/3'
+      >
+        <div className='w-full  md:shadow-sm mb-3 md:border rounded-lg h-auto  '>
           {loading && <LinearProgress className='w-full rounded-lg ' />}
           <div className='flex  justify-around items-center p-5 '>
             <div>
               {registerComplite === false && (
                 <>
                   <h2 className='text-center md:text-right font-bold text-lg text-slate-700 my-5'>
-                    ثبت نام در سامانه
+                    <FormattedMessage id='AUTH_SIGNUP_HEADING' />
                   </h2>
 
                   <h5 className='text-center text-xl leading-10 text-slate-600 font-yekan'>
-                    جهت ثبت نام در سامانه لطفا اطلاعات کاربری خود را وارد نمایید
+                    <FormattedMessage id='AUTH_SIGNUP_DESC' />
                   </h5>
                 </>
               )}
@@ -125,7 +134,9 @@ export default function UserSignupPage() {
                 {/* Begin Email Step */}
                 <Step key={0}>
                   <StepLabel>
-                    <h2>اطلاعات هویتی</h2>
+                    <h2>
+                      <FormattedMessage id='AUTH_SIGNUP_STEP_0' />
+                    </h2>
                   </StepLabel>
                   <StepContent>
                     <EmailLoockupPage />
@@ -136,7 +147,9 @@ export default function UserSignupPage() {
                 {/* Begin Step Passwors */}
                 <Step key={1}>
                   <StepLabel>
-                    <h2>اطلاعات ورود</h2>
+                    <h2>
+                      <FormattedMessage id='AUTH_SIGNUP_STEP_1' />
+                    </h2>
                   </StepLabel>
                   <StepContent>
                     <EnterEmailPasswordPage />
@@ -146,7 +159,9 @@ export default function UserSignupPage() {
                 {/* Begin Step Mobile Number */}
                 <Step key={2}>
                   <StepLabel>
-                    <h2>اطلاعات ارتباطی</h2>
+                    <h2>
+                      <FormattedMessage id='AUTH_SIGNUP_STEP_2' />
+                    </h2>
                   </StepLabel>
                   <StepContent>
                     <EnterPhoneNumberPage />
@@ -156,7 +171,9 @@ export default function UserSignupPage() {
                 {/* Begin Step Confirm Mobile Number Code */}
                 <Step key={3}>
                   <StepLabel>
-                    <h2>تایید اطلاعات</h2>
+                    <h2>
+                      <FormattedMessage id='AUTH_SIGNUP_STEP_3' />
+                    </h2>
                   </StepLabel>
                   <StepContent>
                     <ConfirmMobilePage />
@@ -166,12 +183,13 @@ export default function UserSignupPage() {
                 {/* Begin Step Register Complite */}
                 <Step key={4}>
                   <StepLabel>
-                    <h2>پایان عملیات</h2>
+                    <h2>
+                      <FormattedMessage id='AUTH_SIGNUP_STEP_4' />
+                    </h2>
                   </StepLabel>
                   <StepContent>
                     <h2 className='text-success text-lg font-iranyekan font-bold my-5 text-center'>
-                      موبایل شما با موفقیت تایید گردید و پس از چند ثانیه به پنل کاربری منتقل می
-                      گردید
+                      <FormattedMessage id='AUTH_SIGNUP_COMPLITE' />
                     </h2>
                   </StepContent>
                 </Step>
@@ -188,12 +206,25 @@ export default function UserSignupPage() {
                 <SVG className='w-2/3' src={accIMG} />
               )}
               <h6 className='text-md font-yekan  text-slate-500 text-center leading-[30px] my-5'>
-                با چند کلیک ساده ، حساب کاربری خود را ایجاد کنید
+                <FormattedMessage id='AUTH_SIGNUP_ASIDE_TEXT' />
               </h6>
             </div>
             {/* End Aside image */}
           </div>
         </div>
+
+        {/* Begin Footer Box Items */}
+        <footer className='w-full m-auto  flex  items-center justify-center md:px-0 sm:px-5'>
+          <div className='flex w-full items-center justify-between my-3  '>
+            {/* Begin Change Language Component */}
+            <SelectAuthLang />
+            {/* End Change Language Component */}
+            {/* Begin Footer Links */}
+            <FooterLinks />
+            {/* End Footer Links */}
+          </div>
+        </footer>
+        {/* End Footer Box Items */}
       </div>
     </>
   );

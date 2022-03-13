@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@mui/material';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import InfoIcon from '@mui/icons-material/Info';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { registerPasswordAction } from 'actions/auth/email-authentication/register/RegisterActions';
+import { FormattedMessage } from 'react-intl';
 
 const passwordSchema = Yup.object().shape({
   password: Yup.string()
-    .min(2, 'وارد کردن حداقل 2 کلمه الزامی است')
-    .max(50, 'طول نام بیش از 50 کاراکتر می باشد')
-    .required('وارد کردن رمز عبور الزامی می باشد'),
+    .min(2, <FormattedMessage id='AUTH_SIGNUP_PASSWORD_PASS_MIN' />)
+    .max(50, <FormattedMessage id='AUTH_SIGNUP_PASSWORD_PASS_MAX' />)
+    .required(<FormattedMessage id='AUTH_SIGNUP_PASSWORD_PASS_REQUIRED' />),
   password_confirmation: Yup.string()
-    .required('وارد کردن تایید رمز عبور الزامی می باشد')
+    .required(<FormattedMessage id='AUTH_SIGNUP_PASSWORD_CONPASS_REQUIRED' />)
     .when('password', {
       is: (val) => (val && val.length > 0 ? true : false),
-      then: Yup.string().oneOf([Yup.ref('password')], 'رمز عبور وارد شده با هم یکسان نمی باشد'),
+      then: Yup.string().oneOf(
+        [Yup.ref('password')],
+        <FormattedMessage id='AUTH_SIGNUP_PASSWORD_CONPASS_NOTMATCH' />
+      ),
     }),
 });
 
@@ -81,13 +84,13 @@ export default function EnterEmailPasswordPage() {
       <form onSubmit={passwordFormik.handleSubmit} className='mt-5 lg:p-5 p-2'>
         <div className='w-full flex flex-col  lg:gap-2 gap-4'>
           <h2 className='text-center font-bold text-sm text-slate-600 mb-5'>
-            لطفا رمز عبور برای حساب کاربری خود وارد نمایید
+            <FormattedMessage id='AUTH_SIGNUP_PASSWORD_HEADING' />
           </h2>
           {/* Begin Password Input */}
           <div className=' w-full'>
             <TextField
               id='password'
-              label='رمز عبور'
+              label={<FormattedMessage id='AUTH_SIGNUP_PASSWORD_PASS' />}
               variant='outlined'
               disabled={loading}
               type='password'
@@ -107,7 +110,7 @@ export default function EnterEmailPasswordPage() {
           <div className=' w-full my-2'>
             <TextField
               id='password_confirmation'
-              label='تکرار رمز عبور'
+              label={<FormattedMessage id='AUTH_SIGNUP_PASSWORD_REPASS' />}
               variant='outlined'
               disabled={loading}
               type='password'
@@ -137,14 +140,14 @@ export default function EnterEmailPasswordPage() {
             label={
               <>
                 <h6 className='font-bold text-slate-600 leading-[30px] text-sm'>
-                  تمامی{' '}
+                  <FormattedMessage id='AUTH_SIGNUP_PASSWORD_ALLTERMS' />{' '}
                   <span
                     className='text-bold text-sky-500 hover:text-sky-700 transform-all duration-300 pointer'
                     onClick={(e) => dispatch({ type: 'TERMS_MODAL', payload: true })}
                   >
-                    شرایط و قوانین
+                    <FormattedMessage id='AUTH_SIGNUP_PASSWORD_TERMS' />
                   </span>{' '}
-                  قبل از ثبت نام را مطالعه کرده و قبول دارم
+                  <FormattedMessage id='AUTH_SIGNUP_PASSWORD_READTERMS' />
                 </h6>
               </>
             }
@@ -155,7 +158,9 @@ export default function EnterEmailPasswordPage() {
         {/* Begin Footer Links */}
         <div className=' flex justify-between p-5 my-5 w-full'>
           <Button disabled={loading} type='submit' variant='contained' className='font-bold '>
-            <span className='text-light'>مرحله بعد</span>
+            <span className='text-light'>
+              <FormattedMessage id='AUTH_SIGNUP_PASSWORD_NEXT' />
+            </span>
           </Button>
           <Button
             onClick={(e) => dispatch({ type: 'HANDEL_REGISTER_STEP', payload: 0 })}
@@ -163,7 +168,7 @@ export default function EnterEmailPasswordPage() {
             className=' font-bold '
             disabled={loading}
           >
-            بازگشت
+            <FormattedMessage id='AUTH_SIGNUP_PASSWORD_BACK' />
           </Button>
         </div>
         {/* End Footer Links */}
