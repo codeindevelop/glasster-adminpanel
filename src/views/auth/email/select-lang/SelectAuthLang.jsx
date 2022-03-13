@@ -11,6 +11,8 @@ import { FormattedMessage } from 'react-intl';
 export default function SelectAuthLang() {
   const lang = useLang();
   const currentLanguage = languages.find((x) => x.lang === lang);
+
+  console.log(currentLanguage);
   return (
     <>
       <div className='w-48 '>
