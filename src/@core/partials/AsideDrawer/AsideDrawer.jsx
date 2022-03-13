@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import AsideToggle from './AsideToggle';
 import AsideMenu from '../aside-menu/AsideMenu';
 import AsideBrand from '../aside-brand/Brand';
-
-const drawerWidth = '17.8rem';
+import config from '../../../config/mainConfig';
+import { CssBaseline } from '@mui/material';
 
 const openedMixin = (theme) => ({
-  width: drawerWidth,
+  width: config.asideDrawerWidth,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -24,15 +24,13 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+
+  width: config.asideMinimizedWidth,
 });
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: drawerWidth,
+    width: config.asideDrawerWidth,
     flexShrink: 0,
     zIndex: '-1',
     whiteSpace: 'nowrap',
@@ -65,17 +63,11 @@ export default function AsideDrawer() {
 
   return (
     <>
-      {/* <CssBaseline /> */}
+      <CssBaseline />
 
-      <Drawer
-        onMouseEnter={handleDrawerOpen}
-        style={{ zIndex: '-1 !important' }}
-        className='hidden md:flex z-1'
-        variant='permanent'
-        open={open}
-      >
+      <Drawer onMouseEnter={handleDrawerOpen} variant='permanent' open={open} anchor='left'>
         {/* Begin Drawer Wrapper */}
-        <div className='bg-[#1e1e2d] h-full flex flex-col justify-start '>
+        <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start `}>
           {/* Begin Drawer Header */}
           <div className='flex flex-row justify-between items-center px-4 my-5'>
             <AsideBrand />

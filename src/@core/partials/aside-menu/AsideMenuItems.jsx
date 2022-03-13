@@ -10,7 +10,6 @@ export default function AsideMenuItem({ children, to, title, icon, fontIcon, has
   const { pathname } = useLocation();
   const isActive = checkIsActive(pathname, to);
 
-  console.log(isActive);
   const { asideOpen } = useSelector((state) => ({
     asideOpen: state.layout.aside.open,
   }));

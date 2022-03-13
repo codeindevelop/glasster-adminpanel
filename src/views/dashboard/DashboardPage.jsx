@@ -9,7 +9,7 @@ export default function DashboardPage() {
       <h1>
         <FormattedMessage id='MENU.DASHBOARD' />
       </h1>
-      <button onClick={(e) => dispatch({ type: 'SET_SITE_LANG', payload: 'de' })}>زبان</button>
+      <button onClick={(e) => dispatch({ type: 'ASIDE_OPEN' })}>زبان</button>
     </>
   );
 }
