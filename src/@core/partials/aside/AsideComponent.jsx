@@ -1,13 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import AsideBrand from './Brand';
-import AsideMenuWrapper from '../aside-menu/AsideMenuWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import AsideMinimizeToggle from './AsideMinimizeToggle';
 import AsideFooter from './AsideFooter';
+// import AsideMainMenu from '../aside-menu/AsideMainMenu';
+import AsideMenu from '../aside-menu/AsideMainMenu';
 
 export default function AsideComponent() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { asideMinimize } = useSelector((state) => ({
     asideMinimize: state.layout.aside.asideMinimize,
   }));
@@ -29,7 +30,6 @@ export default function AsideComponent() {
             }
             `
           )}
-         
         >
           <div className='flex items-center'>
             {/* Begin Brand Wrapper */}
@@ -37,12 +37,15 @@ export default function AsideComponent() {
             {/* End Brand Wrapper */}
           </div>
 
-          {/* Begin Aside Menu Wrapper */}
-          <AsideMenuWrapper></AsideMenuWrapper>
-          {/* End Aside Menu Wrapper */}
+          {/* Begin Aside Menu */}
+          <div className='my-5 px-2'>
+            <AsideMenu/>
+            {/* <AsideMainMenu /> */}
+          </div>
+          {/* End Aside Menu */}
 
           {/* Begin Footer */}
-          <AsideFooter  />
+          <AsideFooter />
           {/* End Footer */}
         </div>
         {/* End Aside Wrapper */}

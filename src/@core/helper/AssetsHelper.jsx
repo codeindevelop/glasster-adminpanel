@@ -1,1 +1,1 @@
-export const toAbsoluteUrl = (pathname) => process.env.PUBLIC_URL + pathname;
+export const pubFolder = (pathname) => process.env.PUBLIC_URL + pathname;
