@@ -1,7 +1,6 @@
 import React, { lazy } from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
-import SwipeableRoutes from 'react-swipeable-routes';
 import TermsModal from './email/terms-modal/TermsModal';
 
 import Logo from 'img/logo/logo.svg';

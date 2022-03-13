@@ -56,6 +56,9 @@ module.exports = {
       warning: '#ffc700',
       danger: '#f1416c',
       dark: '181c32',
+
+      // Custom Partials Color
+      'aside-light-bg': '#E2E8F0',
     },
 
     extend: {},
