@@ -10,10 +10,6 @@ export default function LanguagesSwitch() {
 
   const [showMenu, setShowMenu] = useState('translate-y-6 opacity-0 invisible');
 
-  useEffect(() => {
-    document.addEventListener('click', handleClose);
-  }, [document]);
-
   const handleClose = () => {
     setShowMenu('translate-y-6 opacity-0 invisible');
   };
@@ -26,7 +22,7 @@ export default function LanguagesSwitch() {
     <>
       <div className='w-32 h-10 relative transition-all duration-300'>
         <button
-          onMouseEnter={(e) => handleOpen()}
+          onClick={(e) => handleOpen()}
           className='flex gap-2 h-full w-full justify-center p-3 items-center dark:hover:bg-white/[.08] hover:bg-slate-100 rounded-lg  w-full  transition-all duration-300   dark:hover:text-primary  '
         >
           <img className='rounded-full w-5 h-5' src={currentLanguage?.flag} alt='glasster-lang' />

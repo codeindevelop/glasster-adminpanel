@@ -50,7 +50,9 @@ export default function UserMenu() {
         {/* Begin DropDown Menu */}
         <div
           className={clsx(
-            `${showMenu} absolute   transition-all duration-200 top-14 left-0 rounded-lg shadow-lg border border-1 dark:border-none dark:bg-[#1e1e2d] w-[270px]`
+            `${showMenu} absolute ${
+              dir === 'rtl' ? 'left-0' : 'right-0'
+            }   transition-all duration-200 top-14  rounded-lg shadow-lg border border-1 dark:border-none dark:bg-[#1e1e2d] w-[270px]`
           )}
         >
           {/* Begin Dropdown Wrapper */}
