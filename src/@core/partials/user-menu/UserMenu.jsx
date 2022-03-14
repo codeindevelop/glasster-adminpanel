@@ -1,7 +1,7 @@
 import React from 'react';
 import SVG from 'react-inlinesvg';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import blankAvatarPic from 'img/avatar/blank.png';
 import userIcon from 'img/icons/communication/com006.svg';
@@ -10,8 +10,10 @@ import usersIcon from 'img/icons/communication/com014.svg';
 import roleIcon from 'img/icons/general/gen019.svg';
 import permissionIcon from 'img/icons/general/gen049.svg';
 import logoutIcon from 'img/icons/technology/teh004.svg';
+import { logoutAction } from 'actions/auth/loginActions';
 
 export default function UserMenu() {
+  const dispatch = useDispatch();
   const { asideOpen, dir, first_name, last_name, email } = useSelector((state) => ({
     asideOpen: state.layout.aside.open,
     dir: state.layout.config.direction,
@@ -114,7 +116,7 @@ export default function UserMenu() {
             {/* End links */}
 
             {/* Begin Signout */}
-            <ul className='  py-2 group'>
+            <ul onClick={(e) => dispatch(logoutAction())} className='  py-2 group'>
               <li className='group-hover:bg-slate-100 flex flex-row items-center gap-4 py-2 group px-3 mx-3 rounded-lg cursor-pointer '>
                 <span className='svg-icon svg-icon-2 '>
                   <SVG src={logoutIcon} />
