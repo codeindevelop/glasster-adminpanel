@@ -1,7 +1,7 @@
 import React from 'react';
 import DarkSwith from '../dark-toggle-topbar/DarkSwith';
 import LanguagesSwitch from '../languages-switch-topbar/LanguagesSwitch';
-import LogoutTopbar from '../logout-topbar/LogoutTopbar';
+import UserMenu from '../user-menu/UserMenu';
 import Notifications from '../notifications-topbar/Notifications';
 import Search from '../search-topbar/Search';
 
@@ -22,7 +22,7 @@ export default function Topbar() {
             {/* Begin Select Language Component */}
             <LanguagesSwitch />
             {/* End Select Language Component */}
-            
+
             {/* Begin Dark Light Switch Component */}
             <DarkSwith />
             {/* End Dark Light Switch Component */}
@@ -34,9 +34,9 @@ export default function Topbar() {
             <Notifications />
             {/* End Notifications Component */}
 
-            {/* Begin Logout Component */}
-            <LogoutTopbar />
-            {/* End Logout Component */}
+            {/* Begin User Dropdown Menu */}
+            <UserMenu />
+            {/* End User Dropdown Menu */}
           </div>
           {/* End Actions Side */}
         </div>
