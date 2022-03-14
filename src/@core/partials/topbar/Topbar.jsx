@@ -1,5 +1,6 @@
 import React from 'react';
 import DarkSwith from '../dark-toggle-topbar/DarkSwith';
+import LanguagesSwitch from '../languages-switch-topbar/LanguagesSwitch';
 import LogoutTopbar from '../logout-topbar/LogoutTopbar';
 import Notifications from '../notifications-topbar/Notifications';
 import Search from '../search-topbar/Search';
@@ -18,6 +19,10 @@ export default function Topbar() {
           {/* End side one */}
           {/* Begin Actions Side */}
           <div className='flex flex-row items-center gap-2'>
+            {/* Begin Select Language Component */}
+            <LanguagesSwitch />
+            {/* End Select Language Component */}
+            
             {/* Begin Dark Light Switch Component */}
             <DarkSwith />
             {/* End Dark Light Switch Component */}

@@ -7,8 +7,9 @@ import createCache from '@emotion/cache';
 import { useSelector } from 'react-redux';
 
 export function MaterialThemeProvider({ children }) {
-  const { dir } = useSelector((state) => ({
+  const { dir,darkMode } = useSelector((state) => ({
     dir: state.layout.config.direction,
+    darkMode: state.layout.config.darkMode,
   }));
 
   // Create rtl cache
@@ -25,6 +26,7 @@ export function MaterialThemeProvider({ children }) {
     },
 
     palette: {
+      mode: darkMode ? 'dark' : 'light',
       danger: {
         // light: will be calculated from palette.primary.main,
         main: '#f1416c',
