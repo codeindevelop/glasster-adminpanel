@@ -1,13 +1,14 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react';
+import { styled, useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
+import { CssBaseline } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
+import Drawer from '@mui/material/Drawer';
 import AsideToggle from './AsideToggle';
 import AsideMenu from '../aside-menu/AsideMenu';
 import AsideBrand from '../aside-brand/Brand';
 import config from '../../../config/mainConfig';
-import { CssBaseline } from '@mui/material';
+import useBreakpoints from '../../../utility/hooks/useBreakpoint';
 
 const openedMixin = (theme) => ({
   width: config.asideDrawerWidth,
@@ -28,7 +29,7 @@ const closedMixin = (theme) => ({
   width: config.asideMinimizedWidth,
 });
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const LGDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: config.asideDrawerWidth,
     flexShrink: 0,
@@ -48,6 +49,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function AsideDrawer() {
+  const point = useBreakpoints();
+  const theme = useTheme();
   const dispatch = useDispatch();
   const { open } = useSelector((state) => ({
     open: state.layout.aside.open,
@@ -65,7 +68,13 @@ export default function AsideDrawer() {
     <>
       <CssBaseline />
 
-      <Drawer onMouseEnter={handleDrawerOpen} variant='permanent' open={open} anchor='left'>
+      <LGDrawer
+        // onMouseEnter={handleDrawerOpen}
+        variant='permanent'
+        className='hidden md:flex'
+        open={open}
+        anchor='left'
+      >
         {/* Begin Drawer Wrapper */}
         <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start `}>
           {/* Begin Drawer Header */}
@@ -80,7 +89,26 @@ export default function AsideDrawer() {
           {/* End Aside Menu */}
         </div>
         {/* End Drawer Wrapper */}
+      </LGDrawer>
+
+      {/* Begin Mobile Drawer */}
+      <Drawer onClose={handleDrawerClose}   className='sm:flex md:hidden' open={open} anchor='left'>
+        {/* Begin Drawer Wrapper */}
+        <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start `}>
+          {/* Begin Drawer Header */}
+          <div className='flex flex-row justify-between items-center px-4 my-5'>
+            <AsideBrand />
+            {/* <AsideToggle /> */}
+          </div>
+          {/* End Drawer Header */}
+
+          {/* Begin Aside Menu */}
+          <AsideMenu />
+          {/* End Aside Menu */}
+        </div>
+        {/* End Drawer Wrapper */}
       </Drawer>
+      {/* End Mobile Drawer */}
     </>
   );
 }

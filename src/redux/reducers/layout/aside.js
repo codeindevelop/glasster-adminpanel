@@ -1,5 +1,5 @@
 const initialState = {
-  open: false,
+  open: true,
 };
 
 export const asideReducer = (state = initialState, action) => {
