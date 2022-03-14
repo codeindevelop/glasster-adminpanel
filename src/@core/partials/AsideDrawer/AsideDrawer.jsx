@@ -33,6 +33,7 @@ const LGDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open
   ({ theme, open }) => ({
     width: config.asideDrawerWidth,
     flexShrink: 0,
+    position: 'relative',
     zIndex: '120',
     border: 'none',
     borderLeft: 'none',

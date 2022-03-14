@@ -6,9 +6,11 @@ export default function DashboardPage() {
   const dispatch = useDispatch();
   return (
     <>
-      <h1>
-        <FormattedMessage id='MENU.DASHBOARD' />
-      </h1>
+      <div>
+        <h1>
+          <FormattedMessage id='MENU.DASHBOARD' />
+        </h1>
+      </div>
     </>
   );
 }

@@ -29,7 +29,7 @@ export default function MainLayout({ children }) {
 
   return (
     <>
-      <div className={`dark:bg-[${config.darkModeBgColor}] h-screen w-full`}>{children}</div>
+      <div className={`dark:bg-[${config.darkModeBgColor}] h-screen w-full transition-all duration-300`}>{children}</div>
     </>
   );
 }
