@@ -16,7 +16,7 @@ export default function LanguagesSwitch() {
       <div onMouseEnter={(e) => setShowMenu('flex ')} className='w-32 h-10 relative transition-all duration-300'>
         <button className='flex gap-2 h-full w-full justify-center p-3 items-center dark:hover:bg-white/[.08] hover:bg-slate-100 rounded-lg  w-full  transition-all duration-300   dark:hover:text-primary  '>
           <img className='rounded-full w-5 h-5' src={currentLanguage?.flag} alt='glasster-lang' />
-          <span className='text-slate-600 dark:text-white '>{currentLanguage?.name}</span>
+          <span className='text-slate-600 dark:text-white hover:text-primary transition-all duration-300'>{currentLanguage?.name}</span>
         </button>
         {/* Dropdown menu */}
         <div
