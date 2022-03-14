@@ -1,6 +1,7 @@
 import React from 'react';
 import LogoutTopbar from '../logout-topbar/LogoutTopbar';
 import Notifications from '../notifications-topbar/Notifications';
+import Search from '../search-topbar/Search';
 
 export default function Topbar() {
   return (
@@ -15,15 +16,18 @@ export default function Topbar() {
           </div>
           {/* End side one */}
           {/* Begin Actions Side */}
-          <div className='flex flex-row items-center gap-3'>
+          <div className='flex flex-row items-center gap-2'>
+            {/* Begin Search Component */}
+            <Search />
+            {/* End Search Component */}
+
             {/* Begin Notifications Component */}
             <Notifications />
             {/* End Notifications Component */}
-            
+
             {/* Begin Logout Component */}
             <LogoutTopbar />
             {/* End Logout Component */}
-            
           </div>
           {/* End Actions Side */}
         </div>
