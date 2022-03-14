@@ -1,23 +1,35 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import config from '../../config/mainConfig';
 
 export default function MainLayout({ children }) {
-  const { dir } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { dir, darkMode } = useSelector((state) => ({
     dir: state.layout.config.direction,
+    darkMode: state.layout.config.darkMode,
   }));
 
   useEffect(() => {
-    document.title = 'Glasster';
-    if (dir === 'rtl') {
-      document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
-    } else {
+    // Check Direction
+    if (localStorage.getItem('direction') === 'ltr') {
+      dispatch({ type: 'DIR_LTR' });
       document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr');
+    } else {
+      document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
+      dispatch({ type: 'DIR_RTL' });
     }
-  }, [dir]);
+
+    // Check and Enable Dark Mode
+    if (darkMode === true || localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [dir, darkMode, localStorage]);
 
   return (
     <>
-      {children}
+      <div className={`dark:bg-[${config.darkModeBgColor}] h-screen w-full`}>{children}</div>
     </>
   );
 }

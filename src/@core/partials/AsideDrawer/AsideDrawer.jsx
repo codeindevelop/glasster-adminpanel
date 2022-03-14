@@ -33,7 +33,10 @@ const LGDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open
   ({ theme, open }) => ({
     width: config.asideDrawerWidth,
     flexShrink: 0,
-    zIndex: '-1',
+    zIndex: '120',
+    border: 'none',
+    borderLeft: 'none',
+    borderRight: 'none',
     whiteSpace: 'nowrap',
     height: '100%',
     // boxSizing: 'border-box',
@@ -52,8 +55,9 @@ export default function AsideDrawer() {
   const point = useBreakpoints();
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { open } = useSelector((state) => ({
+  const { open,dir } = useSelector((state) => ({
     open: state.layout.aside.open,
+    dir: state.layout.config.direction,
   }));
 
   const handleDrawerOpen = () => {
@@ -71,12 +75,12 @@ export default function AsideDrawer() {
       <LGDrawer
         // onMouseEnter={handleDrawerOpen}
         variant='permanent'
-        className='hidden md:flex'
+        className='hidden md:flex transition-all duration-300'
         open={open}
-        anchor='left'
+        anchor={dir === 'rtl' ? 'left' : 'right'}
       >
         {/* Begin Drawer Wrapper */}
-        <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start `}>
+        <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start  `}>
           {/* Begin Drawer Header */}
           <div className='flex flex-row justify-between items-center px-4 my-5'>
             <AsideBrand />
@@ -92,7 +96,7 @@ export default function AsideDrawer() {
       </LGDrawer>
 
       {/* Begin Mobile Drawer */}
-      <Drawer onClose={handleDrawerClose}   className='sm:flex md:hidden' open={open} anchor='left'>
+      <Drawer onClose={handleDrawerClose} className='sm:flex md:hidden' open={open} anchor='left'>
         {/* Begin Drawer Wrapper */}
         <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start `}>
           {/* Begin Drawer Header */}

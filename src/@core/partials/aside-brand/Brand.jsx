@@ -24,10 +24,10 @@ export default function AsideBrand() {
         {/* End Logo */}
         {/* Begin Brand Texts */}
         <div className={clsx(`${asideOpen === false ? 'hidden' : 'flex flex-col items-center'}`)}>
-          <h2 className='font-pop text-slate-600 text-center'>
+          <h2 className='font-pop  text-slate-600 dark:text-white text-center'>
             <FormattedMessage id='DASHBOARD_BRAND_GLASSTER_NAME' />
           </h2>
-          <h6 className='font-iranyekan font-bold text-sm text-slate-600 text-center'>
+          <h6 className='font-iranyekan font-bold text-sm text-slate-600 dark:text-white text-center'>
             <FormattedMessage id='DASHBOARD_BRAND_GLASSTER_DESC' />
           </h6>
         </div>

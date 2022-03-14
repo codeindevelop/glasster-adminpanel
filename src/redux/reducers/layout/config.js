@@ -1,6 +1,6 @@
 const initialState = {
   direction: 'rtl',
-  darkTheme: false,
+  darkMode: false,
 };
 
 export const config = (state = initialState, action) => {
@@ -11,24 +11,28 @@ export const config = (state = initialState, action) => {
         direction: action.payload,
       };
     case 'DIR_RTL':
+      localStorage.setItem('direction', 'rtl');
       return {
         ...state,
         direction: 'rtl',
       };
     case 'DIR_LTR':
+      localStorage.setItem('direction', 'ltr');
       return {
         ...state,
         direction: 'ltr',
       };
     case 'DARKMODE_ON':
+      localStorage.setItem('theme', 'dark');
       return {
         ...state,
-        darkTheme: true,
+        darkMode: true,
       };
     case 'DARKMODE_OFF':
+      localStorage.setItem('theme', 'light');
       return {
         ...state,
-        darkTheme: false,
+        darkMode: false,
       };
 
     default:

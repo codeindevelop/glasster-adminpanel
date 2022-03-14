@@ -9,7 +9,6 @@ export default function DashboardPage() {
       <h1>
         <FormattedMessage id='MENU.DASHBOARD' />
       </h1>
-      <button onClick={(e) => dispatch({ type: 'ASIDE_OPEN' })}>بازکردن</button>
     </>
   );
 }
