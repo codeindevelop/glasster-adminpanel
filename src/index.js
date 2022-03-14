@@ -11,6 +11,7 @@ import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 import './@core/assets/scss/style.scss'; // import Core Style
 import './@core/assets/scss/_persian-fonts.scss'; // import persian fonts
 import './@core/assets/scss/_english-fonts.scss'; // import english fonts
+import './@core/assets/css/fonticon/fonticons.css'; // import fonticons
 
 // Redux Config Files
 import store from './redux/store';
