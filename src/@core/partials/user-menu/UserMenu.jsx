@@ -13,6 +13,7 @@ import permissionIcon from 'img/icons/general/gen049.svg';
 import logoutIcon from 'img/icons/technology/teh004.svg';
 import { logoutAction } from 'actions/auth/loginActions';
 import clsx from 'clsx';
+import { FormattedMessage } from 'react-intl';
 
 export default function UserMenu() {
   const dispatch = useDispatch();
@@ -132,7 +133,7 @@ export default function UserMenu() {
                       <SVG src={userIcon} />
                     </span>
                     <span className='text-slate-700 dark:text-[#cdcdde] w-full h-full text-sm font-light group-hover:text-primary 	 group-hover:mx-1 transition-all duration-300'>
-                      پروفایل کاربری
+                      <FormattedMessage id='USERMENU_PROFILE' />
                     </span>
                   </li>
                 </Link>
@@ -144,7 +145,7 @@ export default function UserMenu() {
                       <SVG src={settingsIcon} />
                     </span>
                     <span className='text-slate-700 dark:text-[#cdcdde] w-full h-full text-sm font-light group-hover:text-primary 	 group-hover:mx-1 transition-all duration-300'>
-                      پیکربندی سامانه
+                      <FormattedMessage id='USERMENU_CONFIGURATION' />
                     </span>
                   </li>
                 </Link>
@@ -156,7 +157,7 @@ export default function UserMenu() {
                       <SVG src={usersIcon} />
                     </span>
                     <span className='text-slate-700 dark:text-[#cdcdde] w-full h-full text-sm font-light group-hover:text-primary 	 group-hover:mx-1 transition-all duration-300'>
-                      کاربران سامانه
+                      <FormattedMessage id='USERMENU_USERS_LIST' />
                     </span>
                   </li>
                 </Link>
@@ -168,7 +169,7 @@ export default function UserMenu() {
                       <SVG src={roleIcon} />
                     </span>
                     <span className='text-slate-700 dark:text-[#cdcdde] w-full h-full text-sm font-light group-hover:text-primary 	 group-hover:mx-1 transition-all duration-300'>
-                      مدیریت نقش ها
+                      <FormattedMessage id='USERMENU_ROLES' />
                     </span>
                   </li>
                 </Link>
@@ -180,7 +181,7 @@ export default function UserMenu() {
                       <SVG src={permissionIcon} />
                     </span>
                     <span className='text-slate-700 dark:text-[#cdcdde] w-full h-full text-sm font-light group-hover:text-primary 	 group-hover:mx-1 transition-all duration-300'>
-                      مدیریت سطوح دسترسی
+                      <FormattedMessage id='USERMENU_PERMISSIONS' />
                     </span>
                   </li>
                 </Link>
@@ -196,7 +197,7 @@ export default function UserMenu() {
                   <SVG src={logoutIcon} />
                 </span>
                 <span className='text-slate-700 dark:text-[#cdcdde] w-full h-full text-sm font-light group-hover:text-primary 	 group-hover:mx-1 transition-all duration-300'>
-                  خروج از سامانه
+                  <FormattedMessage id='USERMENU_SIGNOUT' />
                 </span>
               </li>
             </ul>
