@@ -7,11 +7,10 @@ import Drawer from '@mui/material/Drawer';
 import AsideToggle from './AsideToggle';
 import AsideMenu from '../aside-menu/AsideMenu';
 import AsideBrand from '../aside-brand/Brand';
-import config from '../../../config/mainConfig';
 import useBreakpoints from '../../../utility/hooks/useBreakpoint';
 
 const openedMixin = (theme) => ({
-  width: config.asideDrawerWidth,
+  width: '17.8rem',
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -26,12 +25,12 @@ const closedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
 
-  width: config.asideMinimizedWidth,
+  width: '4.2rem',
 });
 
 const LGDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: config.asideDrawerWidth,
+    width: '17.8rem',
     flexShrink: 0,
     position: 'relative',
     zIndex: '120',
@@ -56,7 +55,7 @@ export default function AsideDrawer() {
   const point = useBreakpoints();
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { open,dir } = useSelector((state) => ({
+  const { open, dir } = useSelector((state) => ({
     open: state.layout.aside.open,
     dir: state.layout.config.direction,
   }));
@@ -81,7 +80,7 @@ export default function AsideDrawer() {
         anchor={dir === 'rtl' ? 'left' : 'right'}
       >
         {/* Begin Drawer Wrapper */}
-        <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start  `}>
+        <div className='bg-[#1e1e2d] h-full flex flex-col justify-start'>
           {/* Begin Drawer Header */}
           <div className='flex flex-row justify-between items-center px-4 my-5'>
             <AsideBrand />
@@ -99,7 +98,7 @@ export default function AsideDrawer() {
       {/* Begin Mobile Drawer */}
       <Drawer onClose={handleDrawerClose} className='sm:flex md:hidden' open={open} anchor='left'>
         {/* Begin Drawer Wrapper */}
-        <div className={`bg-[${config.asideDrawerColor}] h-full flex flex-col justify-start `}>
+        <div className='bg-[#1e1e2d] h-full flex flex-col justify-start'>
           {/* Begin Drawer Header */}
           <div className='flex flex-row justify-between items-center px-4 my-5'>
             <AsideBrand />
