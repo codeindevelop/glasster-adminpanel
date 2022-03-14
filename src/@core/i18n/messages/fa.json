@@ -97,6 +97,12 @@
   "AUTH_FOOTER_TERMS_LINK": "شرایط و قوانین",
   "AUTH_FOOTER_ABOUT_LINK": "درباره ما",
   "MENU.DASHBOARD": "پیشخوان مدیریت",
+  "USERMENU_PROFILE": "پروفایل کاربری",
+  "USERMENU_CONFIGURATION": "پیکربندی سامانه",
+  "USERMENU_USERS_LIST": "لیست کاربران",
+  "USERMENU_ROLES": "مدیریت نقش ها",
+  "USERMENU_PERMISSIONS": "مدیریت سطوح دسترسی",
+  "USERMENU_SIGNOUT": "خروج از سامانه",
   "DASHBOARD_BRAND_GLASSTER_NAME": "Glasster System",
   "DASHBOARD_BRAND_GLASSTER_DESC": "سیستم مدیریت وب سایت"
 }
