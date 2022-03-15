@@ -6,6 +6,7 @@ import Notifications from '../notifications-topbar/Notifications';
 import Search from '../search-topbar/Search';
 import TodoBtnTopbar from '../todo-topbar/TodoBtnTopbar';
 import CalendarBtnTopbar from '../calendar-topbar/CalendarBtnTopbar';
+import EmailBtnTopbar from '../email-topbar/EmailBtnTopbar';
 
 export default function Topbar() {
   return (
@@ -19,10 +20,14 @@ export default function Topbar() {
             {/* Begin Todo Btn */}
             <TodoBtnTopbar />
             {/* End Todo Btn */}
-            
+
             {/* Begin Calendar Btn */}
             <CalendarBtnTopbar />
             {/* End Calendar Btn */}
+            
+            {/* Begin Email Btn */}
+            <EmailBtnTopbar />
+            {/* End Email Btn */}
           </div>
           {/* End side one */}
           {/* Begin Actions Side */}
