@@ -41,7 +41,7 @@ export default function UserMenu() {
   return (
     <>
       {/* begin User Menu Wrapper */}
-      <div className='relative'>
+      <div className='relative z-10'>
         <div
           onMouseEnter={(e) => handleOpen()}
           className='flex cursor-pointer w-[40px] h-[40px] justify-center items-center rounded-[.475rem]  shadow-md  animation-all duration-300'
@@ -53,7 +53,7 @@ export default function UserMenu() {
           className={clsx(
             `${showMenu} absolute ${
               dir === 'rtl' ? 'left-0' : 'right-0'
-            }   transition-all duration-200 top-14  rounded-lg shadow-lg border border-1 dark:border-none dark:bg-[#1e1e2d] w-[270px]`
+            }   transition-all duration-200 top-14  rounded-lg shadow-lg border border-1 dark:border-none bg-white dark:bg-[#1e1e2d] w-[270px]`
           )}
         >
           {/* Begin Dropdown Wrapper */}
