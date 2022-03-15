@@ -5,14 +5,18 @@ import plusIcon from 'img/icons/general/gen035.svg';
 import configIcon from 'img/icons/coding/cod009.svg';
 import editIcon from 'img/icons/general/gen055.svg';
 import addUserIcon from 'img/icons/general/gen049.svg';
+import headSVG from 'img/illustrations/monitor.svg';
+import headSVGDark from 'img/illustrations/1-dark.svg';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDashbaodrDataAction } from 'actions/custom/dashboardActions';
+import { Scale } from '@mui/icons-material';
 
 export default function ShortcutsWidget() {
   const dispatch = useDispatch();
-  const { first_name, postCategoriesCount, postsCount, usersCount } = useSelector((state) => ({
+  const { first_name, postCategoriesCount, dir, postsCount, usersCount } = useSelector((state) => ({
     first_name: state.auth.user.user.first_name,
+    dir: state.layout.config.direction,
     postCategoriesCount: state.dashboard.postCategoriesCount,
     postsCount: state.dashboard.postsCount,
     usersCount: state.dashboard.usersCount,
@@ -23,12 +27,12 @@ export default function ShortcutsWidget() {
   }, []);
   return (
     <>
-      <div className='relative z-1 w-full h-[32.5rem] dark:bg-[#1e1e2d] shadow-lg rounded-lg'>
+      <div className='relative z-1 w-full h-[33rem] dark:bg-[#1e1e2d] shadow-lg rounded-lg'>
         {/* Begin Inner Wrapper */}
         <div className='flex flex-col items-center justify-center'>
           {/* Begin Top Section */}
-          <div className='bg-danger w-full h-[13rem] rounded-lg p-5 flex items-center'>
-            <div className='flex flex-col gap-3 w-full'>
+          <div className='blue-gradient cover-img relative w-full h-[15rem] flex items-center rounded-lg'>
+            <div  className='flex items-center w-full'>
               {/* Check if redux store not loaded , try to display loading */}
               {usersCount === null ? (
                 <>
@@ -41,13 +45,32 @@ export default function ShortcutsWidget() {
                 </>
               ) : (
                 <>
-                  <h2 className='text-white font-light '>
-                    <FormattedMessage id='DASHBOARD_WIDGET_HI' />{' '}
-                    <span className='mx-1'>{first_name}</span>
-                  </h2>
-                  <h6 className='text-white  '>
-                    <FormattedMessage id='DASHBOARD_WIDGET_HEAD' />
-                  </h6>
+                  {/* Begin Main Pic */}
+                  {dir === 'rtl' ? (
+                    <>
+                      <SVG
+                        className='relative  right-0 scale-[1.4] ml-5 w-[100px]  md:my-0'
+                        src={headSVG}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <SVG
+                        className='relative translate-x-[-40%]  left-0 scale-[1.4]  w-[11rem]  md:my-0'
+                        src={headSVG}
+                      />
+                    </>
+                  )}
+                  {/* End Main Pic */}
+                  <div className='mt-5 flex flex-col gap-3'>
+                    <h2 className='text-white  text-lg font-bold '>
+                      <FormattedMessage id='DASHBOARD_WIDGET_HI' />{' '}
+                      <span className='mx-1'>{first_name}</span>
+                    </h2>
+                    <h6 className='text-white  '>
+                      <FormattedMessage id='DASHBOARD_WIDGET_HEAD' />
+                    </h6>
+                  </div>
                 </>
               )}
             </div>
@@ -55,13 +78,13 @@ export default function ShortcutsWidget() {
           {/* End Top Section */}
 
           {/* Begin Footer Section */}
-          <div className='w-full absolute top-[31%] p-5 bg-light '>
+          <div className='w-full absolute top-[35%] p-5 bg-light '>
             {/* Begin Boxes Wrapper */}
             <div className='flex flex-col gap-4  '>
               {/* Begin Top Shortcuts */}
               <div className='flex items-center gap-4 px-2'>
                 {/* Begin Create Post */}
-                <div className='group     h-[8.9rem]    flex flex-col gap-2 w-full hover:shadow-lg bg-light-primary   dark:bg-dark-light-primary ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
+                <div className='group     h-[8.9rem]    flex flex-col gap-2 w-full border border-transparent hover:border-blue-700/20 hover:shadow-lg bg-light-primary dark:bg-dark-primary ease-in-out  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
                   {postsCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
@@ -85,7 +108,7 @@ export default function ShortcutsWidget() {
                         {/* End Post Icon */}
                         <div className='flex justify-between items-center w-full '>
                           <span className='font-bold dark:text-primary text-slate-500 group-hover:text-primary dark:group-hover:text-white transition-all duration-300  '>
-                            مقالات
+                            <FormattedMessage id='DASHBOARD_WIDGET_POSTS' />
                           </span>
                           <span className='font-bold dark:text-primary text-slate-600 group-hover:text-primary dark:group-hover:text-white transition-all duration-500 '>
                             {postsCount}
@@ -93,7 +116,7 @@ export default function ShortcutsWidget() {
                         </div>
                       </div>
                       <h2 className='text-slate-500 dark:text-primary font-light text-sm group-hover:text-primary dark:group-hover:text-white transition-all duration-300 '>
-                        افزودن مقاله جدید
+                        <FormattedMessage id='DASHBOARD_WIDGET_ADDPOSTS' />
                       </h2>
                     </>
                   )}
@@ -101,7 +124,7 @@ export default function ShortcutsWidget() {
                 {/* End Create Post */}
 
                 {/* Begin Create Post category */}
-                <div className='group h-[8.9rem]   flex flex-col gap-2 w-full hover:shadow-lg bg-light-warning   dark:bg-dark-light-warning ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
+                <div className='group h-[8.9rem] border border-transparent hover:border-blue-700/20  flex flex-col gap-2 w-full hover:shadow-lg bg-light-warning   dark:bg-dark-warning ease-in-out   shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
                   {postCategoriesCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
@@ -125,7 +148,7 @@ export default function ShortcutsWidget() {
                         {/* End Post category Icon */}
                         <div className='flex justify-between items-center w-full '>
                           <span className='font-bold dark:text-warning text-slate-500 group-hover:text-warning dark:group-hover:text-white transition-all duration-300  '>
-                            دسته ها
+                            <FormattedMessage id='DASHBOARD_WIDGET_CATEGORIES' />
                           </span>
                           <span className='font-bold dark:text-warning text-slate-600 group-hover:text-warning dark:group-hover:text-white transition-all duration-500 '>
                             {postCategoriesCount}
@@ -133,7 +156,7 @@ export default function ShortcutsWidget() {
                         </div>
                       </div>
                       <h2 className='text-slate-500 dark:text-warning font-light text-sm group-hover:text-warning dark:group-hover:text-white transition-all duration-300 '>
-                        افزودن دسته جدید
+                        <FormattedMessage id='DASHBOARD_WIDGET_ADDCATEGORY' />
                       </h2>
                     </>
                   )}
@@ -145,7 +168,7 @@ export default function ShortcutsWidget() {
               {/* Begin Bottom Shortcuts */}
               <div className='flex items-center gap-4 px-2'>
                 {/* Begin Create user */}
-                <div className='group  h-[8.9rem]  flex flex-col gap-2 w-full hover:shadow-lg bg-light-danger   dark:bg-dark-light-danger ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
+                <div className='group  h-[8.9rem] border border-transparent hover:border-blue-700/20  flex flex-col gap-2 w-full hover:shadow-lg bg-light-danger   dark:bg-dark-danger ease-in-out   shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
                   {usersCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
@@ -169,7 +192,7 @@ export default function ShortcutsWidget() {
                         {/* End Post category Icon */}
                         <div className='flex justify-between items-center w-full '>
                           <span className='font-bold dark:text-danger text-slate-500 group-hover:text-danger dark:group-hover:text-white transition-all duration-300  '>
-                            کاربران
+                            <FormattedMessage id='DASHBOARD_WIDGET_USERS' />
                           </span>
                           <span className='font-bold dark:text-danger text-slate-600 group-hover:text-danger dark:group-hover:text-white transition-all duration-500 '>
                             {usersCount}
@@ -177,7 +200,7 @@ export default function ShortcutsWidget() {
                         </div>
                       </div>
                       <h2 className='text-slate-500 dark:text-danger font-light text-sm group-hover:text-danger dark:group-hover:text-white transition-all duration-300 '>
-                        افزودن کاربر جدید
+                        <FormattedMessage id='DASHBOARD_WIDGET_ADDUSERS' />
                       </h2>
                     </>
                   )}
@@ -185,7 +208,7 @@ export default function ShortcutsWidget() {
                 {/* End Create user */}
 
                 {/* Begin system Config */}
-                <div className='group  h-[8.9rem]   flex flex-col gap-2 w-full hover:shadow-lg bg-light-success   dark:bg-dark-light-success ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
+                <div className='group  h-[8.9rem] border border-transparent hover:border-blue-700/20  flex flex-col gap-2 w-full hover:shadow-lg bg-light-success   dark:bg-dark-success ease-in-out   shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
                   {usersCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
@@ -209,13 +232,13 @@ export default function ShortcutsWidget() {
                         {/* End Config Icon */}
                         <div className='flex justify-between items-center w-full '>
                           <span className='font-bold dark:text-success text-slate-500 group-hover:text-success dark:group-hover:text-white transition-all duration-300  '>
-                            پیکربندی
+                            <FormattedMessage id='DASHBOARD_WIDGET_CONFIGURATION' />
                           </span>
                           <span className='font-bold dark:text-success text-slate-600 group-hover:text-success dark:group-hover:text-white transition-all duration-500 '></span>
                         </div>
                       </div>
                       <h2 className='text-slate-500 dark:text-success font-light text-sm group-hover:text-success dark:group-hover:text-white transition-all duration-300 '>
-                        مدیریت سامانه
+                        <FormattedMessage id='DASHBOARD_WIDGET_CONFIGURATION_DESC' />
                       </h2>
                     </>
                   )}

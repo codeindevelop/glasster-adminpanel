@@ -17,7 +17,7 @@ export default function LayoutWidthCalc({ children }) {
           <div
             className={clsx(
               `flex flex-col transition-all duration-300 relative px-2 mx-4 ${
-                dir === 'ltr' ? `pl-[17.8rem]` : `pr-[17.8rem]`
+                dir === 'ltr' ? `md:pl-[17.8rem] sm:pl-0 ` : `md:pr-[17.8rem] sm:pr-0`
               } `
             )}
           >
@@ -29,7 +29,7 @@ export default function LayoutWidthCalc({ children }) {
           <div
             className={clsx(
               `flex flex-col transition-all duration-300 relative px-2 mx-4 ${
-                dir === 'ltr' ? `pl-[4.2rem]` : `pr-[4.2rem]`
+                dir === 'ltr' ? `md:pl-[4.2rem] sm:pl-0` : `md:pr-[4.2rem] sm:pr-0`
               } `
             )}
           >

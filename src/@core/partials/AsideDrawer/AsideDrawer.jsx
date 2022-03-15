@@ -96,7 +96,12 @@ export default function AsideDrawer() {
       </LGDrawer>
 
       {/* Begin Mobile Drawer */}
-      <Drawer onClose={handleDrawerClose} className='sm:flex md:hidden' open={open} anchor='left'>
+      <Drawer
+        onClose={handleDrawerClose}
+        className='sm:flex md:hidden'
+        open={open}
+        anchor={dir === 'rtl' ? 'left' : 'right'}
+      >
         {/* Begin Drawer Wrapper */}
         <div className='bg-[#1e1e2d] h-full flex flex-col justify-start'>
           {/* Begin Drawer Header */}

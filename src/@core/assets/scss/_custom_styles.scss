@@ -9,3 +9,8 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.cover-img {
+  mask-image: -webkit-radial-gradient(center, white, black);
+  -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+}
