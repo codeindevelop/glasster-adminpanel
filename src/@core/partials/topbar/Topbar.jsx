@@ -4,6 +4,8 @@ import LanguagesSwitch from '../languages-switch-topbar/LanguagesSwitch';
 import UserMenu from '../user-menu/UserMenu';
 import Notifications from '../notifications-topbar/Notifications';
 import Search from '../search-topbar/Search';
+import TodoBtnTopbar from '../todo-topbar/TodoBtnTopbar';
+import CalendarBtnTopbar from '../calendar-topbar/CalendarBtnTopbar';
 
 export default function Topbar() {
   return (
@@ -13,8 +15,14 @@ export default function Topbar() {
         {/* Begin Topbar Wrapper */}
         <div className='flex flex-row justify-between items-center w-full h-full'>
           {/* Begin side one */}
-          <div>
-            <h2>متن</h2>
+          <div className='flex items-center'>
+            {/* Begin Todo Btn */}
+            <TodoBtnTopbar />
+            {/* End Todo Btn */}
+            
+            {/* Begin Calendar Btn */}
+            <CalendarBtnTopbar />
+            {/* End Calendar Btn */}
           </div>
           {/* End side one */}
           {/* Begin Actions Side */}
