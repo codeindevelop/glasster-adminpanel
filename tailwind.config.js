@@ -48,6 +48,12 @@ module.exports = {
       'light-info': '#f8f5ff',
       'light-success': '#e8fff3',
       'light-warning': '#fff8dd',
+ 
+      'dark-light-primary': '#212e48',
+      'dark-light-danger': '#3a2434',
+      'dark-light-info': '#f8f5ff',
+      'dark-light-success': '#1c3238',
+      'dark-light-warning': '#392f28',
 
       //Core Colors
       primary: '#009ef7',

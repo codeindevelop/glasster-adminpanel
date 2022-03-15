@@ -27,6 +27,7 @@ export function MaterialThemeProvider({ children }) {
 
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      background: '#151521',
       danger: {
         // light: will be calculated from palette.primary.main,
         main: '#f1416c',

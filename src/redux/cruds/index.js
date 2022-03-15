@@ -105,4 +105,8 @@ export default {
   revokeUserRoleURL: `${API_URL}/api/v1/role-remove-user`,
   roleGivePermissionURL: `${API_URL}/api/v1/role-giv-permission`,
   revokePermissionFromRoleURL: `${API_URL}/api/v1/role-revoke-permission`,
+
+  /* ---------------------------- custom Routes API --------------------------- */
+
+  dashboardDataURL: `${API_URL}/api/v1/dashboard-data`,
 };

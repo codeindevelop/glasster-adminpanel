@@ -8,9 +8,11 @@ import layout from './layout';
 import postReducers from './post';
 import settings from './settings';
 import { mediaReducer } from './media/mediaReducer';
+import { dashboardReducer } from './dashboard/dashboardReducer';
 
 const rootReducer = combineReducers({
   auth,
+  dashboard: dashboardReducer,
   role: roleReducer,
   post: postReducers,
   media: mediaReducer,
