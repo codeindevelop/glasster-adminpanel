@@ -7,6 +7,7 @@ import Search from '../search-topbar/Search';
 import TodoBtnTopbar from '../todo-topbar/TodoBtnTopbar';
 import CalendarBtnTopbar from '../calendar-topbar/CalendarBtnTopbar';
 import EmailBtnTopbar from '../email-topbar/EmailBtnTopbar';
+import AssideMobileToggle from '../AsideDrawer/MobileToggle';
 
 export default function Topbar() {
   return (
@@ -16,7 +17,7 @@ export default function Topbar() {
         {/* Begin Topbar Wrapper */}
         <div className='flex flex-row justify-between items-center w-full h-full'>
           {/* Begin side one */}
-          <div className='flex items-center'>
+          <div className='hidden md:flex items-center  lg:flex '>
             {/* Begin Todo Btn */}
             <TodoBtnTopbar />
             {/* End Todo Btn */}
@@ -24,12 +25,19 @@ export default function Topbar() {
             {/* Begin Calendar Btn */}
             <CalendarBtnTopbar />
             {/* End Calendar Btn */}
-            
+
             {/* Begin Email Btn */}
             <EmailBtnTopbar />
             {/* End Email Btn */}
           </div>
           {/* End side one */}
+
+          {/* Begin Mobile Menu Toggle */}
+          <div className='sm:flex md:hidden items-center  lg:hidden '>
+            <AssideMobileToggle />
+          </div>
+          {/* End Mobile Menu Toggle */}
+
           {/* Begin Actions Side */}
           <div className='flex flex-row items-center gap-2'>
             {/* Begin Select Language Component */}

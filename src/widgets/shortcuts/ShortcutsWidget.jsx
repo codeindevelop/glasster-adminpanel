@@ -49,7 +49,7 @@ export default function ShortcutsWidget() {
                   {dir === 'rtl' ? (
                     <>
                       <SVG
-                        className='relative  right-0 scale-[1.4] ml-5 w-[100px]  md:my-0'
+                        className='relative  right-0 scale-[1.4] ml-8 w-[100px]  md:my-0'
                         src={headSVG}
                       />
                     </>
