@@ -3,6 +3,7 @@ import SVG from 'react-inlinesvg';
 import { useHistory } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import calendarIcon from 'img/icons/general/gen014.svg';
+import { FormattedMessage } from 'react-intl';
 
 export default function CalendarBtnTopbar() {
   const router = useHistory();
@@ -12,8 +13,12 @@ export default function CalendarBtnTopbar() {
         title={
           <>
             <div className='flex flex-col items-center'>
-              <h2>مدیریت رویداد ها</h2>
-              <p>تمامی رویداد های خود را در این بخش مدیریت نمایید</p>
+              <h2>
+                <FormattedMessage id='TOPBAR_CALENDAR_HEADER' />
+              </h2>
+              <p>
+                <FormattedMessage id='TOPBAR_CALENDAR_DESC' />
+              </p>
             </div>
           </>
         }

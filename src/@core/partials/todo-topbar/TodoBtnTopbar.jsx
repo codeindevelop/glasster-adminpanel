@@ -3,6 +3,7 @@ import SVG from 'react-inlinesvg';
 import { useHistory } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import todoIcon from 'img/icons/general/gen037.svg';
+import { FormattedMessage } from 'react-intl';
 
 export default function TodoBtnTopbar() {
   const router = useHistory();
@@ -12,8 +13,12 @@ export default function TodoBtnTopbar() {
         title={
           <>
             <div className='flex flex-col items-center'>
-              <h2>مدیریت وظایف</h2>
-              <p>تمامی وظایف خود را از این بخش مدیریت نمایید</p>
+              <h2>
+                <FormattedMessage id='TOPBAR_TODO_HEADER' />
+              </h2>
+              <p>
+                <FormattedMessage id='TOPBAR_TODO_DESC' />
+              </p>
             </div>
           </>
         }

@@ -2,6 +2,7 @@ import React from 'react';
 import SVG from 'react-inlinesvg';
 import { useHistory } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
+import { FormattedMessage } from 'react-intl';
 import emailIcon from 'img/icons/communication/com010.svg';
 
 export default function EmailBtnTopbar() {
@@ -12,8 +13,12 @@ export default function EmailBtnTopbar() {
         title={
           <>
             <div className='flex flex-col items-center'>
-              <h2>مدیریت ایمیل</h2>
-              <p>تمامی ایمیل های خود را از این بخش مدیریت نمایید</p>
+              <h2>
+                <FormattedMessage id='TOPBAR_EMAIL_HEADER' />
+              </h2>
+              <p>
+                <FormattedMessage id='TOPBAR_EMAIL_DESC' />
+              </p>
             </div>
           </>
         }

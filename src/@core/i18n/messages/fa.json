@@ -103,6 +103,12 @@
   "USERMENU_ROLES": "مدیریت نقش ها",
   "USERMENU_PERMISSIONS": "مدیریت سطوح دسترسی",
   "USERMENU_SIGNOUT": "خروج از سامانه",
+  "TOPBAR_EMAIL_HEADER": "مدیریت ایمیل",
+  "TOPBAR_EMAIL_DESC": "تمامی ایمیل های خود را از این بخش مدیریت نمایید",
+  "TOPBAR_CALENDAR_HEADER": "مدیریت رویداد ها",
+  "TOPBAR_CALENDAR_DESC": "تمامی رویداد های خود را در این بخش مدیریت نمایید",
+  "TOPBAR_TODO_HEADER": "مدیریت وظایف",
+  "TOPBAR_TODO_DESC": "تمامی وظایف خود را از این بخش مدیریت نمایید",
   "DASHBOARD_BRAND_GLASSTER_NAME": "Glasster System",
   "DASHBOARD_BRAND_GLASSTER_DESC": "سیستم مدیریت وب سایت"
 }
