@@ -12,7 +12,7 @@ export default function Topbar() {
   return (
     <>
       {/* Begin Topbar */}
-      <div className='w-full my-5 h-16 dark:bg-[#1e1e2d] rounded-lg p-3 shadow-lg dark:border-none border border-1'>
+      <div className='w-full my-5 h-16 dark:bg-[#1e1e2d] rounded-lg p-3 shadow-xl dark:border-none '>
         {/* Begin Topbar Wrapper */}
         <div className='flex flex-row justify-between items-center w-full h-full'>
           {/* Begin side one */}

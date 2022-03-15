@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SVG from 'react-inlinesvg';
 import Skeleton from '@mui/material/Skeleton';
 import plusIcon from 'img/icons/general/gen035.svg';
@@ -6,12 +6,21 @@ import configIcon from 'img/icons/coding/cod009.svg';
 import editIcon from 'img/icons/general/gen055.svg';
 import addUserIcon from 'img/icons/general/gen049.svg';
 import { FormattedMessage } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDashbaodrDataAction } from 'actions/custom/dashboardActions';
 
 export default function ShortcutsWidget() {
-  const { first_name } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { first_name, postCategoriesCount, postsCount, usersCount } = useSelector((state) => ({
     first_name: state.auth.user.user.first_name,
+    postCategoriesCount: state.dashboard.postCategoriesCount,
+    postsCount: state.dashboard.postsCount,
+    usersCount: state.dashboard.usersCount,
   }));
+
+  useEffect(() => {
+    dispatch(getDashbaodrDataAction());
+  }, []);
   return (
     <>
       <div className='relative z-1 w-full h-[32.5rem] dark:bg-[#1e1e2d] shadow-lg rounded-lg'>
@@ -21,7 +30,7 @@ export default function ShortcutsWidget() {
           <div className='bg-danger w-full h-[13rem] rounded-lg p-5 flex items-center'>
             <div className='flex flex-col gap-3 w-full'>
               {/* Check if redux store not loaded , try to display loading */}
-              {!first_name ? (
+              {usersCount === null ? (
                 <>
                   <Skeleton
                     sx={{ width: '75%', height: '0.6rem' }}
@@ -53,7 +62,7 @@ export default function ShortcutsWidget() {
               <div className='flex items-center gap-4 px-2'>
                 {/* Begin Create Post */}
                 <div className='group     h-[8.9rem]    flex flex-col gap-2 w-full hover:shadow-lg bg-light-primary   dark:bg-dark-light-primary ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
-                  {!first_name ? (
+                  {postsCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
                         <div>
@@ -79,7 +88,7 @@ export default function ShortcutsWidget() {
                             مقالات
                           </span>
                           <span className='font-bold dark:text-primary text-slate-600 group-hover:text-primary dark:group-hover:text-white transition-all duration-500 '>
-                            20
+                            {postsCount}
                           </span>
                         </div>
                       </div>
@@ -93,7 +102,7 @@ export default function ShortcutsWidget() {
 
                 {/* Begin Create Post category */}
                 <div className='group h-[8.9rem]   flex flex-col gap-2 w-full hover:shadow-lg bg-light-warning   dark:bg-dark-light-warning ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
-                  {!first_name ? (
+                  {postCategoriesCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
                         <div>
@@ -119,7 +128,7 @@ export default function ShortcutsWidget() {
                             دسته ها
                           </span>
                           <span className='font-bold dark:text-warning text-slate-600 group-hover:text-warning dark:group-hover:text-white transition-all duration-500 '>
-                            5
+                            {postCategoriesCount}
                           </span>
                         </div>
                       </div>
@@ -137,7 +146,7 @@ export default function ShortcutsWidget() {
               <div className='flex items-center gap-4 px-2'>
                 {/* Begin Create user */}
                 <div className='group  h-[8.9rem]  flex flex-col gap-2 w-full hover:shadow-lg bg-light-danger   dark:bg-dark-light-danger ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
-                  {!first_name ? (
+                  {usersCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
                         <div>
@@ -163,7 +172,7 @@ export default function ShortcutsWidget() {
                             کاربران
                           </span>
                           <span className='font-bold dark:text-danger text-slate-600 group-hover:text-danger dark:group-hover:text-white transition-all duration-500 '>
-                            2
+                            {usersCount}
                           </span>
                         </div>
                       </div>
@@ -177,7 +186,7 @@ export default function ShortcutsWidget() {
 
                 {/* Begin system Config */}
                 <div className='group  h-[8.9rem]   flex flex-col gap-2 w-full hover:shadow-lg bg-light-success   dark:bg-dark-light-success ease-in-out delay-150  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
-                  {!first_name ? (
+                  {usersCount === null ? (
                     <>
                       <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
                         <div>
