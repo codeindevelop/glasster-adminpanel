@@ -123,19 +123,19 @@ export default function PostsList() {
       dataField: 'id',
       text: 'شماره مقاله',
       sort: true,
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
     },
     {
       dataField: 'category_id',
       text: 'دسته',
       sort: true,
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
     },
     {
       dataField: 'post_name',
       text: 'نام مقاله',
       sort: true,
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
     },
 
     {
@@ -147,18 +147,18 @@ export default function PostsList() {
           <>
             {row.active === 0 ? (
               <>
-                <span className='badge badge-pill badge-danger  fw-light fs-8'>غیر فعال</span>
+                <span className='badge badge-pill badge-danger  font-light fs-8'>غیر فعال</span>
               </>
             ) : null}
             {row.active === 1 ? (
               <>
-                <span className='badge badge-pill badge-success  fw-light fs-8'>فعال</span>
+                <span className='badge badge-pill badge-success  font-light fs-8'>فعال</span>
               </>
             ) : null}
           </>
         );
       },
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
       filter: textFilter({
         defaultValue: postStatusFilter,
         style: { display: 'none' },
@@ -174,23 +174,23 @@ export default function PostsList() {
           <>
             {row.publish_id === 1 ? (
               <>
-                <span className='text-success fw-light fs-7'>منتشر شده</span>
+                <span className='text-success font-light fs-7'>منتشر شده</span>
               </>
             ) : null}
             {row.publish_id === 2 ? (
               <>
-                <span className='text-warning fw-light fs-7'>پیش نویس</span>
+                <span className='text-warning font-light fs-7'>پیش نویس</span>
               </>
             ) : null}
             {row.publish_id === 3 ? (
               <>
-                <span className='text-info fw-light fs-7'>بایگانی شده</span>
+                <span className='text-info font-light fs-7'>بایگانی شده</span>
               </>
             ) : null}
           </>
         );
       },
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
       filter: textFilter({
         defaultValue: postStatusFilter,
         style: { display: 'none' },
@@ -209,7 +209,7 @@ export default function PostsList() {
           </>
         );
       },
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
     },
     {
       dataField: 'action',
@@ -231,7 +231,7 @@ export default function PostsList() {
 
       // },
       classes: 'text-right pr-0',
-      headerClasses: 'text-center fw-light pr-3',
+      headerClasses: 'text-center font-light pr-3',
       style: {
         minWidth: '100px',
       },
