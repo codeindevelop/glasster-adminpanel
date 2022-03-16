@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import viewIcon from 'img/icons/general/gen019.svg';
 import editIcon from 'img/icons/general/gen055.svg';
 import deleteIcon from 'img/icons/general/gen027.svg';
+import { FormattedMessage } from 'react-intl';
 
 export default function Actions(cellContent, row, rowIndex) {
   const dispatch = useDispatch();

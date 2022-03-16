@@ -138,20 +138,21 @@ export default function MenuItems() {
           labelInfo=''
           to='/post/new'
         />
-        <Menu
+         <Menu
           nodeId='4'
-          title={<FormattedMessage id='MENU.POST_CATEGORY' />}
-          hasBullet={true}
-          labelInfo=''
-          to='/post/category/all'
-        />
-        <Menu
-          nodeId='5'
           title={<FormattedMessage id='MENU.NEW_POST_LIST' />}
           hasBullet={true}
           labelInfo=''
           to='/post/list'
         />
+        <Menu
+          nodeId='5'
+          title={<FormattedMessage id='MENU.POST_CATEGORY' />}
+          hasBullet={true}
+          labelInfo=''
+          to='/post/category/all'
+        />
+       
       </Menu>
 
       {/* End Menu Links */}
