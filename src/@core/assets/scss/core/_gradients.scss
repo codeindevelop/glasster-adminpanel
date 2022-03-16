@@ -1,3 +1,36 @@
 .blue-gradient {
   background: linear-gradient(180deg, #21c8f6, #637bff);
 }
+
+.red-gradient {
+  background: linear-gradient(180deg, #f44881, #ec454f);
+}
+
+.yellow-gradient {
+  background: linear-gradient(0deg, #f19a1a, #ffc73c);
+}
+
+.green-gradient {
+  background: linear-gradient(180deg, #6edcc4, #1aab8b);
+}
+
+.info-gradient {
+  background: linear-gradient(0deg, #8b60ed, #b372bd);
+}
+
+/* ------------------------ Backgrounds for Articles ------------------------ */
+.bg-gradient-left-primary {
+  background: linear-gradient(270deg, #21c8f6, #637bff);
+}
+
+.bg-gradient-left-success {
+  background: linear-gradient(270deg, #6edcc4, #1aab8b);
+}
+
+.bg-gradient-left-danger {
+  background: linear-gradient(270deg, #f44881, #ec454f);
+}
+
+.bg-gradient-left-info {
+  background: linear-gradient(270deg, #b372bd, #8b60ed);
+}
