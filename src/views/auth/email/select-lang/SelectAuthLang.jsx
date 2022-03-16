@@ -15,7 +15,7 @@ export default function SelectAuthLang() {
   console.log(currentLanguage);
   return (
     <>
-      <div className='w-48 '>
+      <div className='w-48 bg-white z-10 '>
         <FormControl fullWidth>
           <InputLabel id='language-selector-label'>
             <span>{currentLanguage?.name} </span>

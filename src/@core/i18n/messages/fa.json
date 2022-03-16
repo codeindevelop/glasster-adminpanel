@@ -124,6 +124,12 @@
   "DASHBOARD_WIDGET_ADDUSERS": "افزودن کاربر جدید",
   "DASHBOARD_WIDGET_CONFIGURATION": "پیکربندی",
   "DASHBOARD_WIDGET_CONFIGURATION_DESC": "مدیریت سامانه",
+  "ACTIONS_VIEW_POST_HEAD": "مشاهده مقاله",
+  "ACTIONS_VIEW_POST_DESC": "جهت مشاهده مقاله اینجا کلیک کنید",
+  "ACTIONS_EDIT_POST_HEAD": "ویرایش مقاله",
+  "ACTIONS_EDIT_POST_DESC": "جهت ویرایش مقاله اینجا کلیک کنید",
+  "ACTIONS_DELETE_POST_HEAD": "حذف مقاله",
+  "ACTIONS_DELETE_POST_DESC": "جهت حذف مقاله اینجا کلیک کنید",
   "DASHBOARD_BRAND_GLASSTER_NAME": "Glasster System",
   "DASHBOARD_BRAND_GLASSTER_DESC": "سیستم مدیریت وب سایت"
 }
