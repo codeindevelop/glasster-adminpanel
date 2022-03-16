@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import AsideMainMenu from './AsideMainMenu';
+import MainMenu from './MainMenu';
 
 export default function AsideMenu() {
   const scrollRef = useRef(null);
@@ -19,7 +19,7 @@ export default function AsideMenu() {
     <>
       {/* Create Ref For scroll to top after browse menu item */}
       <div ref={scrollRef}>
-        <AsideMainMenu />
+        <MainMenu />
       </div>
     </>
   );

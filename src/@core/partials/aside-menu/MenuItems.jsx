@@ -53,7 +53,7 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
     marginRight: 10,
     // Dropdown Content Style
     [`& .${treeItemClasses.content}`]: {
-      paddingLeft: '2rem',
+      paddingLeft: '1rem',
 
       //   paddingRight: '2rem',
     },
@@ -61,7 +61,7 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
 }));
 
 export const Menu = (props) => {
-  const { bgColor, color, icon, labelInfo, to, title, ...other } = props;
+  const { bgColor, color, icon, labelInfo, hasBullet, to, title, ...other } = props;
   const { pathname } = useLocation();
   const isActive = checkIsActive(pathname, to);
   const { asideOpen } = useSelector((state) => ({
@@ -89,7 +89,7 @@ export const Menu = (props) => {
                 <SVG src={pubFolder(`/icons${icon}`)} />
               </span>
               {/* End Menu Icon */}
-
+              {hasBullet && <span className='w-1 h-1 rounded-full bg-slate-400 flex'></span>}
               {asideOpen === true && (
                 <span
                   className={clsx(
@@ -125,9 +125,33 @@ export default function MenuItems() {
         to='/dashboard'
       />
 
-      <Menu nodeId='2' title='دسته بندی' icon='/general/gen022.svg'>
-        <Menu nodeId='3' title='Social' labelInfo='' to='/ffff' color='#1a73e8' bgColor='#e8f0fe' />
-        <Menu nodeId='4' title='Social' labelInfo='' to='/asd' color='#1a73e8' bgColor='#e8f0fe' />
+      {/* Begin Blog Menu */}
+      <Menu
+        nodeId='2'
+        title={<FormattedMessage id='MENU.MANAGE_BLOG' />}
+        icon='/general/gen055.svg'
+      >
+        <Menu
+          nodeId='3'
+          title={<FormattedMessage id='MENU.NEW_POST' />}
+          hasBullet={true}
+          labelInfo=''
+          to='/post/new'
+        />
+        <Menu
+          nodeId='4'
+          title={<FormattedMessage id='MENU.POST_CATEGORY' />}
+          hasBullet={true}
+          labelInfo=''
+          to='/post/category/all'
+        />
+        <Menu
+          nodeId='5'
+          title={<FormattedMessage id='MENU.NEW_POST_LIST' />}
+          hasBullet={true}
+          labelInfo=''
+          to='/post/list'
+        />
       </Menu>
 
       {/* End Menu Links */}

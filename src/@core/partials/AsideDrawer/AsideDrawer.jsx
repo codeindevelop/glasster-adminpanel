@@ -9,7 +9,7 @@ import AsideToggle from './AsideToggle';
 
 import AsideBrand from '../aside-brand/Brand';
 import useBreakpoints from '../../../utility/hooks/useBreakpoint';
-import MainMenu from '../aside-menu/MainMenu';
+import AsideMenu from '../aside-menu/AsideMenu';
 
 const openedMixin = (theme) => ({
   width: '17.8rem',
@@ -91,7 +91,7 @@ export default function AsideDrawer() {
           {/* End Drawer Header */}
 
           {/* Begin Aside Menu */}
-          <MainMenu />
+          <AsideMenu />
 
           {/* End Aside Menu */}
         </div>
@@ -115,7 +115,7 @@ export default function AsideDrawer() {
           {/* End Drawer Header */}
 
           {/* Begin Aside Menu */}
-          <MainMenu />
+          <AsideMenu />
           {/* End Aside Menu */}
         </div>
         {/* End Drawer Wrapper */}
