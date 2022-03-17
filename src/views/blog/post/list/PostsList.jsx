@@ -39,12 +39,6 @@ export default function PostsList() {
     shallowEqual
   );
 
-  //   const customTotal = (from, to, size) => (
-  //     <span className='react-bootstrap-table-pagination-total'>
-  //       {' '}
-  //       نمایش از {from} به {to} تا {size} نتیجه
-  //     </span>
-  //   )
 
   useEffect(() => {
     dispatch(fetchAllPosts());
@@ -72,7 +66,7 @@ export default function PostsList() {
     ),
   };
   const customTotal = (from, to, size) => (
-    <span className='react-bootstrap-table-pagination-total'>
+    <span className='flex text-center items-center'>
       {' '}
       از {from} به {to} تعداد {size} عدد
     </span>
@@ -111,12 +105,6 @@ export default function PostsList() {
     hidePageListOnlyOnePage: true, // hide pagination bar when only one page, default is false
   };
 
-  const selectOptions = {
-    'پرداخت شده': 'پرداخت شده',
-    'پرداخت نشده': 'پرداخت نشده',
-    'در انتظار بررسی': 'در انتظار بررسی',
-    'نمایش همه موارد': '',
-  };
 
   const columns = [
     {
@@ -268,15 +256,15 @@ export default function PostsList() {
           <div className='flex justify-between items-center'>
             <button
               onClick={goNewPostPage}
-              className='bg-primary mx-2 px-3 py-2 rounded-lg text-white hover:shadow-lg hover:bg-sky-500 transition-all duration-300 flex justify-between  items-center'
+              className='bg-primary mx-2 px-3 py-2 rounded-[0.475rem] text-white hover:shadow-lg hover:bg-sky-500 transition-all duration-300 flex justify-between  items-center'
             >
-              <span className='fs-6 text-light fw-light'>ایجاد مقاله جدید</span>
+              <span className='text-sm text-light fw-light'>ایجاد مقاله جدید</span>
             </button>
             <button
               onClick={backToDashboard}
-              className='bg-primary mx-2 px-3 py-2 rounded-lg text-white hover:shadow-lg hover:bg-sky-500 transition-all duration-300 flex justify-between  items-center'
+              className='bg-primary mx-2 px-3 py-2 rounded-[0.475rem] text-white hover:shadow-lg hover:bg-sky-500 transition-all duration-300 flex justify-between  items-center'
             >
-              <span className='fs-6 text-light fw-light'>بازگشت به پیشخوان</span>
+              <span className='text-sm text-light fw-light'>بازگشت به پیشخوان</span>
               <span className='svg-icon svg-icon-3 svg-icon-white mx-2'>
                 <SVG src={backIcon} />
               </span>
