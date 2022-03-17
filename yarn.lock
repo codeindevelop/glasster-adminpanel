@@ -1706,6 +1706,16 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
+"@mui/x-data-grid@^5.6.1":
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/@mui/x-data-grid/-/x-data-grid-5.6.1.tgz#039d42a2b7f649371e26181c1efb7329b5fb833e"
+  integrity sha512-qFyQtGi/ZL8zkmOp4dbAykiu8d/Dd9kt1QZrk7yq7NyMZdCLRRAGa7TH0sweOXJPzRIBmHEOUPVycRt20pVAGA==
+  dependencies:
+    "@mui/utils" "^5.4.4"
+    clsx "^1.1.1"
+    prop-types "^15.8.1"
+    reselect "^4.1.5"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -8065,6 +8075,11 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
+reselect@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.1.5.tgz#852c361247198da6756d07d9296c2b51eddb79f6"
+  integrity sha512-uVdlz8J7OO+ASpBYoz1Zypgx0KasCY20H+N8JD13oUMtPvSHQuscrHop4KbXrbsBcdB9Ds7lVK7eRkBIfO43vQ==
+
 resolve-cwd@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-3.0.0.tgz#0f0075f1bb2544766cf73ba6a6e2adfebcb13f2d"
@@ -8829,6 +8844,11 @@ symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
+
+tailwindcss-tables@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-tables/-/tailwindcss-tables-0.4.0.tgz#1cbe26448251fd6f92ab142bfb165d7b7d0c07e8"
+  integrity sha512-GB25r/03oJln729LcstrPyI53Y5k3X5WWxzAkj+9Zqrw3jB6CXwZm54zIwnQU93dkmXOGGrneldHsIt9Z2YTYQ==
 
 tailwindcss@^3.0.23:
   version "3.0.23"

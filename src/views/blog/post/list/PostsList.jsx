@@ -123,19 +123,19 @@ export default function PostsList() {
       dataField: 'id',
       text: 'شماره مقاله',
       sort: true,
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
     },
     {
       dataField: 'category_id',
       text: 'دسته',
       sort: true,
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
     },
     {
       dataField: 'post_name',
       text: 'نام مقاله',
       sort: true,
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
     },
 
     {
@@ -147,18 +147,22 @@ export default function PostsList() {
           <>
             {row.active === 0 ? (
               <>
-                <span className='badge badge-pill badge-danger  font-light fs-8'>غیر فعال</span>
+                <span className='py-1 px-2 rounded-md text-white bg-danger dark:bg-light-danger dark:text-danger  font-light text-sm'>
+                  غیر فعال
+                </span>
               </>
             ) : null}
             {row.active === 1 ? (
               <>
-                <span className='badge badge-pill badge-success  font-light fs-8'>فعال</span>
+                <span className='py-1 px-2 rounded-md text-white bg-success dark:bg-[#1c3238] dark:text-success  font-light text-sm'>
+                  فعال
+                </span>
               </>
             ) : null}
           </>
         );
       },
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
       filter: textFilter({
         defaultValue: postStatusFilter,
         style: { display: 'none' },
@@ -174,23 +178,23 @@ export default function PostsList() {
           <>
             {row.publish_id === 1 ? (
               <>
-                <span className='text-success font-light fs-7'>منتشر شده</span>
+                <span className='text-success font-light text-sm'>منتشر شده</span>
               </>
             ) : null}
             {row.publish_id === 2 ? (
               <>
-                <span className='text-warning font-light fs-7'>پیش نویس</span>
+                <span className='text-warning font-light text-sm'>پیش نویس</span>
               </>
             ) : null}
             {row.publish_id === 3 ? (
               <>
-                <span className='text-info font-light fs-7'>بایگانی شده</span>
+                <span className='text-info font-light text-sm'>بایگانی شده</span>
               </>
             ) : null}
           </>
         );
       },
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
       filter: textFilter({
         defaultValue: postStatusFilter,
         style: { display: 'none' },
@@ -209,7 +213,7 @@ export default function PostsList() {
           </>
         );
       },
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
     },
     {
       dataField: 'action',
@@ -231,7 +235,7 @@ export default function PostsList() {
 
       // },
       classes: 'text-right pr-0',
-      headerClasses: 'text-center font-light pr-3',
+      headerClasses: 'text-center font-bold text-sm pr-3',
       style: {
         minWidth: '100px',
       },
@@ -258,9 +262,9 @@ export default function PostsList() {
       {/* Delete Post Modal */}
       <DeletePostModal />
       {/* Begin Header */}
-      <div className='bg-white w-full rounded-lg  shadow-md'>
-        <div className='p-5 flex md:justify-between items-center md:flex-row sm:flex-col sm:justify-center'>
-          <h2 className='font-normal text-sm text-gray-800'>لیست مقالات وب سایت</h2>
+      <div className='bg-white dark:bg-[#1e1e2d] animation-all duration-300 w-full rounded-lg  shadow-md'>
+        <div className='p-5 flex md:justify-between items-center md:flex-row gap-3 flex-col sm:justify-center'>
+          <h2 className='font-normal text-sm text-gray-800 dark:text-white'>لیست مقالات وب سایت</h2>
           <div className='flex justify-between items-center'>
             <button
               onClick={goNewPostPage}
@@ -284,26 +288,24 @@ export default function PostsList() {
       {/* End Header */}
       {postsData.length === 0 ? (
         <>
-          <div className='container'>
-            <div className='w-full'>
-              <div
-                style={{ height: '100%' }}
-                className=' p-10 my-3 rounded-lg flex gap-5 items-center justify-center'
-              >
-                <SVG style={{ height: 100 }} src={nocontectImg} />
+          <div className='bg-wite w-full h-screen flex items-center justify-center'>
+            <div
+              style={{ height: '100%' }}
+              className='my-3 rounded-lg flex flex-col gap-5 items-center justify-center'
+            >
+              <SVG style={{ height: 100 }} src={nocontectImg} />
 
-                <h6 className='text-gray-700'>در حال حاضر هیچ مقاله ای در سامانه ثبت نشده است</h6>
-              </div>
+              <h6 className='text-gray-700 my-2'>در حال حاضر هیچ مقاله ای در سامانه ثبت نشده است</h6>
             </div>
           </div>
         </>
       ) : (
         <>
-          <div className='bg-white shadow-lg h-full w-full my-3 rounded-lg'>
+          <div className='bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white shadow-lg h-full w-full my-3 rounded-lg'>
             <div className='p-6 w-full'>
               <ToolkitProvider keyField='id' data={postsData} columns={columns} search>
                 {(props) => (
-                  <div className='w-full'>
+                  <div className='w-full bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white'>
                     {/* Begin search */}
                     <div className='flex md:flex-row flex-col items-center relative w-full gap-3   my-3'>
                       {/* Begin Search Wrape */}
@@ -312,10 +314,9 @@ export default function PostsList() {
                           <SVG src={searchIcon} />
                         </span>
                         <SearchBar
-                          
                           srText=''
                           placeholder='جستجو در مقالات'
-                          className='bg-white  focus:outline-none rounded-sm h-[50px] shadow-md h-full border px-2 py-3 border-gray-300 text-sm text-center  '
+                          className='bg-white dark:bg-[#171723] dark:text-[#92929f] text-slate-400  focus:outline-none rounded-[0.475rem] h-[50px] shadow-md h-full border px-2 py-3 border-gray-200 dark:border-[#171723] text-sm text-center  '
                           {...props.searchProps}
                         ></SearchBar>
                       </div>
@@ -349,16 +350,15 @@ export default function PostsList() {
                         </FormControl>
                       </div>
                       {/* End Select Filter */}
-                     
                     </div>
 
-                    <div className='dataTables_wrapper dt-bootstrap4 w-full no-footer'>
+                    <div className='dataTables_wrapper  dt-bootstrap4 w-full bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white '>
                       <BootstrapTable
-                        wrapperClasses='table-responsive table table-row-dashed fs-6 gy-5 dataTable  '
-                        headerClasses='text-start text-center text-gray-800 text-muted fw-bold fs-6 text-uppercase gs-0'
-                        bodyClasses='text-gray-700 fw-light fs-6 text-center w-full'
+                        wrapperClasses='table-responsive  table table-row-dashed text-sm dataTable bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white  '
+                        headerClasses='text-start dark:text-white text-center text-gray-800 text-muted font-bold text-sm bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white'
+                        bodyClasses='text-gray-700 dark:text-white font-light text-sm text-center w-full bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white'
                         selectRow={selectRow}
-                        classes='table align-middle table-row-dashed fs-7 gy-5 dataTable no-footer'
+                        classes='table table-row-dashed text-sm dark:text-white dataTable bg-white dark:bg-[#1e1e2d] animation-all duration-300 dark:text-white '
                         bordered={false}
                         loading={true}
                         defaultSorted={defaultSorted}
