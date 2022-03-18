@@ -14,3 +14,10 @@ input[type='number'] {
   mask-image: -webkit-radial-gradient(center, white, black);
   -webkit-mask-image: -webkit-radial-gradient(center, white, black);
 }
+
+// Hidden Table Filter Default text (Filter by)
+.sr-only{
+  display: none !important;
+}
+
+ 

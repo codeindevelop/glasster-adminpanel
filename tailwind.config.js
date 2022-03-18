@@ -48,7 +48,7 @@ module.exports = {
       'light-info': '#f8f5ff',
       'light-success': '#e8fff3',
       'light-warning': '#fff8dd',
- 
+
       'dark-primary': '#212e48',
       'dark-danger': '#3a2434',
       'dark-info': '#f8f5ff',
@@ -71,6 +71,7 @@ module.exports = {
   },
   // Custom Variants for css classess
   variants: {
+   
     animate: ['transition-all', 'duration-300'],
     display: ['responsive', 'group-hover'],
     wordBreak: ['responsive', 'group-hover'],
@@ -79,5 +80,8 @@ module.exports = {
     backgroundColor: ['group-hover', 'hover'],
     outline: ['focus'],
   },
-  plugins: [],
+  plugins: [
+    // Other plugins...
+    require('tailwindcss-tables')(),
+  ],
 };

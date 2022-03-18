@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDashbaodrDataAction } from 'actions/custom/dashboardActions';
 import { Scale } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function ShortcutsWidget() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function ShortcutsWidget() {
         <div className='flex flex-col items-center justify-center'>
           {/* Begin Top Section */}
           <div className='blue-gradient cover-img relative w-full h-[15rem] flex items-center rounded-lg'>
-            <div  className='flex items-center w-full'>
+            <div className='flex items-center w-full'>
               {/* Check if redux store not loaded , try to display loading */}
               {usersCount === null ? (
                 <>
@@ -82,86 +83,90 @@ export default function ShortcutsWidget() {
             {/* Begin Boxes Wrapper */}
             <div className='flex flex-col gap-4  '>
               {/* Begin Top Shortcuts */}
-              <div className='flex items-center gap-4 px-2'>
+              <div className='flex items-center justify-between gap-4 w-full  px-2'>
                 {/* Begin Create Post */}
-                <div className='group     h-[8.9rem]    flex flex-col gap-2 w-full border border-transparent hover:border-blue-700/20 hover:shadow-lg bg-light-primary dark:bg-dark-primary ease-in-out  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
-                  {postsCount === null ? (
-                    <>
-                      <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
-                        <div>
-                          <Skeleton sx={{ width: '75%', height: '0.9rem' }} animation='wave' />
+                <Link className='w-full' to='/post/new'>
+                  <div className='group     h-[8.9rem]    flex flex-col gap-2 w-full border border-transparent hover:border-blue-700/20 hover:shadow-lg bg-light-primary dark:bg-dark-primary ease-in-out  shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
+                    {postsCount === null ? (
+                      <>
+                        <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
+                          <div>
+                            <Skeleton sx={{ width: '75%', height: '0.9rem' }} animation='wave' />
+                          </div>
+                          <div className='flex  justify-between items-center w-full '>
+                            <Skeleton width='40%' />
+                            <Skeleton width='40%' />
+                          </div>
                         </div>
-                        <div className='flex  justify-between items-center w-full '>
-                          <Skeleton width='40%' />
-                          <Skeleton width='40%' />
-                        </div>
-                      </div>
-                      <Skeleton width='100%' />
-                    </>
-                  ) : (
-                    <>
-                      <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
-                        {/* Begin Post  Icon */}
-                        <span className='svg-icon svg-icon-2 svg-icon-primary'>
-                          <SVG src={editIcon} />
-                        </span>
-                        {/* End Post Icon */}
-                        <div className='flex justify-between items-center w-full '>
-                          <span className='font-bold dark:text-primary text-slate-500 group-hover:text-primary dark:group-hover:text-white transition-all duration-300  '>
-                            <FormattedMessage id='DASHBOARD_WIDGET_POSTS' />
+                        <Skeleton width='100%' />
+                      </>
+                    ) : (
+                      <>
+                        <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
+                          {/* Begin Post  Icon */}
+                          <span className='svg-icon svg-icon-2 svg-icon-primary'>
+                            <SVG src={editIcon} />
                           </span>
-                          <span className='font-bold dark:text-primary text-slate-600 group-hover:text-primary dark:group-hover:text-white transition-all duration-500 '>
-                            {postsCount}
-                          </span>
+                          {/* End Post Icon */}
+                          <div className='flex justify-between items-center w-full '>
+                            <span className='font-bold dark:text-primary text-slate-500 group-hover:text-primary dark:group-hover:text-white transition-all duration-300  '>
+                              <FormattedMessage id='DASHBOARD_WIDGET_POSTS' />
+                            </span>
+                            <span className='font-bold dark:text-primary text-slate-600 group-hover:text-primary dark:group-hover:text-white transition-all duration-500 '>
+                              {postsCount}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                      <h2 className='text-slate-500 dark:text-primary font-light text-sm group-hover:text-primary dark:group-hover:text-white transition-all duration-300 '>
-                        <FormattedMessage id='DASHBOARD_WIDGET_ADDPOSTS' />
-                      </h2>
-                    </>
-                  )}
-                </div>
+                        <h2 className='text-slate-500 dark:text-primary font-light text-sm group-hover:text-primary dark:group-hover:text-white transition-all duration-300 '>
+                          <FormattedMessage id='DASHBOARD_WIDGET_ADDPOSTS' />
+                        </h2>
+                      </>
+                    )}
+                  </div>
+                </Link>
                 {/* End Create Post */}
 
-                {/* Begin Create Post category */}
-                <div className='group h-[8.9rem] border border-transparent hover:border-blue-700/20  flex flex-col gap-2 w-full hover:shadow-lg bg-light-warning   dark:bg-dark-warning ease-in-out   shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
-                  {postCategoriesCount === null ? (
-                    <>
-                      <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
-                        <div>
-                          <Skeleton sx={{ width: '75%', height: '0.9rem' }} animation='wave' />
+                {/* Begin Post categories List */}
+                <Link className='w-full'  to='/post/category/all'>
+                  <div className='group h-[8.9rem] border border-transparent hover:border-blue-700/20  flex flex-col gap-2 w-full hover:shadow-lg bg-light-warning   dark:bg-dark-warning ease-in-out   shadow-sm  cursor-pointer transition-all duration-300   p-3 rounded-lg'>
+                    {postCategoriesCount === null ? (
+                      <>
+                        <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
+                          <div>
+                            <Skeleton sx={{ width: '75%', height: '0.9rem' }} animation='wave' />
+                          </div>
+                          <div className='flex  justify-between items-center w-full '>
+                            <Skeleton width='40%' />
+                            <Skeleton width='40%' />
+                          </div>
                         </div>
-                        <div className='flex  justify-between items-center w-full '>
-                          <Skeleton width='40%' />
-                          <Skeleton width='40%' />
-                        </div>
-                      </div>
-                      <Skeleton width='100%' />
-                    </>
-                  ) : (
-                    <>
-                      <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
-                        {/* Begin Post category  Icon */}
-                        <span className='svg-icon svg-icon-2 svg-icon-primary dark:svg-icon-warning'>
-                          <SVG src={plusIcon} />
-                        </span>
-                        {/* End Post category Icon */}
-                        <div className='flex justify-between items-center w-full '>
-                          <span className='font-bold dark:text-warning text-slate-500 group-hover:text-warning dark:group-hover:text-white transition-all duration-300  '>
-                            <FormattedMessage id='DASHBOARD_WIDGET_CATEGORIES' />
+                        <Skeleton width='100%' />
+                      </>
+                    ) : (
+                      <>
+                        <div className='flex   flex-col gap-8 mt-2 w-full   transition-all duration-300'>
+                          {/* Begin Post category  Icon */}
+                          <span className='svg-icon svg-icon-2 svg-icon-primary dark:svg-icon-warning'>
+                            <SVG src={plusIcon} />
                           </span>
-                          <span className='font-bold dark:text-warning text-slate-600 group-hover:text-warning dark:group-hover:text-white transition-all duration-500 '>
-                            {postCategoriesCount}
-                          </span>
+                          {/* End Post category Icon */}
+                          <div className='flex justify-between items-center w-full '>
+                            <span className='font-bold dark:text-warning text-slate-500 group-hover:text-warning dark:group-hover:text-white transition-all duration-300  '>
+                              <FormattedMessage id='DASHBOARD_WIDGET_CATEGORIES' />
+                            </span>
+                            <span className='font-bold dark:text-warning text-slate-600 group-hover:text-warning dark:group-hover:text-white transition-all duration-500 '>
+                              {postCategoriesCount}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                      <h2 className='text-slate-500 dark:text-warning font-light text-sm group-hover:text-warning dark:group-hover:text-white transition-all duration-300 '>
-                        <FormattedMessage id='DASHBOARD_WIDGET_ADDCATEGORY' />
-                      </h2>
-                    </>
-                  )}
-                </div>
-                {/* End Create Post category */}
+                        <h2 className='text-slate-500 dark:text-warning font-light text-sm group-hover:text-warning dark:group-hover:text-white transition-all duration-300 '>
+                          <FormattedMessage id='DASHBOARD_WIDGET_CATEGORY_LIST' />
+                        </h2>
+                      </>
+                    )}
+                  </div>
+                </Link>
+                {/* End Post categories List */}
               </div>
               {/* End Top Shortcuts */}
 

@@ -1,6 +1,7 @@
 /* eslint-disable */
 
-const API_URL = 'http://localhost:8000';
+// const API_URL = 'http://localhost:8000';
+const API_URL = 'https://api.codeindev.com';
 
 /* ------------------------ Authentication CRUD URLs ------------------------ */
 export default {
@@ -71,7 +72,7 @@ export default {
 
   getAllPostsURL: `${API_URL}/api/v1/posts`,
   getPostByIdURL: `${API_URL}/api/v1/get-post-id`,
-  createPostURL: `${API_URL}/api/v1/post`,
+  createPostURL: `${API_URL}/api/v1/create-post`,
   updatePostURL: `${API_URL}/api/v1/post`,
   deletePostURL: `${API_URL}/api/v1/post-delete`,
 

@@ -1,5 +1,7 @@
 {
   "TRANSLATOR.SELECT": "Select your language",
+  "GLASSTER_LOADING_TEXT": "Glasster Website Manager",
+  "LOADING_TEXT": "Loading ...",
   "PAGE_MEDIA_PAGETITLE" : "Media Managment",
   "AUTH_WELCOME": "System for manage websites",
   "AUTH_LOGIN_TITLE": "Signin to account",

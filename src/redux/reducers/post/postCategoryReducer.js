@@ -16,6 +16,11 @@ const initialState = {
 
 export const postCategoryReducer =(state = initialState, action) => {
   switch (action.type) {
+    case 'POST_CATEGORY_LOADED':
+      return {
+        ...state,
+        postCategories: action.payload.categories,
+      };
     case 'POSTCATEGORY_EDIT_MODAL_SHOW':
       return {
         ...state,
