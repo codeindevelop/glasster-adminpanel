@@ -111,7 +111,6 @@ export default function TextEditorComponent() {
         <CKEditor
           editor={DecoupledcEditor}
           config={editorConfiguration}
-         
           onReady={(editor) => {
             editor.ui.getEditableElement().parentElement.append(editor.ui.view.toolbar.element);
             // You can store the "editor" and use when it is needed.
@@ -121,7 +120,8 @@ export default function TextEditorComponent() {
           }}
           onChange={(event, editor) => {
             const data = editor.getData();
-            setPostData({ data });
+            localStorage.setItem('postData', data);
+            // setPostData({ data });
           }}
         />
       </div>
