@@ -20,13 +20,6 @@ import { fetchPublishStatus } from 'actions/post/publishStatusActions';
 import { createPost } from 'actions/post/postActions';
 import PostStatusToaster from './PostStatusToaster';
 
-const postSchema = Yup.object().shape({
-  post_name: Yup.string()
-    .min(3, <FormattedMessage id='AUTH_LOGIN_EMAIL_MIN' />)
-    .max(50, <FormattedMessage id='AUTH_LOGIN_EMAIL_MAX' />)
-    .required(<FormattedMessage id='AUTH_LOGIN_EMAIL_REQUIRE' />),
-});
-
 export default function CreateNewPost() {
   const dispatch = useDispatch();
   const router = useHistory();
@@ -61,7 +54,7 @@ export default function CreateNewPost() {
       dispatch(fetchPublishStatus());
       setPublish_id('1');
     }
-  }, [category_id, publish_id,postStoreSucc]);
+  }, [category_id, publish_id, postStoreSucc]);
 
   const backToPostLists = () => {
     router.push(`/post/all`);
@@ -84,7 +77,7 @@ export default function CreateNewPost() {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
-    validationSchema: postSchema,
+
     onSubmit: (values) => {
       setLoading(true);
       dispatch(createPost(values));
@@ -96,13 +89,13 @@ export default function CreateNewPost() {
       <PostStatusToaster />
       {/* End Success Toaster */}
       {/* Begin Form */}
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}> 
         <div className='flex flex-col items-center gap-4 w-full'>
           {/* Begin Top Toolbar */}
           <div className='bg-white dark:bg-[#1e1e2d] animation-all duration-300 w-full rounded-lg  shadow-md'>
             <div className='p-5 flex md:justify-between items-center md:flex-row gap-3 flex-col sm:justify-center'>
               <h2 className='font-normal text-sm text-gray-800 dark:text-white'>
-                ایجاد مقاله جدید
+                <FormattedMessage id='POST_CREATE_POST' />
               </h2>
               <div className='flex justify-between items-center'>
                 <button
@@ -112,12 +105,16 @@ export default function CreateNewPost() {
                 >
                   {loading === true ? (
                     <>
-                      <span className='text-sm text-light fw-light mx-1'>در حال ذخیره ...</span>
+                      <span className='text-sm text-light fw-light mx-1'>
+                        <FormattedMessage id='POST_SAVEPROCESS_POST' />
+                      </span>
                       <CircularProgress size={20} className='text-white' color='inherit' />
                     </>
                   ) : (
                     <>
-                      <span className='text-sm text-light fw-light'>ذخیره</span>
+                      <span className='text-sm text-light fw-light'>
+                        <FormattedMessage id='POST_SAVE_POST' />
+                      </span>
                       <span className='svg-icon svg-icon-3 svg-icon-white mx-2'>
                         <SVG src={saveIcon} />
                       </span>
@@ -129,7 +126,9 @@ export default function CreateNewPost() {
                   onClick={backToPostLists}
                   className='bg-primary mx-2 px-3 py-2 rounded-[0.475rem] text-white hover:shadow-lg hover:bg-sky-500 transition-all duration-300 flex justify-between  items-center'
                 >
-                  <span className='text-sm text-light fw-light'>بازگشت به لیست مقالات</span>
+                  <span className='text-sm text-light fw-light'>
+                    <FormattedMessage id='POST_BACK_TO_POSTLISTS' />
+                  </span>
                   <span className='svg-icon svg-icon-3 svg-icon-white mx-2'>
                     <SVG src={backIcon} />
                   </span>
@@ -140,29 +139,24 @@ export default function CreateNewPost() {
           {/* End Top Toolbar */}
 
           {/* Begin Content Form */}
-          <div className='grid grid-cols-12 gap-3'>
+          <div className='flex w-full lg:flex-row flex-col gap-3'>
             {/* Begin Content */}
-            <div className=' col-span-8    bg-white dark:bg-[#1e1e2d] animation-all duration-300  rounded-lg  shadow-md p-5'>
+            <div className='  lg:w-[70%] sm:w-full    bg-white dark:bg-[#1e1e2d] animation-all duration-300  rounded-lg  shadow-md p-5'>
               {/* Begin Post Title */}
               <TextField
                 required
                 id='post_name'
                 disabled={loading}
-                label='عنوان مقاله'
-                placeholder='عنوان مقاله را وارد کنید'
-                helperText='عنوان مقاله همان تیتر مقاله می باشد که در سایت نمایش داده می شود'
+                label={<FormattedMessage id='POST_POSTNAME_LABLE' />}
+                placeholder={<FormattedMessage id='POST_POSTNAME_PLACEHOLDER' />}
+                helperText={<FormattedMessage id='POST_POSTNAME_HELPERTEXT' />}
                 margin='normal'
                 variant='outlined'
                 className='w-full'
                 onChange={(e) => setPost_name(e.target.value)}
               />
-              {/* End Post Title */}
-              {formik.errors.post_name && (
-                <div className='text-right text-danger font-normal text-sm my-1 '>
-                  <InfoIcon fontSize='small' />
-                  <span className='mx-2 font-bold'>{formik.errors.post_name}</span>
-                </div>
-              )}
+
+
 
               <div className='w-full my-2'>
                 <div className='border dark:border-slate-500 rounded-lg p-2'>
@@ -173,17 +167,17 @@ export default function CreateNewPost() {
             {/* End Content */}
 
             {/* Begin Aside */}
-            <div className=' col-span-4 gap-3  bg-white dark:bg-[#1e1e2d] animation-all duration-300 rounded-lg  shadow-md p-5'>
+            <div className=' lg:w-[30%] sm:w-full  bg-white dark:bg-[#1e1e2d] animation-all duration-300 rounded-lg  shadow-md p-5'>
               {/* Begin Aside Wrapper */}
               <div className='flex flex-col  items-center justify-center gap-4'>
                 {/* Begin Enable Post */}
                 <div className='w-full flex justify-between items-center'>
                   <span className='text-slate-600 dark:text-white font-normal text-sm'>
-                    مقاله فعال باشد؟
+                    <FormattedMessage id='POST_POST_HAS_ENABLE' />
                   </span>
                   <Switch
                     disabled={loading}
-                    aria-label='فعال'
+                    aria-label={<FormattedMessage id='POST_POST_LABLE_ENABLE' />}
                     onChange={(e) => setActive(e.target.checked)}
                     defaultChecked
                   />
@@ -192,11 +186,11 @@ export default function CreateNewPost() {
                 {/* Begin COmmenting fo Post */}
                 <div className='w-full flex justify-between items-center'>
                   <span className='text-slate-600 dark:text-white font-normal text-sm'>
-                    امکان نظر دادن به مقاله
+                    <FormattedMessage id='POST_POST_HAS_COMMENTED' />
                   </span>
                   <Switch
                     disabled={loading}
-                    aria-label='فعال'
+                    aria-label={<FormattedMessage id='POST_POST_LABLE_ENABLE' />}
                     onChange={(e) => setComment_status(e.target.checked)}
                     defaultChecked
                   />
@@ -205,22 +199,38 @@ export default function CreateNewPost() {
                 {/* Begin post status */}
                 <div className='w-full my-2'>
                   <FormControl variant='outlined' className='w-full'>
-                    <InputLabel id='demo-simple-select-outlined-label'>وضعیت انتشار</InputLabel>
+                    <InputLabel id='demo-simple-select-outlined-label'>
+                      <FormattedMessage id='POST_POST_STATUS' />
+                    </InputLabel>
                     <Select
                       disabled={loading}
                       value={publish_id}
-                      label='وضعیت انتشار'
+                      label={<FormattedMessage id='POST_POST_STATUS' />}
                       onChange={(e) => setPublish_id(e.target.value)}
                     >
                       {PostpublishStatus.map((status) => (
                         <MenuItem key={status.id} value={status.id}>
-                          {status.mode === 'published' ? <span>منتشر شده</span> : null}
-                          {status.mode === 'draft' ? <span>منتشر نشده</span> : null}
-                          {status.mode === 'archive' ? <span>بایگانی شده</span> : null}
+                          {status.mode === 'published' ? (
+                            <span>
+                              <FormattedMessage id='POST_STATUS_PUBLISH' />
+                            </span>
+                          ) : null}
+                          {status.mode === 'draft' ? (
+                            <span>
+                              <FormattedMessage id='POST_STATUS_DRAFT' />
+                            </span>
+                          ) : null}
+                          {status.mode === 'archive' ? (
+                            <span>
+                              <FormattedMessage id='POST_STATUS_ARCHIVE' />
+                            </span>
+                          ) : null}
                         </MenuItem>
                       ))}
                     </Select>
-                    <FormHelperText>وضعیت انتشار مقاله در سایت را مشخص کنید</FormHelperText>
+                    <FormHelperText>
+                      <FormattedMessage id='POST_STATUS_HELPERTXT' />
+                    </FormHelperText>
                   </FormControl>
                 </div>
                 {/* End post status */}
@@ -228,7 +238,9 @@ export default function CreateNewPost() {
                 {/* Begin Post Category */}
                 <div className='w-full my-2'>
                   <FormControl variant='outlined' className='w-full '>
-                    <InputLabel>دسته مقاله</InputLabel>
+                    <InputLabel>
+                      <FormattedMessage id='POST_CATEGORY_NAME' />
+                    </InputLabel>
                     <Select
                       disabled={loading}
                       id='category_id'
@@ -239,14 +251,18 @@ export default function CreateNewPost() {
                       {postCagetories.map((category) => (
                         <MenuItem key={category.id} value={category.id}>
                           {category.category_name === 'uncategorized' ? (
-                            <span>بدون دسته</span>
+                            <span>
+                              <FormattedMessage id='POST_CATEGORY_UNCATEGOIZE' />
+                            </span>
                           ) : (
                             <>{category.category_name} </>
                           )}
                         </MenuItem>
                       ))}
                     </Select>
-                    <FormHelperText>برای مقاله فوق یک دسته انتخاب کنید </FormHelperText>
+                    <FormHelperText>
+                      <FormattedMessage id='POST_CATEGORY_HELPER' />
+                    </FormHelperText>
                   </FormControl>
                 </div>
                 {/* End Post Category */}
@@ -257,11 +273,12 @@ export default function CreateNewPost() {
                     disabled={loading}
                     id='slug'
                     name='slug'
-                    label='لینک مقاله'
-                    placeholder='برای مقاله میتوانید لینک دلخواه داشته باشید'
-                    helperText='در صورت وارد نکردن لینک ، به صورت خودکار از نام مقاله استفاده می شود'
+                    label={<FormattedMessage id='POST_SLUG_LABLE' />}
+                    placeholder={<FormattedMessage id='POST_SLUG_PLACEHOLDER' />}
+                    helperText={<FormattedMessage id='POST_SLUG_HELPER' />}
                     margin='normal'
                     variant='outlined'
+                    className='w-full'
                     onChange={(e) => setSlug(e.target.value)}
                   />
                 </div>

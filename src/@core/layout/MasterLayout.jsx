@@ -22,7 +22,7 @@ export default function MasterLayout({ children }) {
         {/* End TopBar */}
 
         {/* Begin Content */}
-        <div className='flex flex-col '>{children}</div>
+        <div className='flex flex-col overflow-y-auto'>{children}</div>
         {/* End Content */}
       </LayoutWidthCalc>
     </>

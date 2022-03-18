@@ -41,7 +41,7 @@ export default function MainLayout({ children }) {
 
   return (
     <>
-      <div className={`${dir === 'ltr' && ('font-pop')} dark:bg-[#151521] h-screen w-full transition-all duration-300`}>
+      <div className={`${dir === 'ltr' && ('font-pop')} dark:bg-[#151521] h-screen w-full transition-all duration-300 overflow-y-auto`}>
         {children}
       </div>
     </>
