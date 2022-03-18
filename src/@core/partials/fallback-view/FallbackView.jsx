@@ -4,8 +4,20 @@ import Logo from 'img/logo/logo.svg';
 export function FallbackView() {
   return (
     <>
-      <div className=''>
-        <div className=' w-full flex flex-col absolute justify-center h-screen	 items-center  z-10'>
+      <div
+        style={{
+          position: 'absolute',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
+          left: '0',
+          right: '0',
+          top: '0',
+          margin: '0 auto',
+        }}
+        className=' flex items-center justify-center'
+      >
+        <div className=' w-full flex flex-col  justify-center 	 items-center  '>
           <SVG src={Logo} alt='Start logo' />
           <h5 className='font-pop text-slate-500 dark:text-white text-lg text-center mt-2 '>
             <FormattedMessage id='GLASSTER_LOADING_TEXT' />

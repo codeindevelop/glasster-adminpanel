@@ -16,7 +16,7 @@ export default function LayoutWidthCalc({ children }) {
         <>
           <div
             className={clsx(
-              `flex flex-col transition-all duration-300 relative px-2 mx-4 ${
+              ` transition-all duration-300  px-2 mx-4 ${
                 dir === 'ltr' ? `md:pl-[17.8rem] sm:pl-0 ` : `md:pr-[17.8rem] sm:pr-0`
               } `
             )}
