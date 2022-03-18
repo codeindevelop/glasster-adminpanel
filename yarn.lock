@@ -1094,6 +1094,31 @@
   dependencies:
     ckeditor5 "^33.0.0"
 
+"@ckeditor/ckeditor5-build-classic@^33.0.0":
+  version "33.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-33.0.0.tgz#2fba5c9f8b182c65cda71cfdd3397df95c23d07e"
+  integrity sha512-OyWPhUwi44OzMefReKUKWk8joKnmLJPEcB+GpEeonsB11AjGNFJejQirsDBnp0oryLxpt2/zq9APyABFVs9oBA==
+  dependencies:
+    "@ckeditor/ckeditor5-adapter-ckfinder" "^33.0.0"
+    "@ckeditor/ckeditor5-autoformat" "^33.0.0"
+    "@ckeditor/ckeditor5-basic-styles" "^33.0.0"
+    "@ckeditor/ckeditor5-block-quote" "^33.0.0"
+    "@ckeditor/ckeditor5-ckfinder" "^33.0.0"
+    "@ckeditor/ckeditor5-cloud-services" "^33.0.0"
+    "@ckeditor/ckeditor5-easy-image" "^33.0.0"
+    "@ckeditor/ckeditor5-editor-classic" "^33.0.0"
+    "@ckeditor/ckeditor5-essentials" "^33.0.0"
+    "@ckeditor/ckeditor5-heading" "^33.0.0"
+    "@ckeditor/ckeditor5-image" "^33.0.0"
+    "@ckeditor/ckeditor5-indent" "^33.0.0"
+    "@ckeditor/ckeditor5-link" "^33.0.0"
+    "@ckeditor/ckeditor5-list" "^33.0.0"
+    "@ckeditor/ckeditor5-media-embed" "^33.0.0"
+    "@ckeditor/ckeditor5-paragraph" "^33.0.0"
+    "@ckeditor/ckeditor5-paste-from-office" "^33.0.0"
+    "@ckeditor/ckeditor5-table" "^33.0.0"
+    "@ckeditor/ckeditor5-typing" "^33.0.0"
+
 "@ckeditor/ckeditor5-build-decoupled-document@^33.0.0":
   version "33.0.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-decoupled-document/-/ckeditor5-build-decoupled-document-33.0.0.tgz#fb532ce06350b24080bde95e91ca94beb92d3871"
@@ -1162,6 +1187,14 @@
   integrity sha512-HMj+Psqt6vXj3B7Ki2Ch5BZD6I8I+j9PL40QZuF7fkmV/fzJjCRYhu7Byzxvu/ZgjASJzxn7omOwdA04+dXeqg==
   dependencies:
     ckeditor5 "^33.0.0"
+
+"@ckeditor/ckeditor5-editor-classic@^33.0.0":
+  version "33.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-editor-classic/-/ckeditor5-editor-classic-33.0.0.tgz#20b15be497089d509a9f284944f2b67bb62df614"
+  integrity sha512-3KYvy7+Gj11NVgBXpL3CqeqeWcIJQlIyc73ODpK2+q9bkBk/1M4w6ZX0e5g+Pv3Q2h4bgfitWfXkfJBXXIrAYw==
+  dependencies:
+    ckeditor5 "^33.0.0"
+    lodash-es "^4.17.15"
 
 "@ckeditor/ckeditor5-editor-decoupled@^33.0.0":
   version "33.0.0"

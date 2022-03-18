@@ -1,6 +1,7 @@
 /* eslint-disable */
 
-const API_URL = 'http://localhost:8000';
+// const API_URL = 'http://localhost:8000';
+const API_URL = 'https://api.codeindev.com';
 
 /* ------------------------ Authentication CRUD URLs ------------------------ */
 export default {
